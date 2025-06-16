@@ -1,0 +1,90 @@
+{
+  "Home": {
+    "title": "Frontend Developer & Penggemar UI/UX",
+    "subtitle": "Membuat pengalaman web yang indah dan performant dengan teknologi modern",
+    "viewProjects": "Lihat Proyek",
+    "contactMe": "Hubungi Saya",
+    "aboutTitle": "Tentang Saya",
+    "aboutDescription": "Saya adalah seorang frontend developer yang bersemangat dengan keahlian dalam desain dan kecintaan untuk menciptakan pengalaman pengguna yang mulus. Dengan keahlian dalam teknologi web modern, saya berusaha membangun aplikasi yang indah dan fungsional.",
+    "location": "Lokasi",
+    "locationValue": "Jakarta, Indonesia",
+    "email": "Email",
+    "emailValue": "contact@example.com",
+    "experienceTitle": "Pengalaman",
+    "experience1Title": "Senior Frontend Developer",
+    "experience1Period": "2022 - Sekarang",
+    "experience1Description": "Memimpin pengembangan frontend untuk aplikasi perusahaan, mengimplementasikan arsitektur modern dan membimbing developer junior.",
+    "experience2Title": "Frontend Developer",
+    "experience2Period": "2020 - 2022",
+    "experience2Description": "Mengembangkan aplikasi web responsif menggunakan React dan Next.js, fokus pada performa dan pengalaman pengguna.",
+    "experience3Title": "Junior Developer",
+    "experience3Period": "2019 - 2020",
+    "experience3Description": "Membangun dan memelihara website klien, mengimplementasikan desain responsif dan mengoptimalkan performa.",
+    "skillsTitle": "Keahlian",
+    "frontendSkill1": "React & Next.js",
+    "frontendSkill2": "TypeScript",
+    "frontendSkill3": "Tailwind CSS",
+    "frontendSkill4": "Framer Motion",
+    "backendSkill1": "Node.js",
+    "backendSkill2": "Express",
+    "backendSkill3": "MongoDB",
+    "backendSkill4": "REST APIs",
+    "toolsSkill1": "Git & GitHub",
+    "toolsSkill2": "VS Code",
+    "toolsSkill3": "Figma",
+    "toolsSkill4": "Docker",
+    "softSkillsSkill1": "Pemecahan Masalah",
+    "softSkillsSkill2": "Kepemimpinan Tim",
+    "softSkillsSkill3": "Komunikasi",
+    "softSkillsSkill4": "Manajemen Waktu",
+    "projectsTitle": "Proyek",
+    "project1Title": "Platform E-Commerce",
+    "project1Description": "Platform e-commerce full-stack dengan manajemen inventori real-time dan integrasi pembayaran.",
+    "project2Title": "Aplikasi Manajemen Tugas",
+    "project2Description": "Aplikasi manajemen tugas kolaboratif dengan pembaruan real-time dan fitur tim.",
+    "project3Title": "Website Portofolio",
+    "project3Description": "Website portofolio modern yang menampilkan proyek dan keahlian dengan animasi yang halus.",
+    "contactTitle": "Hubungi Saya",
+    "name": "Nama",
+    "message": "Pesan",
+    "sendMessage": "Kirim Pesan"
+  },
+  "Navbar": {
+    "home": "Beranda",
+    "projects": "Proyek",
+    "blog": "Blog",
+    "contact": "Kontak",
+    "language": "Bahasa"
+  },
+  "navigation": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "projects": "Proyek",
+    "blog": "Blog",
+    "contact": "Kontak"
+  },
+  "home": {
+    "greeting": "Hai, Saya",
+    "role": "Frontend Developer",
+    "description": "Saya membangun aplikasi web modern, responsif, dan ramah pengguna dengan teknologi terbaru."
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "description": "Saya adalah seorang frontend developer yang bersemangat dengan keahlian dalam teknologi web modern."
+  },
+  "projects": {
+    "title": "Proyek Saya",
+    "viewProject": "Lihat Proyek",
+    "viewBlog": "Baca Selengkapnya"
+  },
+  "blog": {
+    "title": "Blog Proyek",
+    "readMore": "Baca Selengkapnya"
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan"
+  }
+} 

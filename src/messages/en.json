@@ -1,0 +1,90 @@
+{
+  "Home": {
+    "title": "Frontend Developer & UI/UX Enthusiast",
+    "subtitle": "Crafting beautiful and performant web experiences with modern technologies",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me",
+    "aboutTitle": "About Me",
+    "aboutDescription": "I'm a passionate frontend developer with a keen eye for design and a love for creating seamless user experiences. With expertise in modern web technologies, I strive to build applications that are both beautiful and functional.",
+    "location": "Location",
+    "locationValue": "Jakarta, Indonesia",
+    "email": "Email",
+    "emailValue": "contact@example.com",
+    "experienceTitle": "Experience",
+    "experience1Title": "Senior Frontend Developer",
+    "experience1Period": "2022 - Present",
+    "experience1Description": "Leading frontend development for enterprise applications, implementing modern architectures and mentoring junior developers.",
+    "experience2Title": "Frontend Developer",
+    "experience2Period": "2020 - 2022",
+    "experience2Description": "Developed responsive web applications using React and Next.js, focusing on performance and user experience.",
+    "experience3Title": "Junior Developer",
+    "experience3Period": "2019 - 2020",
+    "experience3Description": "Built and maintained client websites, implemented responsive designs and optimized performance.",
+    "skillsTitle": "Skills",
+    "frontendSkill1": "React & Next.js",
+    "frontendSkill2": "TypeScript",
+    "frontendSkill3": "Tailwind CSS",
+    "frontendSkill4": "Framer Motion",
+    "backendSkill1": "Node.js",
+    "backendSkill2": "Express",
+    "backendSkill3": "MongoDB",
+    "backendSkill4": "REST APIs",
+    "toolsSkill1": "Git & GitHub",
+    "toolsSkill2": "VS Code",
+    "toolsSkill3": "Figma",
+    "toolsSkill4": "Docker",
+    "softSkillsSkill1": "Problem Solving",
+    "softSkillsSkill2": "Team Leadership",
+    "softSkillsSkill3": "Communication",
+    "softSkillsSkill4": "Time Management",
+    "projectsTitle": "Projects",
+    "project1Title": "E-Commerce Platform",
+    "project1Description": "A full-stack e-commerce platform with real-time inventory management and payment integration.",
+    "project2Title": "Task Management App",
+    "project2Description": "A collaborative task management application with real-time updates and team features.",
+    "project3Title": "Portfolio Website",
+    "project3Description": "A modern portfolio website showcasing projects and skills with smooth animations.",
+    "contactTitle": "Get in Touch",
+    "name": "Name",
+    "message": "Message",
+    "sendMessage": "Send Message"
+  },
+  "Navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "role": "Frontend Developer",
+    "description": "I build modern, responsive, and user-friendly web applications with the latest technologies."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am a passionate frontend developer with expertise in modern web technologies."
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewProject": "View Project",
+    "viewBlog": "Read More"
+  },
+  "blog": {
+    "title": "Project Blog",
+    "readMore": "Read More"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  }
+} 
