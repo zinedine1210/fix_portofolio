@@ -7,7 +7,12 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
 
-export default function Home() {
+interface ParallaxBackgroundProps {
+  children: React.ReactNode;
+}
+export default function ParallaxBackground({
+  children
+}: ParallaxBackgroundProps ) {
   const t = useTranslations('Home')
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
@@ -21,30 +26,22 @@ export default function Home() {
       <motion.div 
         className="fixed inset-0 z-0"
         style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.5]),
-          x: useTransform(scrollYProgress, [0, 1], [0, -100]),
-          y: useTransform(scrollYProgress, [0, 1], [0, -50]),
+          rotate: useTransform(scrollYProgress, [0, 1], [0, 20]),
+          scale: useTransform(scrollYProgress, [0, 1], [1, 1.2]),
         }}
       >
         <Image
-          src={`/rotatable-space-bg.jpg`}
+          src={`/space-bg.jpg`}
           alt="Space Background"
           fill
-          className="object-cover bg-repeat h-screen w-screen"
+          className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-purple-900/20 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-purple-900/30 to-black/50" />
       </motion.div>
 
       {/* Animated stars */}
-      <motion.div 
-        className="fixed inset-0 overflow-hidden"
-        style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [0, 90]),
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.1]),
-        }}
-      >
+      <div className="fixed inset-0 overflow-hidden">
         {[...Array(100)].map((_, i) => (
           <div
             key={i}
@@ -60,20 +57,14 @@ export default function Home() {
             <div className="h-full w-full rounded-full bg-white opacity-70" />
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Floating planets */}
       <motion.div
         style={{ y }}
         className="fixed inset-0 z-0 pointer-events-none"
       >
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-64 h-64"
-          style={{
-            rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-            scale: useTransform(scrollYProgress, [0, 1], [1, 0.8]),
-          }}
-        >
+        <div className="absolute top-1/4 left-1/4 w-64 h-64">
           <Image
             src="/planet1.png"
             alt="Planet"
@@ -81,14 +72,8 @@ export default function Home() {
             height={256}
             className="opacity-50"
           />
-        </motion.div>
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-48 h-48"
-          style={{
-            rotate: useTransform(scrollYProgress, [0, 1], [0, 180]),
-            scale: useTransform(scrollYProgress, [0, 1], [1, 1.2]),
-          }}
-        >
+        </div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48">
           <Image
             src="/planet2.png"
             alt="Planet"
@@ -96,7 +81,7 @@ export default function Home() {
             height={192}
             className="opacity-30"
           />
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Navbar with blur effect */}

@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { Metadata, Viewport } from 'next'
 import '../globals.css'
+import ParallaxBackground from '@/components/ParallaxBackground'
 
 const inter = Inter({ subsets: ['latin'] })
 
