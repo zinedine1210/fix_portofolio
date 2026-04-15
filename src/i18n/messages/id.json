@@ -72,11 +72,22 @@
     "project3Description": "Pelajari cara membuat aplikasi pelacakan fitness yang kaya fitur menggunakan React Native dan Firebase."
   },
   "Navbar": {
+    "about": "Tentang Saya",
+    "experience": "Pengalaman",
+    "skills": "Skill",
+    "projects": "Project",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "description": "Software engineer yang bersemangat dalam menciptakan solusi inovatif dan pengalaman digital yang luar biasa.",
+    "quickLinks": "Tautan Cepat",
     "about": "Tentang",
     "experience": "Pengalaman",
     "skills": "Keahlian",
     "projects": "Proyek",
     "contact": "Kontak",
-    "language": "Bahasa"
+    "contactInfo": "Informasi Kontak",
+    "location": "Jakarta, Indonesia",
+    "rights": "Semua hak dilindungi."
   }
 } 

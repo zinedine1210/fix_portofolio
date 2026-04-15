@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -9,7 +9,10 @@ export const viewport: Viewport = {
   maximumScale: 1,
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
 
 export const metadata: Metadata = {
   title: "Zinedine's Portfolio",
@@ -35,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.locale}>
-      <body className={inter.className}>{children}</body>
+      <body className={`${manrope.className} ${manrope.variable} antialiased`}>{children}</body>
     </html>
   )
 }

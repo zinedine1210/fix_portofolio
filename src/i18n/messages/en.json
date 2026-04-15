@@ -78,5 +78,17 @@
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language"
+  },
+  "Footer": {
+    "description": "A passionate software engineer dedicated to creating innovative solutions and exceptional digital experiences.",
+    "quickLinks": "Quick Links",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "contactInfo": "Contact Info",
+    "location": "Jakarta, Indonesia",
+    "rights": "All rights reserved."
   }
 } 

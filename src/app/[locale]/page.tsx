@@ -2,344 +2,354 @@
 
 import { useTranslations } from 'next-intl'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
+import Footer from '@/components/Footer'
+
+const floatingShapes = [
+  { className: 'left-[4%] top-24 h-44 w-44 bg-sky-200/55', duration: 12 },
+  { className: 'right-[6%] top-[22%] h-56 w-56 bg-cyan-100/80', duration: 16 },
+  { className: 'left-[16%] bottom-[18%] h-64 w-64 bg-blue-100/60', duration: 18 },
+  { className: 'right-[18%] bottom-12 h-40 w-40 bg-slate-200/70', duration: 14 },
+]
+
+const orbitDots = [
+  'left-[12%] top-[18%] h-2.5 w-2.5',
+  'left-[22%] top-[38%] h-3 w-3',
+  'right-[16%] top-[14%] h-2 w-2',
+  'right-[24%] top-[42%] h-2.5 w-2.5',
+  'left-[28%] bottom-[22%] h-2 w-2',
+  'right-[28%] bottom-[16%] h-3 w-3',
+]
 
 export default function Home() {
   const t = useTranslations('Home')
   const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
-  const y = useTransform(scrollYProgress, [0, 1], [0, -300])
-  const containerRef = useRef(null)
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.88])
+
+  const experienceItems = [1, 2, 3].map((index) => ({
+    title: t(`experience${index}Title`),
+    period: t(`experience${index}Period`),
+    description: t(`experience${index}Description`),
+  }))
+
+  const skillGroups = [
+    {
+      title: 'Frontend',
+      description: t('skillsCardFrontendDescription'),
+      accent: 'from-sky-500 to-cyan-400',
+      items: [t('frontendSkill1'), t('frontendSkill2'), t('frontendSkill3'), t('frontendSkill4')],
+    },
+    {
+      title: 'Backend',
+      description: t('skillsCardBackendDescription'),
+      accent: 'from-teal-500 to-emerald-400',
+      items: [t('backendSkill1'), t('backendSkill2'), t('backendSkill3'), t('backendSkill4')],
+    },
+    {
+      title: 'Tools',
+      description: t('skillsCardToolsDescription'),
+      accent: 'from-slate-900 to-slate-700',
+      items: [t('toolsSkill1'), t('toolsSkill2'), t('toolsSkill3'), t('toolsSkill4')],
+    },
+    {
+      title: 'Soft Skills',
+      description: t('skillsCardSoftDescription'),
+      accent: 'from-violet-500 to-fuchsia-400',
+      items: [t('softskillsSkill1'), t('softskillsSkill2'), t('softskillsSkill3'), t('softskillsSkill4')],
+    },
+  ]
+
+  const statCards = [
+    { value: t('heroExperienceValue'), label: t('heroExperienceLabel') },
+    { value: t('heroProjectsValue'), label: t('heroProjectsLabel') },
+    { value: t('heroFocusValue'), label: t('heroFocusLabel') },
+  ]
 
   return (
-    <main className="min-h-screen bg-black relative overflow-hidden">
-      {/* Parallax Background */}
-      <motion.div 
-        className="fixed inset-0 z-0"
-        style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.5]),
-          x: useTransform(scrollYProgress, [0, 1], [0, -100]),
-          y: useTransform(scrollYProgress, [0, 1], [0, -50]),
-        }}
-      >
-        <Image
-          src={`/rotatable-space-bg.jpg`}
-          alt="Space Background"
-          fill
-          className="object-cover bg-repeat h-screen w-screen"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-purple-900/20 to-black/30" />
-      </motion.div>
-
-      {/* Animated stars */}
-      <motion.div 
-        className="fixed inset-0 overflow-hidden"
-        style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [0, 90]),
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.1]),
-        }}
-      >
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-twinkle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              width: `${Math.random() * 3}px`,
-              height: `${Math.random() * 3}px`,
-            }}
-          >
-            <div className="h-full w-full rounded-full bg-white opacity-70" />
-          </div>
+    <main className="relative min-h-screen overflow-hidden text-slate-900">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-60" />
+        {floatingShapes.map((shape) => (
+          <motion.div
+            key={shape.className}
+            className={`absolute rounded-full blur-3xl ${shape.className}`}
+            animate={{ y: [0, -20, 0], scale: [1, 1.06, 1] }}
+            transition={{ duration: shape.duration, repeat: Infinity, ease: 'easeInOut' }}
+          />
         ))}
-      </motion.div>
-
-      {/* Floating planets */}
-      <motion.div
-        style={{ y }}
-        className="fixed inset-0 z-0 pointer-events-none"
-      >
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-64 h-64"
-          style={{
-            rotate: useTransform(scrollYProgress, [0, 1], [0, -180]),
-            scale: useTransform(scrollYProgress, [0, 1], [1, 0.8]),
-          }}
-        >
-          <Image
-            src="/planet1.png"
-            alt="Planet"
-            width={256}
-            height={256}
-            className="opacity-50"
+        {orbitDots.map((dot, index) => (
+          <motion.div
+            key={dot}
+            className={`absolute rounded-full bg-sky-400/50 ${dot}`}
+            animate={{ opacity: [0.35, 1, 0.35], y: [0, -10, 0] }}
+            transition={{ duration: 4 + index, repeat: Infinity, ease: 'easeInOut' }}
           />
-        </motion.div>
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-48 h-48"
-          style={{
-            rotate: useTransform(scrollYProgress, [0, 1], [0, 180]),
-            scale: useTransform(scrollYProgress, [0, 1], [1, 1.2]),
-          }}
-        >
-          <Image
-            src="/planet2.png"
-            alt="Planet"
-            width={192}
-            height={192}
-            className="opacity-30"
-          />
-        </motion.div>
-      </motion.div>
+        ))}
+      </div>
 
-      {/* Navbar with blur effect */}
-      <div className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
+      <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
         <Navbar />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <motion.div 
-          ref={containerRef}
-          style={{ opacity, scale }}
-          className="relative z-10 text-center"
-        >
+      <section className="relative px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <div className="mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            style={{ y: heroY, opacity: heroOpacity }}
+            className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]"
           >
-            <motion.h1 
-              className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {t('title')}
-            </motion.h1>
-            <motion.p 
-              className="text-xl md:text-2xl text-gray-100 mb-8 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              {t('subtitle')}
-            </motion.p>
-          </motion.div>
+            <div className="space-y-8">
+              <motion.span
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="section-label"
+              >
+                {t('heroEyebrow')}
+              </motion.span>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex gap-4 justify-center"
-          >
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              {t('viewProjects')}
-            </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full border-2 border-purple-500 text-purple-300 font-semibold hover:bg-purple-500/10 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              {t('contactMe')}
-            </motion.a>
-          </motion.div>
-        </motion.div>
+              <div className="space-y-6">
+                <motion.h1
+                  className="max-w-4xl text-balance text-5xl font-extrabold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                >
+                  {t('title')} <span className="accent-text">{t('heroHighlight')}</span>
+                </motion.h1>
+                <motion.p
+                  className="max-w-2xl text-balance text-lg leading-8 text-slate-600 md:text-xl"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  {t('subtitle')}
+                </motion.p>
+              </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
+              >
+                <motion.a
+                  href="#projects"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center rounded-full bg-slate-950 px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800"
+                >
+                  {t('viewProjects')}
+                </motion.a>
+                <motion.a
+                  href="#contact"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center rounded-full border border-slate-200 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-colors hover:border-sky-200 hover:text-slate-950"
+                >
+                  {t('contactMe')}
+                </motion.a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="grid gap-4 sm:grid-cols-3"
+              >
+                {statCards.map((stat) => (
+                  <div key={stat.label} className="surface-panel rounded-[1.75rem] p-5">
+                    <p className="text-3xl font-bold tracking-tight text-slate-950">{stat.value}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-500">{stat.label}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
             <motion.div
-              animate={{
-                y: [0, 12, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-1 h-2 bg-white/50 rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* About Me Section */}
-      <section id="about" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.25 }}
               className="relative"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
             >
-              <div className="relative w-64 h-64 mx-auto">
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur-xl opacity-50"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    opacity: [0.5, 0.7, 0.5],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <Image
-                  src="/profile.jpg"
-                  alt="Profile"
-                  width={256}
-                  height={256}
-                  className="rounded-full relative z-10 shadow-2xl"
-                />
+              <div className="surface-panel-strong relative overflow-hidden rounded-[2rem] p-6 sm:p-8">
+                <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-sky-100 blur-3xl" />
+                <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-100 blur-3xl" />
+                <div className="relative space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="rounded-full border border-sky-200 bg-sky-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
+                      {t('heroBadge')}
+                    </span>
+                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                      {t('heroAvailability')}
+                    </span>
+                  </div>
+
+                  <div className="relative mx-auto flex max-w-sm justify-center">
+                    <div className="soft-ring relative overflow-hidden rounded-[2rem] bg-white p-3 shadow-4xl">
+                      <Image
+                        src="/profile.jpg"
+                        alt="Profile"
+                        width={460}
+                        height={560}
+                        className="h-[420px] w-full rounded-[1.5rem] object-cover"
+                        priority
+                      />
+                    </div>
+
+                    <motion.div
+                      animate={{ y: [0, -10, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                      className="surface-panel absolute -left-3 top-10 rounded-3xl px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">UI Systems</p>
+                      <p className="mt-1 text-sm font-semibold text-slate-950">Next.js • Motion • UX</p>
+                    </motion.div>
+
+                    <motion.div
+                      animate={{ y: [0, 10, 0] }}
+                      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                      className="surface-panel absolute -bottom-3 right-0 rounded-3xl px-4 py-3"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Delivery</p>
+                      <p className="mt-1 text-sm font-semibold text-slate-950">Responsive, polished, production-ready</p>
+                    </motion.div>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
+                      <p className="text-sm font-semibold text-slate-500">{t('aboutCardTitle')}</p>
+                      <p className="mt-2 text-base leading-7 text-slate-700">{t('aboutCardDescription')}</p>
+                    </div>
+                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
+                      <p className="text-sm font-semibold text-slate-500">{t('contactTitle')}</p>
+                      <p className="mt-2 text-base leading-7 text-slate-700">{t('heroAvailabilityDetail')}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-            <div className="text-gray-100">
-              <motion.h2 
-                className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: false }}
-              >
-                {t('aboutTitle')}
-              </motion.h2>
-              <motion.p 
-                className="text-lg mb-6 leading-relaxed"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: false }}
-              >
-                {t('aboutDescription')}
-              </motion.p>
-              <div className="grid grid-cols-2 gap-4">
-                <motion.div 
-                  className="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <h3 className="text-xl font-semibold mb-2 text-white">{t('location')}</h3>
-                  <p className="text-gray-200">{t('locationValue')}</p>
-                </motion.div>
-                <motion.div 
-                  className="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <h3 className="text-xl font-semibold mb-2 text-white">{t('email')}</h3>
-                  <p className="text-gray-200">{t('emailValue')}</p>
-                </motion.div>
-              </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="about" className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
+          >
+            <div className="surface-panel-strong rounded-[2rem] p-8 md:p-10">
+              <span className="section-label">{t('aboutTitle')}</span>
+              <h2 className="section-title mt-6">{t('aboutTitle')}</h2>
+              <p className="section-copy mt-6">{t('aboutDescription')}</p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('location')}</p>
+                <p className="mt-4 text-2xl font-semibold tracking-tight text-slate-950">{t('locationValue')}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{t('locationDescription')}</p>
+              </motion.div>
+              <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('email')}</p>
+                <p className="mt-4 break-all text-2xl font-semibold tracking-tight text-slate-950">{t('emailValue')}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{t('emailDescription')}</p>
+              </motion.div>
+              <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7 md:col-span-2">
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('aboutCardTitle')}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-700">{t('aboutCardDescription')}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('experienceTitle')}</p>
+                    <p className="mt-3 text-base leading-7 text-slate-700">{t('experienceIntro')}</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
+      <section id="experience" className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-12 max-w-3xl"
           >
-            {t('experienceTitle')}
-          </motion.h2>
-          <div className="space-y-8">
-            {[1, 2, 3].map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: false }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
+            <span className="section-label">{t('experienceTitle')}</span>
+            <h2 className="section-title mt-6">{t('experienceTitle')}</h2>
+            <p className="section-copy mt-5">{t('experienceIntro')}</p>
+          </motion.div>
+
+          <div className="relative space-y-6 before:absolute before:left-5 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-sky-200 before:via-slate-200 before:to-transparent md:before:left-[11.5rem]">
+            {experienceItems.map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: index * 0.08 }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="grid gap-4 md:grid-cols-[10rem_1fr] md:gap-8"
               >
-                <h3 className="text-2xl font-semibold mb-3 text-white">
-                  {t(`experience${index + 1}Title`)}
-                </h3>
-                <p className="text-purple-300 mb-4 font-medium">{t(`experience${index + 1}Period`)}</p>
-                <p className="text-gray-100 leading-relaxed">{t(`experience${index + 1}Description`)}</p>
-              </motion.div>
+                <div className="relative pl-12 md:pl-0">
+                  <span className="absolute left-[18px] top-1 h-3.5 w-3.5 rounded-full border-4 border-white bg-sky-500 shadow-lg shadow-sky-200 md:left-auto md:right-[-1.06rem]" />
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">{item.period}</p>
+                </div>
+                <div className="surface-panel rounded-[1.75rem] p-7 md:p-8">
+                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{item.title}</h3>
+                  <p className="mt-4 text-base leading-7 text-slate-600">{item.description}</p>
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
+      <section id="skills" className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-12 max-w-3xl"
           >
-            {t('skillsTitle')}
-          </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Frontend', 'Backend', 'Tools', 'Soft Skills'].map((category, index) => (
+            <span className="section-label">{t('skillsTitle')}</span>
+            <h2 className="section-title mt-6">{t('skillsTitle')}</h2>
+            <p className="section-copy mt-5">{t('skillsIntro')}</p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {skillGroups.map((group, index) => (
               <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 50 }}
+                key={group.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: false }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
+                transition={{ duration: 0.7, delay: index * 0.08 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ y: -6 }}
+                className="surface-panel-strong rounded-[2rem] p-7"
               >
-                <h3 className="text-xl font-semibold mb-6 text-white">{category}</h3>
-                <ul className="space-y-3">
-                  {[1, 2, 3, 4].map((_, i) => (
-                    <motion.li 
-                      key={i} 
-                      className="text-gray-100 flex items-center"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                      {t(`${category.toLowerCase()}Skill${i + 1}`)}
+                <div className={`inline-flex rounded-full bg-gradient-to-r ${group.accent} px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white`}>
+                  {group.title}
+                </div>
+                <p className="mt-5 text-sm leading-6 text-slate-500">{group.description}</p>
+                <ul className="mt-6 space-y-4">
+                  {group.items.map((item) => (
+                    <motion.li key={item} whileHover={{ x: 4 }} className="flex items-start gap-3 text-sm font-medium leading-6 text-slate-700">
+                      <span className="mt-2 h-2 w-2 rounded-full bg-sky-500" />
+                      <span>{item}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -349,209 +359,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Media Section */}
-      <section id="social" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
+      <section id="projects" className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-12 max-w-3xl"
           >
-            {t('socialTitle')}
-          </motion.h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[
-              {
-                platform: 'LinkedIn',
-                icon: 'M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z',
-                color: 'from-blue-600 to-blue-700',
-                text: 'text-blue-400'
-              },
-              {
-                platform: 'GitHub',
-                icon: 'M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z',
-                color: 'from-gray-700 to-gray-900',
-                text: 'text-gray-300'
-              },
-              {
-                platform: 'Twitter',
-                icon: 'M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z',
-                color: 'from-blue-400 to-blue-600',
-                text: 'text-blue-300'
-              },
-              {
-                platform: 'Instagram',
-                icon: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
-                color: 'from-purple-500 to-pink-500',
-                text: 'text-purple-300'
-              },
-              {
-                platform: 'YouTube',
-                icon: 'M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z',
-                color: 'from-red-600 to-red-700',
-                text: 'text-red-400'
-              },
-              {
-                platform: 'Medium',
-                icon: 'M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z',
-                color: 'from-gray-800 to-gray-900',
-                text: 'text-gray-300'
-              }
-            ].map((social, index) => (
-              <motion.a
-                key={social.platform}
-                href={`https://${social.platform.toLowerCase()}.com/your-username`}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: false }}
-                whileHover={{ 
-                  scale: 1.1,
-                  transition: { duration: 0.2 }
-                }}
-                className={`bg-gradient-to-r ${social.color} p-4 rounded-xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group`}
-              >
-                <svg
-                  className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d={social.icon} />
-                </svg>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certificates Section */}
-      <section id="certificates" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-          >
-            {t('certificatesTitle')}
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: false }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {t(`certificate${index + 1}Title`)}
-                    </h3>
-                    <p className="text-purple-300 mb-2 font-medium">
-                      {t(`certificate${index + 1}Issuer`)}
-                    </p>
-                    <p className="text-gray-200 mb-4">
-                      {t(`certificate${index + 1}Date`)}
-                    </p>
-                    <p className="text-gray-100 leading-relaxed">
-                      {t(`certificate${index + 1}Description`)}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-          >
-            {t('projectsTitle')}
-          </motion.h2>
+            <span className="section-label">{t('projectsTitle')}</span>
+            <h2 className="section-title mt-6">{t('projectsTitle')}</h2>
+            <p className="section-copy mt-5">{t('projectsIntro')}</p>
+          </motion.div>
           <ProjectSlider />
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="min-h-screen py-20 px-4 relative">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-          >
-            {t('contactTitle')}
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="bg-white/5 p-8 rounded-lg backdrop-blur-sm border border-white/10"
-          >
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-gray-300 mb-2">{t('name')}</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 bg-white/5 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-white/10"
-                  />
+      <section id="contact" className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="surface-panel-strong rounded-[2rem] p-8 md:p-10"
+            >
+              <span className="section-label">{t('contactTitle')}</span>
+              <h2 className="section-title mt-6">{t('contactTitle')}</h2>
+              <p className="section-copy mt-5">{t('contactIntro')}</p>
+
+              <div className="mt-8 space-y-4">
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('email')}</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">{t('emailValue')}</p>
                 </div>
-                <div>
-                  <label className="block text-gray-300 mb-2">{t('email')}</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 bg-white/5 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-white/10"
-                  />
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t('location')}</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">{t('locationValue')}</p>
+                </div>
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5 text-sm leading-6 text-slate-600">
+                  {t('heroAvailabilityDetail')}
                 </div>
               </div>
-              <div>
-                <label className="block text-gray-300 mb-2">{t('message')}</label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-2 bg-white/5 rounded-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 border border-white/10"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-3 rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
-              >
-                {t('sendMessage')}
-              </button>
-            </form>
-          </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="surface-panel-strong rounded-[2rem] p-8 md:p-10"
+            >
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-600">{t('name')}</label>
+                    <input
+                      type="text"
+                      className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-slate-600">{t('email')}</label>
+                    <input
+                      type="email"
+                      className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-slate-600">{t('message')}</label>
+                  <textarea
+                    rows={6}
+                    className="w-full rounded-[1.5rem] border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800"
+                >
+                  {t('sendMessage')}
+                </motion.button>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   )
-} 
+}

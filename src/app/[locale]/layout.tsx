@@ -1,11 +1,7 @@
-import { Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { Metadata, Viewport } from 'next'
 import '../globals.css'
-import ParallaxBackground from '@/components/ParallaxBackground'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Zinedine's Portfolio",
