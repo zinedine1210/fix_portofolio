@@ -30,14 +30,12 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-  params
+  children
 }: {
-  children: React.ReactNode,
-  params: {locale: 'en' | 'id'}
+  children: React.ReactNode
 }) {
   return (
-    <html lang={params.locale}>
+    <html lang="en">
       <body className={`${manrope.className} ${manrope.variable} antialiased`}>{children}</body>
     </html>
   )
