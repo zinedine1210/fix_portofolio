@@ -2,13 +2,9 @@
 
 import { AnimatePresence, motion, PanInfo } from 'framer-motion'
 import Image from 'next/image'
+import { useLocale } from 'next-intl'
 import { useState, useCallback } from 'react'
-
-const photos = [
-  { src: '/profile.jpg',  label: 'Professional',  caption: 'Frontend Engineer' },
-  { src: '/profile2.jpg', label: 'Creative',       caption: 'UI & Motion Design' },
-  { src: '/profile3.jpg', label: 'At Work',        caption: 'Problem Solver' },
-]
+import { getSiteContent } from '@/data/siteContent'
 
 const SWIPE_THRESHOLD = 48
 
@@ -16,25 +12,18 @@ const slideVariants = {
   enter: (dir: number) => ({
     x: dir > 0 ? '100%' : '-100%',
     opacity: 0,
-    scale: 0.93,
-    filter: 'brightness(0.88)',
   }),
   center: {
     x: 0,
     opacity: 1,
-    scale: 1,
-    filter: 'brightness(1)',
     transition: {
       x: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 },
       opacity: { duration: 0.3 },
-      scale: { type: 'spring', stiffness: 260, damping: 28 },
     },
   },
   exit: (dir: number) => ({
     x: dir < 0 ? '100%' : '-100%',
     opacity: 0,
-    scale: 0.93,
-    filter: 'brightness(0.88)',
     transition: {
       x: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 },
       opacity: { duration: 0.25 },
@@ -49,6 +38,9 @@ const chipVariants = {
 }
 
 export default function HeroPhotoGallery() {
+  const locale = useLocale()
+  const content = getSiteContent(locale)
+  const { photos, roleLabel, swipeHint } = content.heroGallery
   const [[index, direction], setPage] = useState([0, 0])
 
   const paginate = useCallback((dir: number) => {
@@ -95,6 +87,7 @@ export default function HeroPhotoGallery() {
                 alt={photo.label}
                 fill
                 sizes="(max-width: 640px) 100vw, 560px"
+                quality={100}
                 className="pointer-events-none object-cover"
                 priority={index === 0}
                 draggable={false}
@@ -131,7 +124,7 @@ export default function HeroPhotoGallery() {
       </motion.div>
 
       {/* ── Floating top-left chip — changes with photo ─── */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         <motion.div
           key={`chip-${index}`}
           variants={chipVariants}
@@ -143,10 +136,10 @@ export default function HeroPhotoGallery() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{num}</p>
           <p className="mt-1 text-sm font-semibold text-slate-950">{photo.label}</p>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* ── Floating bottom-right caption — changes with photo ─── */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         <motion.div
           key={`caption-${index}`}
           variants={chipVariants}
@@ -155,10 +148,10 @@ export default function HeroPhotoGallery() {
           exit="exit"
           className="surface-panel absolute -bottom-4 right-4 z-10 rounded-3xl px-4 py-3 [transform:translateZ(58px)]"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Role</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{roleLabel}</p>
           <p className="mt-1 text-sm font-semibold text-slate-950">{photo.caption}</p>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* ── Subtle swipe hint (only on mobile, fades after first interaction) ── */}
       <motion.div
@@ -171,7 +164,7 @@ export default function HeroPhotoGallery() {
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
           </svg>
-          Swipe
+          {swipeHint}
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
           </svg>

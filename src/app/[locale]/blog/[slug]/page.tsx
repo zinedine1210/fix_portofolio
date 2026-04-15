@@ -8,12 +8,15 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Link } from '@/i18n/navigation'
 import { getBlogPostBySlug, getBlogPosts } from '@/data/blogPosts'
+import { getSiteContent } from '@/data/siteContent'
 
 export default function BlogPost() {
   const locale = useLocale()
-  const isId = locale === 'id'
   const params = useParams()
   const slug = params.slug as string
+  const content = getSiteContent(locale)
+  const blogPage = content.blogPage
+  const site = content.site
 
   const post = getBlogPostBySlug(locale, slug)
   const relatedPosts = getBlogPosts(locale)
@@ -28,18 +31,14 @@ export default function BlogPost() {
           <div className="mx-auto max-w-3xl rounded-[2rem] border border-slate-200 bg-white p-10 text-center shadow-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">404</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
-              {isId ? 'Artikel tidak ditemukan' : 'Article not found'}
+              {blogPage.notFoundTitle}
             </h1>
-            <p className="mt-3 text-slate-600">
-              {isId
-                ? 'Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.'
-                : 'The page you are looking for is unavailable or has been moved.'}
-            </p>
+            <p className="mt-3 text-slate-600">{blogPage.notFoundDescription}</p>
             <Link
               href="/blog"
               className="mt-6 inline-flex items-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white"
             >
-              {isId ? 'Kembali ke Blog' : 'Back to Blog'}
+              {blogPage.backToBlogButton}
             </Link>
           </div>
         </section>
@@ -69,7 +68,7 @@ export default function BlogPost() {
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              {isId ? 'Kembali ke blog' : 'Back to blog'}
+              {blogPage.backToBlog}
             </Link>
 
             <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
@@ -77,7 +76,7 @@ export default function BlogPost() {
               <span className="h-1 w-1 rounded-full bg-slate-400" />
               <span>{post.readTime}</span>
               <span className="h-1 w-1 rounded-full bg-slate-400" />
-              <span>Zinedine</span>
+              <span>{site.author}</span>
             </div>
 
             <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
@@ -111,12 +110,12 @@ export default function BlogPost() {
             <div className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[0.65fr_1.35fr]">
               <aside className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  {isId ? 'Ringkasan Cepat' : 'Quick Summary'}
+                  {blogPage.quickSummaryTitle}
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
-                  <li>{isId ? 'Fokus pada performa dan kejelasan UX.' : 'Focused on performance and UX clarity.'}</li>
-                  <li>{isId ? 'Komponen dirancang reusable untuk scaling.' : 'Reusable component architecture for scaling.'}</li>
-                  <li>{isId ? 'Motion digunakan seperlunya agar tetap profesional.' : 'Motion used selectively to stay professional.'}</li>
+                  {blogPage.quickSummaryItems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </aside>
 
@@ -142,10 +141,10 @@ export default function BlogPost() {
             className="mb-6 flex items-end justify-between"
           >
             <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
-              {isId ? 'Artikel Terkait' : 'Related Articles'}
+              {blogPage.relatedArticlesTitle}
             </h2>
             <Link href="/blog" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
-              {isId ? 'Lihat semua' : 'View all'}
+              {blogPage.viewAll}
             </Link>
           </motion.div>
 

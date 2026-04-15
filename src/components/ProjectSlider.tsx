@@ -6,13 +6,16 @@ import { useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { getBlogPosts } from '@/data/blogPosts'
+import { getSiteContent } from '@/data/siteContent'
 
 export default function ProjectSlider() {
   const t = useTranslations('Home')
   const locale = useLocale()
+  const content = getSiteContent(locale)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const projects = getBlogPosts(locale)
+  const sliderContent = content.projectSlider
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length)
@@ -28,7 +31,7 @@ export default function ProjectSlider() {
 
       <div className="relative mb-5 flex items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Featured Case Study</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{sliderContent.eyebrow}</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">{t('projectsTitle')}</h3>
         </div>
         <div className="hidden items-center gap-2 sm:flex">
@@ -36,7 +39,7 @@ export default function ProjectSlider() {
             type="button"
             onClick={prevSlide}
             className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950"
-            aria-label="Previous project"
+            aria-label={sliderContent.previousProject}
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
@@ -46,7 +49,7 @@ export default function ProjectSlider() {
             type="button"
             onClick={nextSlide}
             className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950"
-            aria-label="Next project"
+            aria-label={sliderContent.nextProject}
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 6l6 6-6 6" />
@@ -101,7 +104,7 @@ export default function ProjectSlider() {
                     <div className="flex items-center justify-between border-t border-slate-200 pt-5">
                       <p className="text-sm text-slate-500">{project.publishedAt}</p>
                       <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-transform duration-200 group-hover:translate-x-1">
-                        Read story
+                        {sliderContent.readStory}
                         <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -125,7 +128,7 @@ export default function ProjectSlider() {
               className={`h-2.5 rounded-full transition-all duration-300 ${
                 index === currentIndex ? 'w-9 bg-slate-900' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
               }`}
-              aria-label={`Go to ${project.title}`}
+              aria-label={`${sliderContent.goToProject} ${project.title}`}
             />
           ))}
         </div>
@@ -135,7 +138,7 @@ export default function ProjectSlider() {
             type="button"
             onClick={prevSlide}
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700"
-            aria-label="Previous project"
+            aria-label={sliderContent.previousProject}
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 18l-6-6 6-6" />
@@ -145,7 +148,7 @@ export default function ProjectSlider() {
             type="button"
             onClick={nextSlide}
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700"
-            aria-label="Next project"
+            aria-label={sliderContent.nextProject}
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 6l6 6-6 6" />

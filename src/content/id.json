@@ -1,0 +1,129 @@
+{
+  "site": {
+    "brandShort": "ZZ",
+    "brandName": "Zinedine",
+    "author": "Zinedine"
+  },
+  "projectSlider": {
+    "eyebrow": "Studi Kasus Unggulan",
+    "readStory": "Baca cerita",
+    "previousProject": "Proyek sebelumnya",
+    "nextProject": "Proyek berikutnya",
+    "goToProject": "Buka"
+  },
+  "heroGallery": {
+    "roleLabel": "Peran",
+    "swipeHint": "Geser",
+    "photos": [
+      {
+        "src": "/profile1.jpeg",
+        "label": "Profesional",
+        "caption": "Frontend Engineer"
+      },
+      {
+        "src": "/profile2.jpeg",
+        "label": "Kreatif",
+        "caption": "UI & Motion Design"
+      },
+      {
+        "src": "/profile3.jpeg",
+        "label": "Saat Bekerja",
+        "caption": "Problem Solver"
+      },
+      {
+        "src": "/profile4.jpeg",
+        "label": "Saat Bekerja",
+        "caption": "Problem Solver"
+      }
+    ]
+  },
+  "blogPage": {
+    "eyebrow": "Jurnal Portofolio",
+    "title": "Blog Proyek dan Catatan Proses",
+    "description": "Kumpulan insight dari proses desain dan pengembangan: keputusan teknis, pendekatan UX, serta pelajaran yang didapat dari tiap proyek.",
+    "caseStudyLabel": "Studi Kasus",
+    "readArticle": "Baca Artikel",
+    "backToBlog": "Kembali ke blog",
+    "backToBlogButton": "Kembali ke Blog",
+    "notFoundTitle": "Artikel tidak ditemukan",
+    "notFoundDescription": "Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.",
+    "quickSummaryTitle": "Ringkasan Cepat",
+    "quickSummaryItems": [
+      "Fokus pada performa dan kejelasan UX.",
+      "Komponen dirancang reusable untuk scaling.",
+      "Motion digunakan seperlunya agar tetap profesional."
+    ],
+    "relatedArticlesTitle": "Artikel Terkait",
+    "viewAll": "Lihat semua"
+  },
+  "footer": {
+    "description": "Frontend developer yang fokus pada interface rapi, sistem responsif, dan pengalaman produk yang terasa matang.",
+    "quickLinksTitle": "Tautan Cepat",
+    "contactInfoTitle": "Info Kontak",
+    "location": "Jakarta, Indonesia",
+    "availability": "Tersedia untuk proyek freelance maupun peluang kerja full-time.",
+    "rights": "Seluruh hak cipta dilindungi.",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/zinedine"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/zinedine"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/zinedine"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/zinedine"
+      }
+    ]
+  },
+  "blogPosts": [
+    {
+      "slug": "project1",
+      "title": "Platform E-Commerce Skalabel",
+      "excerpt": "Bagaimana saya menyusun arsitektur storefront yang rapi dengan alur checkout jelas, indexing katalog, dan pola komponen yang konsisten.",
+      "cover": "/project1.jpg",
+      "tags": ["Next.js", "Performa", "Arsitektur"],
+      "readTime": "6 menit baca",
+      "publishedAt": "15 Mar 2026",
+      "content": [
+        "Proyek ini dimulai dari kebutuhan redesign untuk katalog produk yang terus bertambah. Tantangan utamanya adalah menjaga tampilan tetap premium tanpa mengorbankan performa di perangkat menengah.",
+        "Saya memecah UI menjadi bagian reusable dan membuat hirarki section yang lebih jelas agar kartu produk, filter, dan form checkout memiliki pola state yang seragam. Dampaknya, iterasi fitur jadi lebih cepat dan minim regresi.",
+        "Di sisi teknis, saya optimalkan media loading, mengurangi render yang tidak perlu pada list interaktif, serta menyederhanakan payload data di rute trafik tinggi. Hasil akhirnya lebih stabil dan lebih baik untuk konversi."
+      ]
+    },
+    {
+      "slug": "project2",
+      "title": "Aplikasi Kolaborasi Tugas Real-Time",
+      "excerpt": "Merancang workflow kolaboratif dengan visibilitas status yang jelas, update minim friksi, dan UI yang nyaman dari penggunaan individu hingga tim.",
+      "cover": "/project2.jpg",
+      "tags": ["Realtime", "UX Systems", "Kolaborasi Tim"],
+      "readTime": "5 menit baca",
+      "publishedAt": "28 Feb 2026",
+      "content": [
+        "Tujuan utama proyek ini adalah membuat kolaborasi multi-user terasa ringan dan natural. Fokus saya pada pengurangan beban kognitif melalui hirarki visual yang tegas dan feedback interaksi yang jelas.",
+        "Setiap status tugas diterjemahkan ke bahasa desain yang ringkas: tag yang mudah dipindai, penanda prioritas, dan aksi kontekstual. Tim bisa mengambil keputusan lebih cepat tanpa membuka detail satu per satu.",
+        "Selain visual, saya menerapkan pola optimistic UI dan update state yang lebih tahan terhadap kondisi network yang fluktuatif. Aplikasi tetap responsif saat aktivitas tinggi."
+      ]
+    },
+    {
+      "slug": "project3",
+      "title": "Portofolio Developer Pribadi",
+      "excerpt": "Membangun pengalaman personal branding yang terasa editorial, responsif, dan berkarakter tanpa mengorbankan kualitas kode produksi.",
+      "cover": "/project3.jpg",
+      "tags": ["Branding", "Motion", "Frontend"],
+      "readTime": "4 menit baca",
+      "publishedAt": "20 Jan 2026",
+      "content": [
+        "Portofolio ini didesain untuk menunjukkan keseimbangan antara kemampuan teknis dan sensitivitas desain. Saya menggunakan sistem visual terang dengan layer depth dan motion halus agar tidak terasa datar.",
+        "Struktur konten diperlakukan seperti narasi produk: konteks singkat di awal, bukti melalui proyek, lalu penutup berupa section kontak yang siap konversi. Alurnya terasa nyaman di desktop maupun mobile.",
+        "Untuk maintainability, saya sentralisasi primitive desain yang sering dipakai dan menyederhanakan kontrak komponen. Hasilnya lebih mudah dikembangkan tanpa kehilangan konsistensi visual."
+      ]
+    }
+  ]
+}

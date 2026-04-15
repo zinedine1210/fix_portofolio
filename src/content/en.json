@@ -1,0 +1,129 @@
+{
+  "site": {
+    "brandShort": "ZZ",
+    "brandName": "Zinedine",
+    "author": "Zinedine"
+  },
+  "projectSlider": {
+    "eyebrow": "Featured Case Study",
+    "readStory": "Read story",
+    "previousProject": "Previous project",
+    "nextProject": "Next project",
+    "goToProject": "Go to"
+  },
+  "heroGallery": {
+    "roleLabel": "Role",
+    "swipeHint": "Swipe",
+    "photos": [
+      {
+        "src": "/profile1.jpeg",
+        "label": "",
+        "caption": "Frontend Engineer"
+      },
+      {
+        "src": "/profile2.jpeg",
+        "label": "Creative",
+        "caption": "UI & Motion Design"
+      },
+      {
+        "src": "/profile3.jpeg",
+        "label": "At Work",
+        "caption": "Problem Solver"
+      },
+      {
+        "src": "/profile4.jpeg",
+        "label": "At Work",
+        "caption": "Problem Solver"
+      }
+    ]
+  },
+  "blogPage": {
+    "eyebrow": "Portfolio Journal",
+    "title": "Project Stories & Build Notes",
+    "description": "A curated stream of design and engineering notes: architecture decisions, UX trade-offs, and lessons from each shipped project.",
+    "caseStudyLabel": "Case Study",
+    "readArticle": "Read Article",
+    "backToBlog": "Back to blog",
+    "backToBlogButton": "Back to Blog",
+    "notFoundTitle": "Article not found",
+    "notFoundDescription": "The page you are looking for is unavailable or has been moved.",
+    "quickSummaryTitle": "Quick Summary",
+    "quickSummaryItems": [
+      "Focused on performance and UX clarity.",
+      "Reusable component architecture for scaling.",
+      "Motion used selectively to stay professional."
+    ],
+    "relatedArticlesTitle": "Related Articles",
+    "viewAll": "View all"
+  },
+  "footer": {
+    "description": "Frontend developer focused on polished interfaces, responsive systems, and thoughtful product experiences.",
+    "quickLinksTitle": "Quick Links",
+    "contactInfoTitle": "Contact Info",
+    "location": "Jakarta, Indonesia",
+    "availability": "Available for freelance projects and full-time opportunities.",
+    "rights": "All rights reserved.",
+    "socialLinks": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/zinedine"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/zinedine"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/zinedine"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/zinedine"
+      }
+    ]
+  },
+  "blogPosts": [
+    {
+      "slug": "project1",
+      "title": "Scalable E-Commerce Platform",
+      "excerpt": "How I structured a maintainable storefront architecture with clean checkout flows, catalog indexing, and predictable component patterns.",
+      "cover": "/project1.jpg",
+      "tags": ["Next.js", "Performance", "Architecture"],
+      "readTime": "6 min read",
+      "publishedAt": "Mar 15, 2026",
+      "content": [
+        "This project started as a redesign initiative for a growing product catalog. The main challenge was balancing visual polish with predictable performance on slower devices.",
+        "I split the UI into reusable slices and introduced a clear section hierarchy, allowing product cards, filters, and checkout forms to share consistent states. This reduced regressions and made iteration faster.",
+        "On the technical side, I optimized media handling, reduced render churn on interactive lists, and simplified network payloads for high-traffic routes. The result was a cleaner experience and a much steadier conversion funnel."
+      ]
+    },
+    {
+      "slug": "project2",
+      "title": "Real-Time Task Collaboration App",
+      "excerpt": "Designing collaborative workflows with clear status visibility, low-friction updates, and a UI that scales from solo use to teams.",
+      "cover": "/project2.jpg",
+      "tags": ["Realtime", "UX Systems", "Team Workflow"],
+      "readTime": "5 min read",
+      "publishedAt": "Feb 28, 2026",
+      "content": [
+        "The objective was to make multi-user collaboration feel lightweight and intuitive. I focused on reducing cognitive load by tightening visual hierarchy and improving interaction feedback.",
+        "Each task state was translated into a compact design language: clear tags, priority markers, and contextual actions. This helped teams scan and act quickly without opening every detail view.",
+        "Beyond visuals, I implemented optimistic UI patterns and resilient state updates. The app remained responsive during high activity, and users reported better trust in the timeline accuracy."
+      ]
+    },
+    {
+      "slug": "project3",
+      "title": "Personal Developer Portfolio",
+      "excerpt": "Building a personal brand experience that feels editorial, responsive, and memorable while keeping code quality production-ready.",
+      "cover": "/project3.jpg",
+      "tags": ["Branding", "Motion", "Frontend"],
+      "readTime": "4 min read",
+      "publishedAt": "Jan 20, 2026",
+      "content": [
+        "The portfolio was designed to communicate both technical confidence and design sensitivity. I used a bright visual system with layered depth and subtle motion to avoid a flat presentation.",
+        "Content structure was treated like a product narrative: quick context first, then proof through projects, and finally a conversion-ready contact section. This improved flow across desktop and mobile.",
+        "I also prioritized maintainability by centralizing reusable design primitives and simplifying component contracts. The final result is easier to evolve while staying visually cohesive."
+      ]
+    }
+  ]
+}

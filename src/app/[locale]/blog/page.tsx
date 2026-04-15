@@ -7,11 +7,13 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Link } from '@/i18n/navigation'
 import { getBlogPosts } from '@/data/blogPosts'
+import { getSiteContent } from '@/data/siteContent'
 
 export default function BlogPage() {
   const locale = useLocale()
   const posts = getBlogPosts(locale)
-  const isId = locale === 'id'
+  const content = getSiteContent(locale)
+  const blogPage = content.blogPage
 
   return (
     <main className="min-h-screen text-slate-900">
@@ -30,15 +32,9 @@ export default function BlogPage() {
             transition={{ duration: 0.55 }}
             className="mb-12 max-w-3xl"
           >
-            <span className="section-label">Portfolio Journal</span>
-            <h1 className="section-title mt-6">
-              {isId ? 'Blog Proyek dan Catatan Proses' : 'Project Stories & Build Notes'}
-            </h1>
-            <p className="section-copy mt-5">
-              {isId
-                ? 'Kumpulan insight dari proses desain dan pengembangan: keputusan teknis, pendekatan UX, serta pelajaran yang didapat dari tiap proyek.'
-                : 'A curated stream of design and engineering notes: architecture decisions, UX trade-offs, and lessons from each shipped project.'}
-            </p>
+            <span className="section-label">{blogPage.eyebrow}</span>
+            <h1 className="section-title mt-6">{blogPage.title}</h1>
+            <p className="section-copy mt-5">{blogPage.description}</p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -69,7 +65,7 @@ export default function BlogPage() {
                   <div className="p-6">
                     <div className="mb-3 flex items-center justify-between text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
                       <span>{post.publishedAt}</span>
-                      <span>{isId ? 'Studi Kasus' : 'Case Study'}</span>
+                      <span>{blogPage.caseStudyLabel}</span>
                     </div>
 
                     <h2 className="text-2xl font-semibold tracking-tight text-slate-950">{post.title}</h2>
@@ -87,7 +83,7 @@ export default function BlogPage() {
                     </div>
 
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">
-                      {isId ? 'Baca Artikel' : 'Read Article'}
+                      {blogPage.readArticle}
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
