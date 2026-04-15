@@ -1,11 +1,13 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useMotionTemplate, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import type { MouseEvent } from 'react'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
 import Footer from '@/components/Footer'
+import HeroPhotoGallery from '@/components/HeroPhotoGallery'
 
 const floatingShapes = [
   { className: 'left-[4%] top-24 h-44 w-44 bg-sky-200/55', duration: 12 },
@@ -28,6 +30,34 @@ export default function Home() {
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -120])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.88])
+  const pointerX = useMotionValue(50)
+  const pointerY = useMotionValue(50)
+  const rotateX = useSpring(useTransform(pointerY, [0, 100], [7, -7]), {
+    stiffness: 180,
+    damping: 20,
+    mass: 0.6,
+  })
+  const rotateY = useSpring(useTransform(pointerX, [0, 100], [-7, 7]), {
+    stiffness: 180,
+    damping: 20,
+    mass: 0.6,
+  })
+  const glowX = useSpring(pointerX, { stiffness: 220, damping: 24, mass: 0.45 })
+  const glowY = useSpring(pointerY, { stiffness: 220, damping: 24, mass: 0.45 })
+  const spotlight = useMotionTemplate`radial-gradient(420px circle at ${glowX}% ${glowY}%, rgba(14, 165, 233, 0.22), transparent 62%)`
+
+  const handleHeroPointerMove = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width) * 100
+    const y = ((event.clientY - rect.top) / rect.height) * 100
+    pointerX.set(Math.max(0, Math.min(100, x)))
+    pointerY.set(Math.max(0, Math.min(100, y)))
+  }
+
+  const handleHeroPointerLeave = () => {
+    pointerX.set(50)
+    pointerY.set(50)
+  }
 
   const experienceItems = [1, 2, 3].map((index) => ({
     title: t(`experience${index}Title`),
@@ -69,7 +99,8 @@ export default function Home() {
   ]
 
   return (
-    <main className="relative min-h-screen overflow-hidden text-slate-900">
+    <main className="relative min-h-screen text-slate-900">
+      <Navbar />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-60" />
         {floatingShapes.map((shape) => (
@@ -90,15 +121,11 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
-        <Navbar />
-      </div>
-
-      <section className="relative px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="relative px-4 pb-16 pt-4 sm:px-6 lg:px-8 lg:pt-6">
         <div className="mx-auto max-w-7xl">
           <motion.div
             style={{ y: heroY, opacity: heroOpacity }}
-            className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]"
+            className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]"
           >
             <div className="space-y-8">
               <motion.span
@@ -174,11 +201,18 @@ export default function Home() {
               transition={{ duration: 0.9, delay: 0.25 }}
               className="relative"
             >
-              <div className="surface-panel-strong relative overflow-hidden rounded-[2rem] p-6 sm:p-8">
-                <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-sky-100 blur-3xl" />
-                <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-100 blur-3xl" />
+              <motion.div
+                className="surface-panel-strong relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8"
+                onMouseMove={handleHeroPointerMove}
+                onMouseLeave={handleHeroPointerLeave}
+                style={{ rotateX, rotateY, transformPerspective: 1100 }}
+              >
+                <motion.div className="pointer-events-none absolute inset-0" style={{ background: spotlight }} />
+                <div className="absolute -right-10 top-0 h-52 w-52 rounded-full bg-sky-100/85 blur-3xl" />
+                <div className="absolute -left-12 bottom-0 h-52 w-52 rounded-full bg-cyan-100/80 blur-3xl" />
+
                 <div className="relative space-y-6">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
                     <span className="rounded-full border border-sky-200 bg-sky-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
                       {t('heroBadge')}
                     </span>
@@ -187,49 +221,20 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="relative mx-auto flex max-w-sm justify-center">
-                    <div className="soft-ring relative overflow-hidden rounded-[2rem] bg-white p-3 shadow-4xl">
-                      <Image
-                        src="/profile.jpg"
-                        alt="Profile"
-                        width={460}
-                        height={560}
-                        className="h-[420px] w-full rounded-[1.5rem] object-cover"
-                        priority
-                      />
-                    </div>
-
-                    <motion.div
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="surface-panel absolute -left-3 top-10 rounded-3xl px-4 py-3"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">UI Systems</p>
-                      <p className="mt-1 text-sm font-semibold text-slate-950">Next.js • Motion • UX</p>
-                    </motion.div>
-
-                    <motion.div
-                      animate={{ y: [0, 10, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                      className="surface-panel absolute -bottom-3 right-0 rounded-3xl px-4 py-3"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Delivery</p>
-                      <p className="mt-1 text-sm font-semibold text-slate-950">Responsive, polished, production-ready</p>
-                    </motion.div>
-                  </div>
+                  <HeroPhotoGallery />
 
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
-                      <p className="text-sm font-semibold text-slate-500">{t('aboutCardTitle')}</p>
-                      <p className="mt-2 text-base leading-7 text-slate-700">{t('aboutCardDescription')}</p>
+                    <div className="rounded-[1.4rem] border border-slate-200 bg-white/85 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{t('aboutCardTitle')}</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{t('aboutCardDescription')}</p>
                     </div>
-                    <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-5">
-                      <p className="text-sm font-semibold text-slate-500">{t('contactTitle')}</p>
-                      <p className="mt-2 text-base leading-7 text-slate-700">{t('heroAvailabilityDetail')}</p>
+                    <div className="rounded-[1.4rem] border border-slate-200 bg-white/85 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{t('contactTitle')}</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{t('heroAvailabilityDetail')}</p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
@@ -278,7 +283,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="px-4 py-16 sm:px-6 lg:px-8">
+      {/* <section id="experience" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -314,7 +319,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="skills" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

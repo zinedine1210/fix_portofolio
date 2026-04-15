@@ -22,11 +22,9 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <main className="min-h-screen overflow-hidden text-slate-900">
-        <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
-          <Navbar />
-        </div>
-        <section className="px-4 pb-16 pt-36 sm:px-6 lg:px-8">
+      <main className="min-h-screen text-slate-900">
+        <Navbar />
+        <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl rounded-[2rem] border border-slate-200 bg-white p-10 text-center shadow-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">404</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
@@ -51,18 +49,15 @@ export default function BlogPost() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden text-slate-900">
+    <main className="min-h-screen text-slate-900">
+      <Navbar />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-55" />
         <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-sky-100/65 blur-3xl" />
         <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-100/55 blur-3xl" />
       </div>
 
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
-        <Navbar />
-      </div>
-
-      <section className="px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-5xl">
           <motion.header
             initial={{ opacity: 0, y: 24 }}

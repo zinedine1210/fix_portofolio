@@ -14,18 +14,15 @@ export default function BlogPage() {
   const isId = locale === 'id'
 
   return (
-    <main className="min-h-screen overflow-hidden text-slate-900">
+    <main className="min-h-screen text-slate-900">
+      <Navbar />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-55" />
         <div className="absolute -left-20 top-12 h-64 w-64 rounded-full bg-sky-100/70 blur-3xl" />
         <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-cyan-100/60 blur-3xl" />
       </div>
 
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
-        <Navbar />
-      </div>
-
-      <section className="px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
