@@ -124,7 +124,7 @@ export default function HeroPhotoGallery() {
       </motion.div>
 
       {/* ── Floating top-left chip — changes with photo ─── */}
-      {/* <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
         <motion.div
           key={`chip-${index}`}
           variants={chipVariants}
@@ -136,10 +136,10 @@ export default function HeroPhotoGallery() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{num}</p>
           <p className="mt-1 text-sm font-semibold text-slate-950">{photo.label}</p>
         </motion.div>
-      </AnimatePresence> */}
+      </AnimatePresence>
 
       {/* ── Floating bottom-right caption — changes with photo ─── */}
-      {/* <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
         <motion.div
           key={`caption-${index}`}
           variants={chipVariants}
@@ -151,7 +151,7 @@ export default function HeroPhotoGallery() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{roleLabel}</p>
           <p className="mt-1 text-sm font-semibold text-slate-950">{photo.caption}</p>
         </motion.div>
-      </AnimatePresence> */}
+      </AnimatePresence>
 
       {/* ── Subtle swipe hint (only on mobile, fades after first interaction) ── */}
       <motion.div

@@ -2,7 +2,8 @@
   "site": {
     "brandShort": "ZZ",
     "brandName": "Zinedine",
-    "author": "Zinedine"
+    "author": "Zinedine",
+    "whatsappNumber": "6289508781380"
   },
   "projectSlider": {
     "eyebrow": "Featured Case Study",
@@ -17,7 +18,7 @@
     "photos": [
       {
         "src": "/profile1.jpeg",
-        "label": "",
+        "label": "Professional",
         "caption": "Frontend Engineer"
       },
       {
@@ -66,19 +67,19 @@
     "socialLinks": [
       {
         "name": "GitHub",
-        "url": "https://github.com/zinedine"
+        "url": "https://github.com/zinedine1210"
       },
       {
         "name": "LinkedIn",
-        "url": "https://linkedin.com/in/zinedine"
+        "url": "https://www.linkedin.com/in/zinedine-fahdlevy-5137471b4/"
       },
       {
         "name": "Twitter",
-        "url": "https://twitter.com/zinedine"
+        "url": "https://twitter.com/cimolbojotenak"
       },
       {
         "name": "Instagram",
-        "url": "https://instagram.com/zinedine"
+        "url": "https://instagram.com/zine.zf"
       }
     ]
   },

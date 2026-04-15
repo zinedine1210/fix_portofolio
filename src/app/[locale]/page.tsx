@@ -4,10 +4,13 @@ import { useTranslations } from 'next-intl'
 import { motion, useMotionTemplate, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import type { MouseEvent } from 'react'
+import { useState } from 'react'
+import { useLocale } from 'next-intl'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
 import Footer from '@/components/Footer'
 import HeroPhotoGallery from '@/components/HeroPhotoGallery'
+import { getSiteContent } from '@/data/siteContent'
 
 const floatingShapes = [
   { className: 'left-[4%] top-24 h-44 w-44 bg-sky-200/55', duration: 12 },
@@ -27,6 +30,8 @@ const orbitDots = [
 
 export default function Home() {
   const t = useTranslations('Home')
+  const locale = useLocale()
+  const content = getSiteContent(locale)
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -120])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.88])
@@ -97,6 +102,60 @@ export default function Home() {
     { value: t('heroProjectsValue'), label: t('heroProjectsLabel') },
     { value: t('heroFocusValue'), label: t('heroFocusLabel') },
   ]
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [formNotice, setFormNotice] = useState('')
+
+  const emailTarget = t('emailValue')
+  const whatsappNumber = (content.site.whatsappNumber ?? '').replace(/\D/g, '')
+
+  const buildMessageText = () => {
+    const lines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      '',
+      'Message:',
+      formData.message,
+    ]
+    return lines.join('\n')
+  }
+
+  const isFormValid = () => {
+    return formData.name.trim() && formData.email.trim() && formData.message.trim()
+  }
+
+  const handleSendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (!isFormValid()) {
+      setFormNotice(t('contactValidation'))
+      return
+    }
+
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name.trim()}`)
+    const body = encodeURIComponent(buildMessageText())
+    window.location.href = `mailto:${emailTarget}?subject=${subject}&body=${body}`
+    setFormNotice(t('contactEmailReady'))
+  }
+
+  const handleSendWhatsApp = () => {
+    if (!isFormValid()) {
+      setFormNotice(t('contactValidation'))
+      return
+    }
+
+    if (!whatsappNumber) {
+      setFormNotice(t('contactWhatsappMissing'))
+      return
+    }
+
+    const message = encodeURIComponent(buildMessageText())
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank', 'noopener,noreferrer')
+    setFormNotice(t('contactWhatsappReady'))
+  }
 
   return (
     <main className="relative min-h-screen text-slate-900">
@@ -417,12 +476,14 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               className="surface-panel-strong rounded-[2rem] p-8 md:p-10"
             >
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSendEmail}>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-slate-600">{t('name')}</label>
                     <input
                       type="text"
+                      value={formData.name}
+                      onChange={(event) => setFormData((prev) => ({ ...prev, name: event.target.value }))}
                       className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
                     />
                   </div>
@@ -430,6 +491,8 @@ export default function Home() {
                     <label className="mb-2 block text-sm font-semibold text-slate-600">{t('email')}</label>
                     <input
                       type="email"
+                      value={formData.email}
+                      onChange={(event) => setFormData((prev) => ({ ...prev, email: event.target.value }))}
                       className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
                     />
                   </div>
@@ -438,17 +501,36 @@ export default function Home() {
                   <label className="mb-2 block text-sm font-semibold text-slate-600">{t('message')}</label>
                   <textarea
                     rows={6}
+                    value={formData.message}
+                    onChange={(event) => setFormData((prev) => ({ ...prev, message: event.target.value }))}
                     className="w-full rounded-[1.5rem] border border-slate-200 bg-white px-4 py-3 text-slate-700 shadow-sm shadow-slate-900/5 transition-colors placeholder:text-slate-400 focus:border-sky-300 focus:outline-none"
                   />
                 </div>
-                <motion.button
-                  type="submit"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.99 }}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800"
-                >
-                  {t('sendMessage')}
-                </motion.button>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <motion.button
+                    type="submit"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-sm font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800"
+                  >
+                    {t('sendViaEmail')}
+                  </motion.button>
+                  <motion.button
+                    type="button"
+                    onClick={handleSendWhatsApp}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-4 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-colors hover:border-emerald-200 hover:text-emerald-700"
+                  >
+                    {t('sendViaWhatsapp')}
+                  </motion.button>
+                </div>
+
+                {formNotice ? (
+                  <p className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+                    {formNotice}
+                  </p>
+                ) : null}
               </form>
             </motion.div>
           </div>

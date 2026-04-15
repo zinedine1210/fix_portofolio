@@ -23,7 +23,7 @@
     "locationValue": "Jakarta, Indonesia",
     "locationDescription": "Terbuka untuk kerja remote, hybrid, dan kolaborasi lintas tim.",
     "email": "Email",
-    "emailValue": "contact@example.com",
+    "emailValue": "zinedine.office2023@gmail.com",
     "emailDescription": "Respon cepat untuk kebutuhan project inquiry dan partnership.",
     "experienceTitle": "Pengalaman",
     "experienceIntro": "Perjalanan saya berfokus pada frontend architecture, design implementation, dan kualitas delivery.",
@@ -70,7 +70,13 @@
     "contactIntro": "Punya ide produk atau butuh frontend developer untuk tim? Mari diskusikan kebutuhan Anda.",
     "name": "Nama",
     "message": "Pesan",
-    "sendMessage": "Kirim Pesan"
+    "sendMessage": "Kirim Pesan",
+    "sendViaEmail": "Kirim via Email",
+    "sendViaWhatsapp": "Kirim via WhatsApp",
+    "contactValidation": "Mohon lengkapi nama, email, dan pesan terlebih dahulu.",
+    "contactEmailReady": "Draft email sudah dibuka. Silakan kirim dari aplikasi email Anda.",
+    "contactWhatsappReady": "WhatsApp telah dibuka. Silakan kirim pesan Anda.",
+    "contactWhatsappMissing": "Nomor WhatsApp belum diatur. Isi dulu di src/content/id.json pada key site.whatsappNumber."
   },
   "Navbar": {
     "home": "Beranda",
