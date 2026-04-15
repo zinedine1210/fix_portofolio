@@ -2,152 +2,192 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { Link } from '@/i18n/navigation'
+import { getBlogPostBySlug, getBlogPosts } from '@/data/blogPosts'
 
 export default function BlogPost() {
-  const t = useTranslations('Blog')
+  const locale = useLocale()
+  const isId = locale === 'id'
   const params = useParams()
   const slug = params.slug as string
 
-  // This would typically come from your CMS or API
-  const post = {
-    title: t('project1Title'),
-    date: 'March 15, 2024',
-    author: 'Zinedine',
-    readTime: '5 min read',
-    content: t('project1Content'),
-    image: '/project1.jpg',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    relatedPosts: [
-      {
-        title: t('project2Title'),
-        image: '/project2.jpg',
-        link: '/blog/project2'
-      },
-      {
-        title: t('project3Title'),
-        image: '/project3.jpg',
-        link: '/blog/project3'
-      }
-    ]
+  const post = getBlogPostBySlug(locale, slug)
+  const relatedPosts = getBlogPosts(locale)
+    .filter((item) => item.slug !== slug)
+    .slice(0, 2)
+
+  if (!post) {
+    return (
+      <main className="min-h-screen overflow-hidden text-slate-900">
+        <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
+          <Navbar />
+        </div>
+        <section className="px-4 pb-16 pt-36 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl rounded-[2rem] border border-slate-200 bg-white p-10 text-center shadow-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">404</p>
+            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
+              {isId ? 'Artikel tidak ditemukan' : 'Article not found'}
+            </h1>
+            <p className="mt-3 text-slate-600">
+              {isId
+                ? 'Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.'
+                : 'The page you are looking for is unavailable or has been moved.'}
+            </p>
+            <Link
+              href="/blog"
+              className="mt-6 inline-flex items-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white"
+            >
+              {isId ? 'Kembali ke Blog' : 'Back to Blog'}
+            </Link>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
   }
 
   return (
-    <main className="min-h-screen bg-black relative overflow-hidden">
-      {/* Parallax Background */}
-      <div className="fixed inset-0 z-0">
-        <Image
-          src="/space-bg.jpg"
-          alt="Space Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-purple-900/30 to-black/50" />
+    <main className="min-h-screen overflow-hidden text-slate-900">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-55" />
+        <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-sky-100/65 blur-3xl" />
+        <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-100/55 blur-3xl" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/10 rounded-2xl backdrop-blur-md border border-white/20 shadow-xl overflow-hidden"
-        >
-          {/* Hero Image */}
-          <div className="relative h-96 w-full">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-          </div>
+      <div className="fixed left-0 right-0 top-0 z-50 border-b border-white/60 bg-white/70 backdrop-blur-2xl">
+        <Navbar />
+      </div>
 
-          {/* Content */}
-          <div className="p-8">
-            <div className="flex items-center gap-4 text-gray-300 mb-6">
-              <span>{post.date}</span>
-              <span>•</span>
+      <section className="px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pt-36">
+        <div className="mx-auto max-w-5xl">
+          <motion.header
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="mb-8"
+          >
+            <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-950">
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              {isId ? 'Kembali ke blog' : 'Back to blog'}
+            </Link>
+
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <span>{post.publishedAt}</span>
+              <span className="h-1 w-1 rounded-full bg-slate-400" />
               <span>{post.readTime}</span>
-              <span>•</span>
-              <span>By {post.author}</span>
+              <span className="h-1 w-1 rounded-full bg-slate-400" />
+              <span>Zinedine</span>
             </div>
 
-            <h1 className="text-4xl font-bold text-white mb-6">{post.title}</h1>
+            <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+              {post.title}
+            </h1>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">{post.excerpt}</p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="mt-5 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-sm bg-white/10 text-purple-300 border border-purple-500/30"
+                  className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-slate-600"
                 >
                   {tag}
                 </span>
               ))}
             </div>
+          </motion.header>
 
-            <div className="prose prose-invert max-w-none">
-              {post.content}
+          <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.05 }}
+            className="surface-panel-strong overflow-hidden rounded-[2rem]"
+          >
+            <div className="relative h-72 w-full sm:h-96">
+              <Image src={post.cover} alt={post.title} fill className="object-cover" priority />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/42 via-slate-900/12 to-transparent" />
             </div>
-          </div>
-        </motion.div>
 
-        {/* Related Posts */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-12"
-        >
-          <h2 className="text-2xl font-bold text-white mb-6">Related Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {post.relatedPosts.map((relatedPost, index) => (
-              <Link key={index} href={relatedPost.link}>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="bg-white/10 rounded-xl overflow-hidden backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="relative h-48 w-full">
+            <div className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[0.65fr_1.35fr]">
+              <aside className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  {isId ? 'Ringkasan Cepat' : 'Quick Summary'}
+                </p>
+                <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                  <li>{isId ? 'Fokus pada performa dan kejelasan UX.' : 'Focused on performance and UX clarity.'}</li>
+                  <li>{isId ? 'Komponen dirancang reusable untuk scaling.' : 'Reusable component architecture for scaling.'}</li>
+                  <li>{isId ? 'Motion digunakan seperlunya agar tetap profesional.' : 'Motion used selectively to stay professional.'}</li>
+                </ul>
+              </aside>
+
+              <div className="space-y-6">
+                {post.content.map((paragraph, index) => (
+                  <p key={index} className="text-base leading-8 text-slate-700 md:text-lg">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+        </div>
+      </section>
+
+      <section className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-6 flex items-end justify-between"
+          >
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-950">
+              {isId ? 'Artikel Terkait' : 'Related Articles'}
+            </h2>
+            <Link href="/blog" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
+              {isId ? 'Lihat semua' : 'View all'}
+            </Link>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {relatedPosts.map((relatedPost, index) => (
+              <motion.article
+                key={relatedPost.slug}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ y: -4 }}
+                className="surface-panel-strong overflow-hidden rounded-[1.6rem]"
+              >
+                <Link href={`/blog/${relatedPost.slug}`} className="block">
+                  <div className="relative h-52 w-full overflow-hidden">
                     <Image
-                      src={relatedPost.image}
+                      src={relatedPost.cover}
                       alt={relatedPost.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/56 via-slate-900/18 to-transparent" />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-white">{relatedPost.title}</h3>
+                  <div className="p-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{relatedPost.publishedAt}</p>
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{relatedPost.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">{relatedPost.excerpt}</p>
                   </div>
-                </motion.div>
-              </Link>
+                </Link>
+              </motion.article>
             ))}
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Back to Projects Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <Link href="/#projects">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Back to Projects
-            </motion.button>
-          </Link>
-        </motion.div>
-      </div>
+      <Footer />
     </main>
   )
 } 
