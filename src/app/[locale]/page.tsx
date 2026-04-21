@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { motion, useMotionTemplate, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import type { MouseEvent } from 'react'
 import { useState } from 'react'
@@ -35,34 +35,6 @@ export default function Home() {
   const { scrollYProgress } = useScroll()
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -120])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.88])
-  const pointerX = useMotionValue(50)
-  const pointerY = useMotionValue(50)
-  const rotateX = useSpring(useTransform(pointerY, [0, 100], [7, -7]), {
-    stiffness: 180,
-    damping: 20,
-    mass: 0.6,
-  })
-  const rotateY = useSpring(useTransform(pointerX, [0, 100], [-7, 7]), {
-    stiffness: 180,
-    damping: 20,
-    mass: 0.6,
-  })
-  const glowX = useSpring(pointerX, { stiffness: 220, damping: 24, mass: 0.45 })
-  const glowY = useSpring(pointerY, { stiffness: 220, damping: 24, mass: 0.45 })
-  const spotlight = useMotionTemplate`radial-gradient(420px circle at ${glowX}% ${glowY}%, rgba(14, 165, 233, 0.22), transparent 62%)`
-
-  const handleHeroPointerMove = (event: MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 100
-    const y = ((event.clientY - rect.top) / rect.height) * 100
-    pointerX.set(Math.max(0, Math.min(100, x)))
-    pointerY.set(Math.max(0, Math.min(100, y)))
-  }
-
-  const handleHeroPointerLeave = () => {
-    pointerX.set(50)
-    pointerY.set(50)
-  }
 
   const experienceItems = [1, 2, 3, 4].map((index) => ({
     title: t(`experience${index}Title`),
@@ -181,12 +153,13 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="relative px-4 pb-16 pt-4 sm:px-6 lg:px-8 lg:pt-6">
+      <section className="relative px-4 pb-20 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">
           <motion.div
             style={{ y: heroY, opacity: heroOpacity }}
-            className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]"
+            className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16"
           >
+            {/* ── Left: Text content ─────────────────────── */}
             <div className="space-y-8">
               <motion.span
                 initial={{ opacity: 0, y: 16 }}
@@ -197,9 +170,9 @@ export default function Home() {
                 {t('heroEyebrow')}
               </motion.span>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <motion.h1
-                  className="max-w-4xl text-balance text-5xl font-extrabold tracking-tight text-slate-950 sm:text-6xl lg:text-7xl"
+                  className="max-w-xl text-balance text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
@@ -207,7 +180,7 @@ export default function Home() {
                   {t('title')} <span className="accent-text">{t('heroHighlight')}</span>
                 </motion.h1>
                 <motion.p
-                  className="max-w-2xl text-balance text-lg leading-8 text-slate-600 md:text-xl"
+                  className="max-w-lg text-balance text-lg leading-8 text-slate-600"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
@@ -255,46 +228,14 @@ export default function Home() {
               </motion.div>
             </div>
 
+            {/* ── Right: Interactive Photo Card ──────────── */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.25 }}
-              className="relative"
+              className="relative flex justify-center"
             >
-              <motion.div
-                className="surface-panel-strong relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8"
-                onMouseMove={handleHeroPointerMove}
-                onMouseLeave={handleHeroPointerLeave}
-                style={{ rotateX, rotateY, transformPerspective: 1100 }}
-              >
-                <motion.div className="pointer-events-none absolute inset-0" style={{ background: spotlight }} />
-                <div className="absolute -right-10 top-0 h-52 w-52 rounded-full bg-sky-100/85 blur-3xl" />
-                <div className="absolute -left-12 bottom-0 h-52 w-52 rounded-full bg-cyan-100/80 blur-3xl" />
-
-                <div className="relative space-y-6">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <span className="rounded-full border border-sky-200 bg-sky-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700">
-                      {t('heroBadge')}
-                    </span>
-                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                      {t('heroAvailability')}
-                    </span>
-                  </div>
-
-                  <HeroPhotoGallery />
-
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[1.4rem] border border-slate-200 bg-white/85 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{t('aboutCardTitle')}</p>
-                      <p className="mt-2 text-sm leading-6 text-slate-700">{t('aboutCardDescription')}</p>
-                    </div>
-                    <div className="rounded-[1.4rem] border border-slate-200 bg-white/85 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{t('contactTitle')}</p>
-                      <p className="mt-2 text-sm leading-6 text-slate-700">{t('heroAvailabilityDetail')}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              <HeroPhotoGallery />
             </motion.div>
           </motion.div>
         </div>

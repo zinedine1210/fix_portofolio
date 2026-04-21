@@ -1,175 +1,243 @@
 'use client'
 
-import { AnimatePresence, motion, PanInfo } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
-import { useState, useCallback } from 'react'
+import { useState, useRef, useCallback, type MouseEvent } from 'react'
 import { getSiteContent } from '@/data/siteContent'
-
-const SWIPE_THRESHOLD = 48
-
-const slideVariants = {
-  enter: (dir: number) => ({
-    x: dir > 0 ? '100%' : '-100%',
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      x: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 },
-      opacity: { duration: 0.3 },
-    },
-  },
-  exit: (dir: number) => ({
-    x: dir < 0 ? '100%' : '-100%',
-    opacity: 0,
-    transition: {
-      x: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 },
-      opacity: { duration: 0.25 },
-    },
-  }),
-}
-
-const chipVariants = {
-  enter: { opacity: 0, y: 10, scale: 0.94 },
-  center: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.32, ease: [0.22, 1, 0.36, 1] } },
-  exit:   { opacity: 0, y: -10, scale: 0.94, transition: { duration: 0.22 } },
-}
 
 export default function HeroPhotoGallery() {
   const locale = useLocale()
   const content = getSiteContent(locale)
-  const { photos, roleLabel, swipeHint } = content.heroGallery
-  const [[index, direction], setPage] = useState([0, 0])
+  const { roleLabel, photos } = content.heroGallery
 
-  const paginate = useCallback((dir: number) => {
-    setPage(([prev]) => [(prev + dir + photos.length) % photos.length, dir])
-  }, [])
+  const realPhoto = photos[0]?.src ?? '/profile1.jpeg'
+  const animatedPhoto = photos[1]?.src ?? '/profile2.jpeg'
 
-  const handleDragEnd = useCallback((_: unknown, info: PanInfo) => {
-    if (info.offset.x < -SWIPE_THRESHOLD) paginate(1)
-    else if (info.offset.x > SWIPE_THRESHOLD) paginate(-1)
-  }, [paginate])
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isRevealed, setIsRevealed] = useState(false)
 
-  const photo = photos[index]
-  const num = `${String(index + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`
+  // ─── Magnetic cursor tracking ────────────────────────────
+  const mouseX = useMotionValue(0.5)
+  const mouseY = useMotionValue(0.5)
+
+  const springConfig = { stiffness: 150, damping: 20, mass: 0.8 }
+  const smoothX = useSpring(mouseX, springConfig)
+  const smoothY = useSpring(mouseY, springConfig)
+
+  const rotateX = useTransform(smoothY, [0, 1], [12, -12])
+  const rotateY = useTransform(smoothX, [0, 1], [-12, 12])
+
+  // Shine / glare effect position
+  const glareX = useTransform(smoothX, [0, 1], [0, 100])
+  const glareY = useTransform(smoothY, [0, 1], [0, 100])
+
+  // Parallax inner elements
+  const photoX = useTransform(smoothX, [0, 1], [-8, 8])
+  const photoY = useTransform(smoothY, [0, 1], [-8, 8])
+
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    mouseX.set(Math.max(0, Math.min(1, x)))
+    mouseY.set(Math.max(0, Math.min(1, y)))
+  }, [mouseX, mouseY])
+
+  const handleMouseLeave = useCallback(() => {
+    mouseX.set(0.5)
+    mouseY.set(0.5)
+    setIsRevealed(false)
+  }, [mouseX, mouseY])
 
   return (
-    <div className="relative mx-auto w-full max-w-[34rem] select-none [transform-style:preserve-3d]">
-
-      {/* ── Main photo frame ─────────────────────────────────── */}
+    <div className="relative mx-auto w-full max-w-md select-none" style={{ perspective: 1200 }}>
+      {/* ── 3D Card Container ───────────────────────────────── */}
       <motion.div
-        whileHover={{ scale: 1.008 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-        className="soft-ring relative overflow-hidden rounded-[2.2rem] bg-white p-3 shadow-4xl [transform:translateZ(35px)]"
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setIsRevealed((prev) => !prev)}
+        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+        className="group relative cursor-pointer"
       >
-        {/* overflow-hidden clip for slide animation */}
-        <div className="relative h-[480px] overflow-hidden rounded-[1.8rem] sm:h-[540px]">
+        {/* ── Photo Frame ─────────────────────────────────── */}
+        <div className="relative overflow-hidden rounded-[2rem] bg-white p-2.5 shadow-[0_40px_100px_-30px_rgba(15,23,42,0.22),0_0_0_1px_rgba(148,163,184,0.15)]">
+          <div className="relative h-[460px] overflow-hidden rounded-[1.6rem] sm:h-[520px]">
 
-          <AnimatePresence initial={false} custom={direction}>
+            {/* Real Photo — always present as base */}
             <motion.div
-              key={index}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.12}
-              onDragEnd={handleDragEnd}
-              onClick={() => paginate(1)}
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+              className="absolute inset-0"
+              animate={{ opacity: isRevealed ? 0 : 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Image
-                src={photo.src}
-                alt={photo.label}
-                fill
-                sizes="(max-width: 640px) 100vw, 560px"
-                quality={100}
-                className="pointer-events-none object-cover"
-                priority={index === 0}
-                draggable={false}
-              />
-              {/* subtle cinematic gradient */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/28 via-transparent to-transparent" />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* ── Dot indicator (inside frame, bottom centre) ── */}
-          <div
-            className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center gap-2 rounded-full bg-black/30 px-3.5 py-2.5 backdrop-blur-md">
-              {photos.map((_, i) => (
-                <motion.button
-                  key={i}
-                  type="button"
-                  onClick={() => setPage([i, i > index ? 1 : -1])}
-                  animate={{ width: i === index ? 32 : 10 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  className={`h-2.5 rounded-full transition-colors duration-300 ${
-                    i === index ? 'bg-white' : 'bg-white/45 hover:bg-white/75'
-                  }`}
+              <motion.div style={{ x: photoX, y: photoY, scale: 1.05 }} className="h-full w-full">
+                <Image
+                  src={realPhoto}
+                  alt="Professional photo"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 460px"
+                  quality={100}
+                  className="pointer-events-none object-cover"
+                  priority
+                  draggable={false}
                 />
-              ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Animated Character Photo — revealed on interaction */}
+            <motion.div
+              className="absolute inset-0"
+              animate={{ opacity: isRevealed ? 1 : 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <motion.div style={{ x: photoX, y: photoY, scale: 1.05 }} className="h-full w-full">
+                <Image
+                  src={animatedPhoto}
+                  alt="Animated character version"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 460px"
+                  quality={100}
+                  className="pointer-events-none object-cover"
+                  draggable={false}
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Cinematic gradient overlay */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-slate-950/5" />
+
+            {/* ── Holographic glare effect ──────────────── */}
+            <motion.div
+              className="pointer-events-none absolute inset-0 mix-blend-overlay"
+              style={{
+                background: useTransform(
+                  [glareX, glareY],
+                  ([x, y]) =>
+                    `radial-gradient(600px circle at ${x}% ${y}%, rgba(255,255,255,0.25), transparent 55%)`
+                ),
+              }}
+            />
+
+            {/* ── Bottom info bar ────────────────────────── */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
+              <motion.div
+                className="flex items-center justify-between rounded-2xl border border-white/20 bg-black/25 px-4 py-3 backdrop-blur-xl"
+                animate={{ y: 0, opacity: 1 }}
+                initial={{ y: 12, opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={isRevealed ? 'animated' : 'real'}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
+                      {isRevealed ? 'Animated' : roleLabel}
+                    </p>
+                    <p className="text-sm font-semibold text-white">
+                      {isRevealed ? 'Character Version' : 'Zinedine Ziddan F.'}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="flex items-center gap-2">
+                  <motion.div
+                    className="h-2 w-2 rounded-full bg-emerald-400"
+                    animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <span className="text-[11px] font-semibold text-white/80">Available</span>
+                </div>
+              </motion.div>
             </div>
+
           </div>
+
+          {/* ── Inner border ring ────────────────────────── */}
+          <div className="pointer-events-none absolute inset-2.5 rounded-[1.6rem] border border-white/30" />
         </div>
 
-        {/* inner highlight ring */}
-        <div className="pointer-events-none absolute inset-3 rounded-[1.8rem] border border-white/40" />
+        {/* ── Floating interaction hint ──────────────────── */}
+        <AnimatePresence>
+          {!isRevealed && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="absolute -right-3 top-6 z-20 rounded-2xl border border-white/50 bg-white/90 px-3.5 py-2 shadow-lg backdrop-blur-md"
+              style={{ transform: 'translateZ(50px)' }}
+            >
+              <motion.div
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600"
+              >
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+                Click to reveal
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Revealed state indicator ─────────────────── */}
+        <AnimatePresence>
+          {isRevealed && (
+            <motion.div
+              initial={{ opacity: 0, y: 8, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.9 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute -left-3 top-6 z-20 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-fuchsia-50 px-3.5 py-2 shadow-lg"
+              style={{ transform: 'translateZ(50px)' }}
+            >
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-violet-700">
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                Character Mode
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
-      {/* ── Floating top-left chip — changes with photo ─── */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`chip-${index}`}
-          variants={chipVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="surface-panel absolute -left-2 top-6 z-10 rounded-3xl px-4 py-3 [transform:translateZ(58px)]"
+      {/* ── Photo toggle dots ─────────────────────────────── */}
+      <div className="mt-5 flex items-center justify-center gap-3">
+        <button
+          type="button"
+          onClick={() => setIsRevealed(false)}
+          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 ${
+            !isRevealed
+              ? 'bg-slate-950 text-white shadow-lg shadow-slate-900/15'
+              : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700'
+          }`}
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{num}</p>
-          <p className="mt-1 text-sm font-semibold text-slate-950">{photo.label}</p>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* ── Floating bottom-right caption — changes with photo ─── */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`caption-${index}`}
-          variants={chipVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="surface-panel absolute -bottom-4 right-4 z-10 rounded-3xl px-4 py-3 [transform:translateZ(58px)]"
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
+          Real
+        </button>
+        <button
+          type="button"
+          onClick={() => setIsRevealed(true)}
+          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all duration-300 ${
+            isRevealed
+              ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/20'
+              : 'bg-slate-100 text-slate-500 hover:bg-violet-50 hover:text-violet-600'
+          }`}
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{roleLabel}</p>
-          <p className="mt-1 text-sm font-semibold text-slate-950">{photo.caption}</p>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* ── Subtle swipe hint (only on mobile, fades after first interaction) ── */}
-      <motion.div
-        initial={{ opacity: 0.85 }}
-        animate={{ opacity: [0.85, 0.4, 0.85] }}
-        transition={{ duration: 3, repeat: 2, ease: 'easeInOut', delay: 1.2 }}
-        className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 [transform:translateZ(80px)] sm:hidden"
-      >
-        <div className="flex items-center gap-2 rounded-full bg-black/25 px-4 py-2.5 text-xs font-semibold text-white backdrop-blur-md">
-          <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-          </svg>
-          {swipeHint}
-          <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
-      </motion.div>
+          <span className="h-1.5 w-1.5 rounded-full bg-current" />
+          Character
+        </button>
+      </div>
     </div>
   )
 }
