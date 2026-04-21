@@ -99,17 +99,33 @@
       ]
     },
     {
-      "slug": "project2",
-      "title": "Real-Time Task Collaboration App",
-      "excerpt": "Designing collaborative workflows with clear status visibility, low-friction updates, and a UI that scales from solo use to teams.",
-      "cover": "/project2.jpg",
-      "tags": ["Realtime", "UX Systems", "Team Workflow"],
-      "readTime": "5 min read",
-      "publishedAt": "Feb 28, 2026",
+      "slug": "beyondtech-remittance-platform",
+      "title": "Beyondtech: Building an End-to-End Remittance & Disbursement Ecosystem",
+      "excerpt": "As a Senior Frontend engineer, I built Beyondtech's landing page, merchant dashboard, and admin panel for secure, global, and fully digital remittance and disbursement services.",
+      "cover": "/beyondtech5.png",
+      "gallery": ["/beyondtech5.png", "/beyondtech3.png", "/beyondtech4.png"],
+      "inlineImages": [
+        {
+          "src": "/beyondtech5.png",
+          "alt": "Beyondtech landing page view",
+          "afterParagraph": 1
+        },
+        {
+          "src": "/beyondtech3.png",
+          "alt": "Merchant dashboard and transaction flow view",
+          "afterParagraph": 3
+        }
+      ],
+      "tags": ["Fintech", "Remittance", "Disbursement", "Senior Frontend"],
+      "readTime": "7 min read",
+      "publishedAt": "Apr 21, 2026",
       "content": [
-        "The objective was to make multi-user collaboration feel lightweight and intuitive. I focused on reducing cognitive load by tightening visual hierarchy and improving interaction feedback.",
-        "Each task state was translated into a compact design language: clear tags, priority markers, and contextual actions. This helped teams scan and act quickly without opening every detail view.",
-        "Beyond visuals, I implemented optimistic UI patterns and resilient state updates. The app remained responsive during high activity, and users reported better trust in the timeline accuracy."
+        "Beyondtech operates in remittance and disbursement, delivering global and digital money transfer services. In this project, I worked as Senior Frontend to keep the user experience consistent across the full product ecosystem.",
+        "In this case study, project1 represents the landing page (beyondtech.co.id), project2 represents the merchant dashboard (dashboard.beyondtech.co.id), and project3 represents the admin panel (admin.beyondtech.co.id). This mapping made it easier to align visual direction while keeping feature priorities clear for each app.",
+        "On the landing page, my focus was trust-building, service clarity, and strong call-to-action pathways. The information architecture was designed to communicate product value quickly to prospective merchants and partners.",
+        "On the merchant dashboard, I designed the end-to-end transaction flow to make remittance and disbursement actions clear, fast, and less error-prone. I collaborated closely with backend engineers on API contracts, transaction states, input validation, and edge-case handling under real network conditions.",
+        "On the admin panel, the primary users are superadmins and internal Beyondtech teams who monitor the full disbursement flow. I prioritized operational visibility through informative tables, precise filters, traceable transaction details, and status indicators that support monitoring and investigation workflows.",
+        "From a technical standpoint, I implemented reusable component architecture, clean state structures, and unified UI standards across all domains. This improved feature delivery speed without sacrificing consistency, and made Beyondtech one of the most strategic fintech projects in my portfolio."
       ]
     },
     {

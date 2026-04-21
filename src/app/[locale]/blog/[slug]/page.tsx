@@ -10,6 +10,12 @@ import { Link } from '@/i18n/navigation'
 import { getBlogPostBySlug, getBlogPosts } from '@/data/blogPosts'
 import { getSiteContent } from '@/data/siteContent'
 
+type InlineImage = {
+  src: string
+  alt: string
+  afterParagraph: number
+}
+
 export default function BlogPost() {
   const locale = useLocale()
   const params = useParams()
@@ -22,6 +28,18 @@ export default function BlogPost() {
   const relatedPosts = getBlogPosts(locale)
     .filter((item) => item.slug !== slug)
     .slice(0, 2)
+
+  const inlineImages = ((post as { inlineImages?: InlineImage[] } | undefined)?.inlineImages ?? []).reduce<
+    Record<number, InlineImage[]>
+  >((acc, image) => {
+    if (!acc[image.afterParagraph]) {
+      acc[image.afterParagraph] = []
+    }
+
+    acc[image.afterParagraph].push(image)
+    return acc
+  }, {})
+  const gallery = (post as { gallery?: string[] } | undefined)?.gallery ?? []
 
   if (!post) {
     return (
@@ -121,10 +139,40 @@ export default function BlogPost() {
 
               <div className="space-y-6">
                 {post.content.map((paragraph, index) => (
-                  <p key={index} className="text-base leading-8 text-slate-700 md:text-lg">
-                    {paragraph}
-                  </p>
+                  <div key={index} className="space-y-5">
+                    <p className="text-base leading-8 text-slate-700 md:text-lg">{paragraph}</p>
+
+                    {inlineImages[index + 1]?.map((image) => (
+                      <div key={`${image.src}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm">
+                        <div className="relative aspect-[16/9] w-full">
+                          <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 ))}
+
+                {gallery.length > 0 && (
+                  <div className="pt-2">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {gallery.map((imageSrc, imageIndex) => (
+                        <div
+                          key={`${imageSrc}-${imageIndex}`}
+                          className="overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm"
+                        >
+                          <div className="relative aspect-[16/10] w-full">
+                            <Image
+                              src={imageSrc}
+                              alt={`${post.title} gallery image ${imageIndex + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </motion.article>

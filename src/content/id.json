@@ -99,17 +99,33 @@
       ]
     },
     {
-      "slug": "project2",
-      "title": "Aplikasi Kolaborasi Tugas Real-Time",
-      "excerpt": "Merancang workflow kolaboratif dengan visibilitas status yang jelas, update minim friksi, dan UI yang nyaman dari penggunaan individu hingga tim.",
-      "cover": "/project2.jpg",
-      "tags": ["Realtime", "UX Systems", "Kolaborasi Tim"],
-      "readTime": "5 menit baca",
-      "publishedAt": "28 Feb 2026",
+      "slug": "beyondtech-remittance-platform",
+      "title": "Beyondtech: Membangun Ekosistem Remittance & Disbursement End-to-End",
+      "excerpt": "Sebagai Senior Frontend, saya mengembangkan landing page, merchant dashboard, dan admin panel Beyondtech untuk layanan remittance dan disbursement global yang aman, cepat, dan digital.",
+      "cover": "/beyondtech5.png",
+      "gallery": ["/beyondtech5.png", "/beyondtech3.png", "/beyondtech4.png"],
+      "inlineImages": [
+        {
+          "src": "/beyondtech5.png",
+          "alt": "Tampilan landing page Beyondtech",
+          "afterParagraph": 1
+        },
+        {
+          "src": "/beyondtech3.png",
+          "alt": "Tampilan merchant dashboard dan alur transaksi",
+          "afterParagraph": 3
+        }
+      ],
+      "tags": ["Fintech", "Remittance", "Disbursement", "Senior Frontend"],
+      "readTime": "7 menit baca",
+      "publishedAt": "21 Apr 2026",
       "content": [
-        "Tujuan utama proyek ini adalah membuat kolaborasi multi-user terasa ringan dan natural. Fokus saya pada pengurangan beban kognitif melalui hirarki visual yang tegas dan feedback interaksi yang jelas.",
-        "Setiap status tugas diterjemahkan ke bahasa desain yang ringkas: tag yang mudah dipindai, penanda prioritas, dan aksi kontekstual. Tim bisa mengambil keputusan lebih cepat tanpa membuka detail satu per satu.",
-        "Selain visual, saya menerapkan pola optimistic UI dan update state yang lebih tahan terhadap kondisi network yang fluktuatif. Aplikasi tetap responsif saat aktivitas tinggi."
+        "Beyondtech adalah perusahaan yang bergerak di bidang remittance dan disbursement, menyediakan layanan pengiriman serta penerimaan dana secara global dan digital. Dalam proyek ini, saya berperan sebagai Senior Frontend untuk memastikan pengalaman pengguna konsisten di seluruh produk.",
+        "Pada studi kasus ini, project1 merepresentasikan landing page (beyondtech.co.id), project2 merepresentasikan merchant dashboard (dashboard.beyondtech.co.id), dan project3 merepresentasikan admin panel (admin.beyondtech.co.id). Pembagian ini memudahkan saya menjaga arah desain sekaligus memperjelas prioritas fitur per aplikasi.",
+        "Di landing page, fokus utama saya adalah membangun trust, menjelaskan value layanan, dan mengarahkan user ke call-to-action yang tepat. Struktur informasi disusun ringkas agar pesan produk cepat dipahami oleh calon merchant maupun partner.",
+        "Di merchant dashboard, saya merancang flow transaksi end-to-end agar proses remittance dan disbursement terasa jelas, cepat, dan minim kesalahan. Saya berkolaborasi erat dengan backend untuk sinkronisasi kontrak API, status transaksi, validasi input, serta penanganan edge case di kondisi jaringan nyata.",
+        "Di admin panel, pengguna utamanya adalah superadmin atau tim internal Beyondtech yang memantau keseluruhan flow disbursement. Karena itu, saya memprioritaskan visibilitas operasional melalui table yang informatif, filter yang presisi, detail transaksi yang mudah ditelusuri, dan indikator status yang membantu proses monitoring maupun investigasi.",
+        "Secara teknis, saya menerapkan arsitektur komponen reusable, struktur state yang rapi, dan standar UI lintas domain agar pengembangan fitur baru lebih cepat tanpa mengorbankan konsistensi. Proyek ini menjadi pengalaman penting karena menggabungkan kompleksitas fintech, kebutuhan multi-role, dan reliabilitas tinggi dalam satu ekosistem produk."
       ]
     },
     {

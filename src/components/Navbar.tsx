@@ -39,7 +39,7 @@ export default function Navbar() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full backdrop-blur-2xl"
       >
-        <nav className="mx-auto max-w-7xl">
+        <nav className="mx-auto max-w-7xl px-4 sm:px-0">
           <motion.div
             initial={false}
             animate={{ height: scrolled ? 64 : 88 }}
