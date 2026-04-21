@@ -17,12 +17,12 @@
     "swipeHint": "Geser",
     "photos": [
       {
-        "src": "/profile1.jpeg",
+        "src": "/profile1.png",
         "label": "Profesional",
         "caption": "Frontend Engineer"
       },
       {
-        "src": "/profile2.jpeg",
+        "src": "/profile2.png",
         "label": "Kreatif",
         "caption": "UI & Motion Design"
       },

@@ -153,14 +153,14 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="relative px-4 pb-20 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+      <section className="relative overflow-hidden px-4 pb-8 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">
           <motion.div
             style={{ y: heroY, opacity: heroOpacity }}
-            className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16"
+            className="grid items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-0"
           >
             {/* ── Left: Text content ─────────────────────── */}
-            <div className="space-y-8">
+            <div className="relative z-10 space-y-8">
               <motion.span
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -228,12 +228,12 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* ── Right: Interactive Photo Card ──────────── */}
+            {/* ── Right: Full-height Photo ────────────── */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.25 }}
-              className="relative flex justify-center"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative order-first lg:order-last"
             >
               <HeroPhotoGallery />
             </motion.div>

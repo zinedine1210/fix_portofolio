@@ -17,12 +17,12 @@
     "swipeHint": "Swipe",
     "photos": [
       {
-        "src": "/profile1.jpeg",
+        "src": "/profile1.png",
         "label": "Professional",
         "caption": "Frontend Engineer"
       },
       {
-        "src": "/profile2.jpeg",
+        "src": "/profile2.png",
         "label": "Creative",
         "caption": "UI & Motion Design"
       },
