@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
@@ -16,10 +17,16 @@ type InlineImage = {
   afterParagraph: number
 }
 
+type PreviewImage = {
+  src: string
+  alt: string
+}
+
 export default function BlogPost() {
   const locale = useLocale()
   const params = useParams()
   const slug = params.slug as string
+  const [previewImage, setPreviewImage] = useState<PreviewImage | null>(null)
   const content = getSiteContent(locale)
   const blogPage = content.blogPage
   const site = content.site
@@ -40,6 +47,26 @@ export default function BlogPost() {
     return acc
   }, {})
   const gallery = (post as { gallery?: string[] } | undefined)?.gallery ?? []
+
+  useEffect(() => {
+    if (!previewImage) {
+      return undefined
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setPreviewImage(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      window.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = ''
+    }
+  }, [previewImage])
 
   if (!post) {
     return (
@@ -120,10 +147,18 @@ export default function BlogPost() {
             transition={{ duration: 0.55, delay: 0.05 }}
             className="surface-panel-strong overflow-hidden rounded-[2rem]"
           >
-            <div className="relative h-72 w-full sm:h-96">
+            <button
+              type="button"
+              onClick={() => setPreviewImage({ src: post.cover, alt: post.title })}
+              className="relative block h-72 w-full cursor-zoom-in sm:h-96"
+              aria-label={`Preview ${post.title}`}
+            >
               <Image src={post.cover} alt={post.title} fill className="object-cover" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/42 via-slate-900/12 to-transparent" />
-            </div>
+              <div className="absolute right-4 top-4 rounded-full bg-white/88 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
+                Click to preview
+              </div>
+            </button>
 
             <div className="grid gap-8 p-7 sm:p-10 lg:grid-cols-[0.65fr_1.35fr]">
               <aside className="rounded-[1.5rem] border border-slate-200 bg-slate-50/90 p-6">
@@ -143,11 +178,17 @@ export default function BlogPost() {
                     <p className="text-base leading-8 text-slate-700 md:text-lg">{paragraph}</p>
 
                     {inlineImages[index + 1]?.map((image) => (
-                      <div key={`${image.src}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm">
+                      <button
+                        type="button"
+                        key={`${image.src}-${index}`}
+                        onClick={() => setPreviewImage({ src: image.src, alt: image.alt })}
+                        className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white/80 text-left shadow-sm"
+                        aria-label={`Preview ${image.alt}`}
+                      >
                         <div className="relative aspect-[16/9] w-full">
                           <Image src={image.src} alt={image.alt} fill className="object-cover" />
                         </div>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 ))}
@@ -156,9 +197,17 @@ export default function BlogPost() {
                   <div className="pt-2">
                     <div className="grid gap-4 sm:grid-cols-2">
                       {gallery.map((imageSrc, imageIndex) => (
-                        <div
+                        <button
+                          type="button"
                           key={`${imageSrc}-${imageIndex}`}
-                          className="overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm"
+                          onClick={() =>
+                            setPreviewImage({
+                              src: imageSrc,
+                              alt: `${post.title} gallery image ${imageIndex + 1}`,
+                            })
+                          }
+                          className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white/80 text-left shadow-sm"
+                          aria-label={`Preview gallery image ${imageIndex + 1}`}
                         >
                           <div className="relative aspect-[16/10] w-full">
                             <Image
@@ -168,7 +217,7 @@ export default function BlogPost() {
                               className="object-cover"
                             />
                           </div>
-                        </div>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -178,6 +227,31 @@ export default function BlogPost() {
           </motion.article>
         </div>
       </section>
+
+      {previewImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/82 p-4 backdrop-blur-sm"
+          onClick={() => setPreviewImage(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="relative w-full max-w-6xl" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setPreviewImage(null)}
+              className="absolute right-3 top-3 z-10 rounded-full bg-white/92 px-3 py-2 text-sm font-semibold text-slate-900 shadow-lg"
+              aria-label="Close image preview"
+            >
+              Close
+            </button>
+            <div className="overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/6 shadow-2xl">
+              <div className="relative aspect-[16/10] w-full max-h-[85vh]">
+                <Image src={previewImage.src} alt={previewImage.alt} fill className="object-contain" sizes="100vw" />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className="px-4 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
