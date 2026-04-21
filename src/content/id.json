@@ -120,12 +120,27 @@
       "readTime": "7 menit baca",
       "publishedAt": "21 Apr 2026",
       "content": [
-        "Beyondtech adalah perusahaan yang bergerak di bidang remittance dan disbursement, menyediakan layanan pengiriman serta penerimaan dana secara global dan digital. Dalam proyek ini, saya berperan sebagai Senior Frontend untuk memastikan pengalaman pengguna konsisten di seluruh produk.",
+        "Beyondtech adalah perusahaan yang bergerak di bidang remittance dan disbursement, menyediakan layanan pengiriman serta penerimaan dana secara global dan digital. Proyek ini saya kerjakan saat bekerja di PT Adisena Mitra Usaha, dengan peran sebagai Senior Frontend untuk memastikan pengalaman pengguna konsisten di seluruh produk.",
         "Dalam project kantor ini, project1 merepresentasikan landing page (beyondtech.co.id), project2 merepresentasikan merchant dashboard (dashboard.beyondtech.co.id), dan project3 merepresentasikan admin panel (admin.beyondtech.co.id). Pembagian ini memudahkan saya menjaga arah desain sekaligus memperjelas prioritas fitur per aplikasi.",
         "Di landing page, fokus utama saya adalah membangun trust, menjelaskan value layanan, dan mengarahkan user ke call-to-action yang tepat. Struktur informasi disusun ringkas agar pesan produk cepat dipahami oleh calon merchant maupun partner.",
         "Di merchant dashboard, saya merancang flow transaksi end-to-end agar proses remittance dan disbursement terasa jelas, cepat, dan minim kesalahan. Saya berkolaborasi erat dengan backend untuk sinkronisasi kontrak API, status transaksi, validasi input, serta penanganan edge case di kondisi jaringan nyata.",
         "Di admin panel, pengguna utamanya adalah superadmin atau tim internal Beyondtech yang memantau keseluruhan flow disbursement. Karena itu, saya memprioritaskan visibilitas operasional melalui table yang informatif, filter yang presisi, detail transaksi yang mudah ditelusuri, dan indikator status yang membantu proses monitoring maupun investigasi.",
         "Secara teknis, saya menerapkan arsitektur komponen reusable, struktur state yang rapi, dan standar UI lintas domain agar pengembangan fitur baru lebih cepat tanpa mengorbankan konsistensi. Proyek ini menjadi pengalaman penting karena menggabungkan kompleksitas fintech, kebutuhan multi-role, dan reliabilitas tinggi dalam satu ekosistem produk."
+      ]
+    },
+    {
+      "slug": "docucraft-modular-documentation-builder",
+      "title": "DocuCraft | Modular Documentation Builder",
+      "excerpt": "Project kantor di PT Gateway Internusa berupa CMS berperforma tinggi untuk technical documentation dan knowledge base, dengan editor drag-and-drop modular yang memudahkan penyusunan dokumentasi tanpa menulis kode.",
+      "cover": "/gactivity.jpg",
+      "tags": ["Next.js", "Microservices", "Tailwind CSS", "JavaScript"],
+      "readTime": "5 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "content": [
+        "DocuCraft adalah project yang saya kerjakan saat bekerja di PT Gateway Internusa. Produk ini dirancang sebagai Content Management System berperforma tinggi yang secara khusus ditujukan untuk kebutuhan technical documentation dan knowledge base.",
+        "Nilai utama dari platform ini ada pada modular builder yang memungkinkan pengguna menyusun dokumentasi secara visual melalui interaksi drag-and-drop, dengan pengalaman yang terasa familiar seperti Notion. Dengan pendekatan ini, tim dapat membangun struktur dokumentasi yang rapi, scalable, dan mudah dipahami tanpa harus menulis kode secara langsung.",
+        "Dari sisi frontend, fokus saya adalah memastikan editor tetap responsif meskipun menangani komponen yang dinamis dan hirarki konten yang kompleks. Saya membangun antarmuka yang menjaga keseimbangan antara fleksibilitas authoring, kejelasan layout, dan performa saat pengguna menambah, memindahkan, atau mengatur ulang blok konten.",
+        "Secara teknis, project ini dibangun menggunakan Next.js, arsitektur microservices, Tailwind CSS, dan JavaScript. Kombinasi ini membantu tim mengembangkan platform yang modular, mudah di-scale, dan tetap nyaman digunakan untuk kebutuhan dokumentasi produk yang terus berkembang."
       ]
     },
     {

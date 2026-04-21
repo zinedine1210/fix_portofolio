@@ -120,12 +120,27 @@
       "readTime": "7 min read",
       "publishedAt": "Apr 21, 2026",
       "content": [
-        "Beyondtech operates in remittance and disbursement, delivering global and digital money transfer services. In this project, I worked as Senior Frontend to keep the user experience consistent across the full product ecosystem.",
+        "Beyondtech operates in remittance and disbursement, delivering global and digital money transfer services. I worked on this project while at PT Adisena Mitra Usaha, serving as Senior Frontend to keep the user experience consistent across the full product ecosystem.",
         "In this work project, project1 represents the landing page (beyondtech.co.id), project2 represents the merchant dashboard (dashboard.beyondtech.co.id), and project3 represents the admin panel (admin.beyondtech.co.id). This mapping made it easier to align visual direction while keeping feature priorities clear for each app.",
         "On the landing page, my focus was trust-building, service clarity, and strong call-to-action pathways. The information architecture was designed to communicate product value quickly to prospective merchants and partners.",
         "On the merchant dashboard, I designed the end-to-end transaction flow to make remittance and disbursement actions clear, fast, and less error-prone. I collaborated closely with backend engineers on API contracts, transaction states, input validation, and edge-case handling under real network conditions.",
         "On the admin panel, the primary users are superadmins and internal Beyondtech teams who monitor the full disbursement flow. I prioritized operational visibility through informative tables, precise filters, traceable transaction details, and status indicators that support monitoring and investigation workflows.",
         "From a technical standpoint, I implemented reusable component architecture, clean state structures, and unified UI standards across all domains. This improved feature delivery speed without sacrificing consistency, and made Beyondtech one of the most strategic fintech projects in my portfolio."
+      ]
+    },
+    {
+      "slug": "docucraft-modular-documentation-builder",
+      "title": "DocuCraft | Modular Documentation Builder",
+      "excerpt": "A work project at PT Gateway Internusa: a high-performance CMS for technical documentation and knowledge bases, featuring a modular drag-and-drop editor that enables structured content creation without code.",
+      "cover": "/gactivity.jpg",
+      "tags": ["Next.js", "Microservices", "Tailwind CSS", "JavaScript"],
+      "readTime": "5 min read",
+      "publishedAt": "Apr 21, 2026",
+      "content": [
+        "DocuCraft is a project I worked on while at PT Gateway Internusa. It was designed as a high-performance Content Management System focused specifically on technical documentation and knowledge bases.",
+        "The platform's core value lies in its modular builder, which allows users to create documentation visually through a drag-and-drop experience similar to Notion. This approach makes it possible to build structured, scalable, and intuitive documentation without writing code directly.",
+        "On the frontend side, my focus was keeping the editor responsive while handling dynamic components and complex content hierarchies. I shaped the interface to balance authoring flexibility, layout clarity, and performance as users added, moved, and reorganized content blocks.",
+        "Technically, the project used Next.js, microservices, Tailwind CSS, and JavaScript. That stack helped the team build a modular platform that could scale well while staying efficient for continuously evolving product documentation needs."
       ]
     },
     {
