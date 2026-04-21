@@ -65,7 +65,6 @@ export default function BlogPage() {
                   <div className="p-6">
                     <div className="mb-3 flex items-center justify-between text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
                       <span>{post.publishedAt}</span>
-                      <span>{blogPage.caseStudyLabel}</span>
                     </div>
 
                     <h2 className="text-2xl font-semibold tracking-tight text-slate-950">{post.title}</h2>

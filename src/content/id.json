@@ -85,20 +85,6 @@
   },
   "blogPosts": [
     {
-      "slug": "project1",
-      "title": "Platform E-Commerce Skalabel",
-      "excerpt": "Bagaimana saya menyusun arsitektur storefront yang rapi dengan alur checkout jelas, indexing katalog, dan pola komponen yang konsisten.",
-      "cover": "/project1.jpg",
-      "tags": ["Next.js", "Performa", "Arsitektur"],
-      "readTime": "6 menit baca",
-      "publishedAt": "15 Mar 2026",
-      "content": [
-        "Proyek ini dimulai dari kebutuhan redesign untuk katalog produk yang terus bertambah. Tantangan utamanya adalah menjaga tampilan tetap premium tanpa mengorbankan performa di perangkat menengah.",
-        "Saya memecah UI menjadi bagian reusable dan membuat hirarki section yang lebih jelas agar kartu produk, filter, dan form checkout memiliki pola state yang seragam. Dampaknya, iterasi fitur jadi lebih cepat dan minim regresi.",
-        "Di sisi teknis, saya optimalkan media loading, mengurangi render yang tidak perlu pada list interaktif, serta menyederhanakan payload data di rute trafik tinggi. Hasil akhirnya lebih stabil dan lebih baik untuk konversi."
-      ]
-    },
-    {
       "slug": "beyondtech-remittance-platform",
       "title": "Beyondtech: Membangun Ekosistem Remittance & Disbursement End-to-End",
       "excerpt": "Sebagai Senior Frontend, saya mengembangkan landing page, merchant dashboard, dan admin panel Beyondtech untuk layanan remittance dan disbursement global yang aman, cepat, dan digital.",
@@ -144,17 +130,140 @@
       ]
     },
     {
-      "slug": "project3",
-      "title": "Portofolio Developer Pribadi",
-      "excerpt": "Membangun pengalaman personal branding yang terasa editorial, responsif, dan berkarakter tanpa mengorbankan kualitas kode produksi.",
-      "cover": "/project3.jpg",
-      "tags": ["Branding", "Motion", "Frontend"],
-      "readTime": "4 menit baca",
-      "publishedAt": "20 Jan 2026",
+      "slug": "psychehire-recruitment-assessment",
+      "title": "PsycheHire | Integrated Recruitment & Psychological Assessment Platform",
+      "excerpt": "Ekosistem rekrutmen end-to-end yang menghubungkan pencarian talenta dengan evaluasi psikologi, dilengkapi dengan pasar khusus untuk psikolog profesional.",
+      "cover": "/psychotest-client.jpg",
+      "gallery": ["/psychotest-client.jpg", "/psychotest.jpg"],
+      "tags": ["Next.js", "JavaScript", "Recruitment", "Assessment"],
+      "readTime": "6 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
       "content": [
-        "Portofolio ini didesain untuk menunjukkan keseimbangan antara kemampuan teknis dan sensitivitas desain. Saya menggunakan sistem visual terang dengan layer depth dan motion halus agar tidak terasa datar.",
-        "Struktur konten diperlakukan seperti narasi produk: konteks singkat di awal, bukti melalui proyek, lalu penutup berupa section kontak yang siap konversi. Alurnya terasa nyaman di desktop maupun mobile.",
-        "Untuk maintainability, saya sentralisasi primitive desain yang sering dipakai dan menyederhanakan kontrak komponen. Hasilnya lebih mudah dikembangkan tanpa kehilangan konsistensi visual."
+        "PsycheHire adalah platform rekrutmen komprehensif yang saya kerjakan di PT Gateway Internusa. Produk ini dirancang untuk menjembatani kesenjangan antara akuisisi talenta tradisional dan evaluasi psikologi berbasis data.",
+        "Platform ini melayani tiga segmen pengguna: Kandidat mendapatkan pengalaman pencarian kerja yang streamlined dengan aptitude dan personality assessments terintegrasi. Employer dapat melakukan screening berbasis data melalui hasil test real-time dan analytics dashboard. Professional psychologist memiliki dedicated marketplace untuk membuat, host, dan monetize proprietary psychometric tests mereka.",
+        "Dari perspektif frontend, tantangan utama adalah mengelola kompleksitas multi-user experience, routing assessments yang conditional, dan real-time analytics visualization. Saya merancang interface yang intuitif untuk setiap user persona tanpa mengorbankan performa aplikasi.",
+        "Secara teknis, platform dibangun dengan Next.js dan JavaScript, mengintegrasikan testing framework, analytics engine, dan payment system. Proyek ini menunjukkan bagaimana rekrutmen modern dapat disambungkan dengan psychological science melalui teknologi digital yang scalable."
+      ]
+    },
+    {
+      "slug": "sushimoo-brand-profile",
+      "title": "Sushimoo | Digital Brand Identity & Corporate Profile",
+      "excerpt": "Website corporate profile modern dan high-conversion untuk premium sushi restaurant, menampilkan identitas kuliner brand melalui visual storytelling dan optimized user journey.",
+      "cover": "/sushimoo.jpg",
+      "gallery": ["/sushimoo.jpg"],
+      "tags": ["Next.js", "Branding", "Conversion", "UX Design"],
+      "readTime": "5 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "Ifabula",
+      "content": [
+        "Sushimoo adalah project brand profile digital yang saya kerjakan di Ifabula. Website ini dirancang untuk premium sushi restaurant dengan fokus menerjemahkan identitas kuliner brand ke dalam medium digital.",
+        "Desain website menekankan high-fidelity visual storytelling dengan interactive menus, food photography yang stunning, dan user journey yang optimized untuk mendorong foot traffic fisik dan brand loyalty. Setiap elemen visual dipilih dengan cermat agar mencerminkan premium positioning Sushimoo.",
+        "Saya membangun interface yang memadukan estetika, performa, dan conversion optimization. User dapat menjelajahi menu dengan mudah, melihat detailed descriptions, melihat ambience restaurant, dan langsung navigate ke booking atau contact options.",
+        "Project ini menunjukkan bagaimana brand restaurant dapat diterjemahkan ke digital experience yang tidak hanya informatif tetapi juga meningkatkan engagement dan mendorong real-world visits."
+      ]
+    },
+    {
+      "slug": "metro-bekasi-news-hub",
+      "title": "Metro Bekasi News | Law Enforcement Information Hub",
+      "excerpt": "Platform berita dan informasi berbasis web untuk Polres Metro Bekasi, berfungsi sebagai pusat terpusat untuk press release resmi, pengumuman keselamatan publik, dan laporan community-centric.",
+      "cover": "/beritabekasi.jpg",
+      "gallery": ["/beritabekasi.jpg"],
+      "tags": ["Next.js", "News Platform", "Government", "Public Safety"],
+      "readTime": "5 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Metro Bekasi News adalah specialized platform berita yang dikembangkan untuk Polres Metro Bekasi. Proyek ini berfungsi sebagai hub informasi terpusat untuk press release resmi, pengumuman keselamatan publik, dan reporting yang community-centric.",
+        "Platform dirancang dengan fokus pada kredibilitas, aksesibilitas, dan user engagement. Setiap berita dapat dikategorikan, tagged dengan relevansi, dan dioptimalkan untuk discoverability melalui search dan browsing experience.",
+        "Dari sisi frontend, saya memastikan information architecture yang jelas, loading performance yang cepat, dan responsiveness across devices. Citizen dapat dengan mudah mengakses informasi public safety terbaru, mengikuti berbagai kategori berita, dan berbagi informasi penting.",
+        "Project ini menunjukkan importance dari digital communication dalam law enforcement dan how technology dapat meningkatkan transparency dan public trust."
+      ]
+    },
+    {
+      "slug": "metro-bekasi-danger-button",
+      "title": "Metro Bekasi Danger Button | Emergency Response Integration",
+      "excerpt": "Project keselamatan publik prioritas tinggi dengan emergency button 'one-hit' yang menggunakan Geofencing/GPS untuk instant connection dengan police unit terdekat.",
+      "cover": "/gactivity.jpg",
+      "gallery": ["/gactivity.jpg"],
+      "tags": ["Next.js", "GPS", "Emergency", "Public Safety"],
+      "readTime": "4 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Metro Bekasi Danger Button adalah high-priority public safety project yang dikembangkan kolaboratif dengan Polres Metro Bekasi. Aplikasi ini fitur emergency button 'one-hit' yang menggunakan Geofencing dan GPS protocols.",
+        "Core functionality: citizen dapat dengan satu klik mengirim distress signal yang instantly connect dengan nearest available police unit. System menggunakan real-time geolocation untuk maximize response time dan accuracy.",
+        "Saya bertanggung jawab untuk frontend implementation yang reliable dan responsive, memastikan button tetap accessible dan fast response time bahkan di low network conditions. UX design diprioritaskan untuk usability maksimal dalam emergency situations.",
+        "Project ini critical untuk public safety infrastructure dan menunjukkan bagaimana teknologi mobile dapat menjadi life-saving tool dalam emergency response systems."
+      ]
+    },
+    {
+      "slug": "polres-jakarta-utara-ai",
+      "title": "Polres Jakarta Utara AI | Law Enforcement Intelligence Project",
+      "excerpt": "Collaborative initiative dengan Polres Jakarta Utara untuk mengintegrasikan Artificial Intelligence dalam law enforcement workflows, meningkatkan operational efficiency dan data-driven decision making.",
+      "cover": "/space-bg.jpg",
+      "gallery": ["/space-bg.jpg"],
+      "tags": ["AI", "Law Enforcement", "Intelligence", "Data-Driven"],
+      "readTime": "6 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Polres Jakarta Utara AI adalah high-level collaborative initiative dengan Polres Jakarta Utara untuk integrasi Artificial Intelligence dalam law enforcement workflows. Project ini fokus pada leveraging AI untuk enhance operational efficiency dan data-driven decision-making.",
+        "Platform mengintegrasikan machine learning models untuk pattern recognition, predictive analytics, dan automated intelligence reporting. Police officers dapat mengakses AI-powered insights untuk strategic planning dan resource allocation.",
+        "Frontend development melibatkan building intuitive dashboards, data visualization tools, dan AI-assisted reporting interfaces. User experience design harus mempertimbangkan kebutuhan diverse law enforcement professionals dan operational constraints.",
+        "Project ini menunjukkan cutting-edge application dari AI dalam public sector, demonstrating bagaimana emerging technologies dapat enhance law enforcement effectiveness dan community safety."
+      ]
+    },
+    {
+      "slug": "komindo-marketplace",
+      "title": "Komindo Marketplace & Management System (MMS) | UMKM E-Commerce Ecosystem",
+      "excerpt": "Ekosistem e-commerce scalable yang diberdayakan untuk UMKM lokal, menyediakan dashboard manajemen komprehensif untuk vendor streamline penjualan dan inventory.",
+      "cover": "/komindocp.jpg",
+      "gallery": ["/komindocp.jpg", "/mmsumkmsejahtera.jpg", "/marketplace.jpg"],
+      "tags": ["E-Commerce", "Marketplace", "UMKM", "Dashboard"],
+      "readTime": "7 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Komindo Marketplace adalah ekosistem e-commerce scalable yang dirancang khusus untuk memberdayakan UMKM lokal. Platform ini menggabungkan customer-facing marketplace dengan vendor management system yang komprehensif.",
+        "Untuk customer, marketplace menyediakan pengalaman berbelanja yang intuitif dengan ribuan produk dari UMKM terverifikasi. Untuk vendor/UMKM, dashboard manajemen lengkap memudahkan pengelolaan katalog produk, inventory tracking, order management, dan penjualan analytics.",
+        "Teknologi marketplace dibangun untuk scalability, memungkinkan ratusan vendor beroperasi simultaneously tanpa performa degradation. Payment gateway terintegrasi, shipping partners, dan customer support tools tersedia dalam satu platform terpadu.",
+        "Project ini merepresentasikan komitmen dalam memberdayakan ekonomi lokal melalui digital transformation, memberikan UMKM akses ke customer base yang lebih luas dan tools yang sebelumnya hanya tersedia untuk enterprise-scale retailers."
+      ]
+    },
+    {
+      "slug": "garage-management-system",
+      "title": "Garage Management System | Dewa Motor - Automotive Service Hub",
+      "excerpt": "Sistem manajemen bengkel komprehensif yang menyimpan seluruh data operasional bengkel termasuk stok suku cadang, transaksi, data mekanik, dan customer information.",
+      "cover": "/bengkel.png",
+      "gallery": ["/bengkel.png"],
+      "tags": ["Java", "Garage Management", "Automotive", "Enterprise"],
+      "readTime": "5 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Garage Management System adalah aplikasi enterprise yang dikembangkan untuk Dewa Motor, sebuah bengkel otomotif profesional. Sistem ini mengkonsolidasikan seluruh aspek operasional bengkel dalam satu platform terintegrasi.",
+        "Fitur utama mencakup inventory management untuk suku cadang, transaction tracking untuk service dan penjualan, employee database untuk mekanik dan staff, dan customer records dengan service history lengkap. Sistem juga menyediakan reporting dan analytics untuk business intelligence.",
+        "Aplikasi dibangun dengan Java, memberikan reliability dan performance yang dibutuhkan untuk operasi bengkel yang high-volume. Database structure dirancang untuk menangani kompleksitas automotive service workflows termasuk warranty tracking, service scheduling, dan parts ordering.",
+        "Project ini menunjukkan bagaimana technology dapat meningkatkan operational efficiency di automotive service industry, memudahkan technician bekerja lebih produktif dan memberikan better customer experience melalui organized service documentation dan faster turnaround time."
+      ]
+    },
+    {
+      "slug": "rentalin-vehicle-marketplace",
+      "title": "Rentalin | Fast-Track Vehicle Rental Ecosystem",
+      "excerpt": "Streamlined vehicle rental marketplace dengan UI intuitif yang meminimalkan friction antara browsing dan transaksi, menghadirkan rapid user experience dari search hingga checkout.",
+      "cover": "/rentalin.png",
+      "gallery": ["/rentalin.png", "/rentalin1.png", "/rentalin2.png"],
+      "videoUrl": "https://youtu.be/rNWYgDq4Ddg?si=scgu7pWkh9N3N8f_",
+      "tags": ["Next.js", "Marketplace", "Payment Integration", "Conversion"],
+      "readTime": "6 menit baca",
+      "publishedAt": "21 Apr 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Rentalin adalah vehicle rental marketplace yang dirancang untuk high-speed booking pengalaman. Platform ini menghadirkan UI intuitif yang minimized friction antara browsing inventory dan final transaction.",
+        "Key features: rapid search dan filtering, real-time availability checking, instant booking confirmation, dan seamless payment integration. User journey dioptimalkan untuk conversion dengan setiap step carefully designed untuk minimize abandonment.",
+        "Frontend architecture menggunakan Next.js untuk performance optimization, lazy loading untuk images, dan caching strategies untuk fast page transitions. Dynamic pricing, real-time inventory updates, dan complex search logic dihandle efficiently di client-side dan server-side.",
+        "Proyek juga mencakup integration dengan multiple payment gateways, vehicle tracking systems, dan customer support tools. Dari aspek UX, design focus adalah kemudahan dan kecepatan tanpa mengorbankan security dan reliability dalam transaksi rental vehicles yang high-value."
       ]
     }
   ]

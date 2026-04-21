@@ -17,6 +17,12 @@ type InlineImage = {
   afterParagraph: number
 }
 
+type ContentItem = string | {
+  type: 'video'
+  videoUrl: string
+  title?: string
+}
+
 type PreviewImage = {
   src: string
   alt: string
@@ -173,25 +179,46 @@ export default function BlogPost() {
               </aside>
 
               <div className="space-y-6">
-                {post.content.map((paragraph, index) => (
-                  <div key={index} className="space-y-5">
-                    <p className="text-base leading-8 text-slate-700 md:text-lg">{paragraph}</p>
-
-                    {inlineImages[index + 1]?.map((image) => (
-                      <button
-                        type="button"
-                        key={`${image.src}-${index}`}
-                        onClick={() => setPreviewImage({ src: image.src, alt: image.alt })}
-                        className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white/80 text-left shadow-sm"
-                        aria-label={`Preview ${image.alt}`}
-                      >
-                        <div className="relative aspect-[16/9] w-full">
-                          <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                {post.content.map((item, index) => {
+                  const isVideo = typeof item === 'object' && item !== null && 'videoUrl' in item
+                  
+                  return (
+                    <div key={index} className="space-y-5">
+                      {typeof item === 'string' && (
+                        <p className="text-base leading-8 text-slate-700 md:text-lg">{item}</p>
+                      )}
+                      
+                      {isVideo && (
+                        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm">
+                          <div className="relative aspect-video w-full">
+                            <iframe
+                              src={(item as any).videoUrl}
+                              title={(item as any).title || 'Project video'}
+                              className="h-full w-full"
+                              allowFullScreen
+                              loading="lazy"
+                              style={{ border: 'none' }}
+                            />
+                          </div>
                         </div>
-                      </button>
-                    ))}
-                  </div>
-                ))}
+                      )}
+
+                      {inlineImages[index + 1]?.map((image) => (
+                        <button
+                          type="button"
+                          key={`${image.src}-${index}`}
+                          onClick={() => setPreviewImage({ src: image.src, alt: image.alt })}
+                          className="block w-full cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white/80 text-left shadow-sm"
+                          aria-label={`Preview ${image.alt}`}
+                        >
+                          <div className="relative aspect-[16/9] w-full">
+                            <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )
+                })}
 
                 {gallery.length > 0 && (
                   <div className="pt-2">

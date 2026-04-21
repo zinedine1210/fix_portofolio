@@ -85,20 +85,6 @@
   },
   "blogPosts": [
     {
-      "slug": "project1",
-      "title": "Scalable E-Commerce Platform",
-      "excerpt": "How I structured a maintainable storefront architecture with clean checkout flows, catalog indexing, and predictable component patterns.",
-      "cover": "/project1.jpg",
-      "tags": ["Next.js", "Performance", "Architecture"],
-      "readTime": "6 min read",
-      "publishedAt": "Mar 15, 2026",
-      "content": [
-        "This project started as a redesign initiative for a growing product catalog. The main challenge was balancing visual polish with predictable performance on slower devices.",
-        "I split the UI into reusable slices and introduced a clear section hierarchy, allowing product cards, filters, and checkout forms to share consistent states. This reduced regressions and made iteration faster.",
-        "On the technical side, I optimized media handling, reduced render churn on interactive lists, and simplified network payloads for high-traffic routes. The result was a cleaner experience and a much steadier conversion funnel."
-      ]
-    },
-    {
       "slug": "beyondtech-remittance-platform",
       "title": "Beyondtech: Building an End-to-End Remittance & Disbursement Ecosystem",
       "excerpt": "As a Senior Frontend engineer, I built Beyondtech's landing page, merchant dashboard, and admin panel for secure, global, and fully digital remittance and disbursement services.",
@@ -144,17 +130,140 @@
       ]
     },
     {
-      "slug": "project3",
-      "title": "Personal Developer Portfolio",
-      "excerpt": "Building a personal brand experience that feels editorial, responsive, and memorable while keeping code quality production-ready.",
-      "cover": "/project3.jpg",
-      "tags": ["Branding", "Motion", "Frontend"],
-      "readTime": "4 min read",
-      "publishedAt": "Jan 20, 2026",
+      "slug": "psychehire-recruitment-assessment",
+      "title": "PsycheHire | Integrated Recruitment & Psychological Assessment Platform",
+      "excerpt": "A comprehensive end-to-end recruitment ecosystem that bridges talent acquisition with psychological evaluation, featuring a marketplace for licensed psychologists.",
+      "cover": "/psychotest-client.jpg",
+      "gallery": ["/psychotest-client.jpg", "/psychotest.jpg"],
+      "tags": ["Next.js", "JavaScript", "Recruitment", "Assessment"],
+      "readTime": "6 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
       "content": [
-        "The portfolio was designed to communicate both technical confidence and design sensitivity. I used a bright visual system with layered depth and subtle motion to avoid a flat presentation.",
-        "Content structure was treated like a product narrative: quick context first, then proof through projects, and finally a conversion-ready contact section. This improved flow across desktop and mobile.",
-        "I also prioritized maintainability by centralizing reusable design primitives and simplifying component contracts. The final result is easier to evolve while staying visually cohesive."
+        "PsycheHire is a comprehensive recruitment platform I developed at PT Gateway Internusa. The platform bridges the gap between traditional talent acquisition and data-driven psychological evaluation.",
+        "The ecosystem serves three user segments: Candidates receive a streamlined job search experience with built-in aptitude and personality assessments. Employers access data-driven candidate screening through real-time test results and analytics. Professional psychologists have a dedicated marketplace to create, host, and monetize proprietary psychometric tests.",
+        "From a frontend perspective, the key challenge was managing multi-user experience complexity, conditional assessment routing, and real-time analytics visualization. I designed intuitive interfaces for each user persona while maintaining application performance.",
+        "Technically, the platform was built with Next.js and JavaScript, integrating testing frameworks, analytics engines, and payment systems. This project demonstrates how modern recruitment can be connected with psychological science through scalable digital technology."
+      ]
+    },
+    {
+      "slug": "sushimoo-brand-profile",
+      "title": "Sushimoo | Digital Brand Identity & Corporate Profile",
+      "excerpt": "A modern, high-conversion corporate profile website for a premium sushi restaurant, translating culinary brand identity into digital space with interactive experiences and optimized user journeys.",
+      "cover": "/sushimoo.jpg",
+      "gallery": ["/sushimoo.jpg"],
+      "tags": ["Next.js", "Branding", "Conversion", "UX Design"],
+      "readTime": "5 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "Ifabula",
+      "content": [
+        "Sushimoo is a digital brand profile project I developed at Ifabula for a premium sushi restaurant. The website was designed with a focus on translating the restaurant's culinary identity into a compelling digital experience.",
+        "The design emphasizes high-fidelity visual storytelling with interactive menus, stunning food photography, and optimized user journeys to drive physical foot traffic and brand loyalty. Every visual element was carefully selected to reflect Sushimoo's premium positioning.",
+        "I built an interface that balances aesthetics, performance, and conversion optimization. Users can explore menus effortlessly, view detailed descriptions, experience the restaurant's ambiance, and navigate directly to booking or contact options.",
+        "This project demonstrates how restaurant brands can translate to digital experiences that are not only informative but also drive engagement and encourage real-world visits through thoughtful design and seamless user interactions."
+      ]
+    },
+    {
+      "slug": "metro-bekasi-news-hub",
+      "title": "Metro Bekasi News | Law Enforcement Information Hub",
+      "excerpt": "A specialized web-based news and information platform for Polres Metro Bekasi (Metro Bekasi Resort Police), serving as a centralized hub for official press releases and public safety announcements.",
+      "cover": "/beritabekasi.jpg",
+      "gallery": ["/beritabekasi.jpg"],
+      "tags": ["Next.js", "News Platform", "Government", "Public Safety"],
+      "readTime": "5 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Metro Bekasi News is a specialized news platform developed for Polres Metro Bekasi (Metro Bekasi Resort Police). The platform functions as a centralized hub for official press releases, public safety announcements, and community-centric reporting.",
+        "The platform is designed with a focus on credibility, accessibility, and user engagement. Each news item is categorized, tagged for relevance, and optimized for discoverability through search and browsing experiences.",
+        "From a frontend perspective, I ensured clear information architecture, fast loading performance, and full responsiveness across devices. Citizens can easily access the latest public safety information, follow relevant categories, and share important updates.",
+        "This project demonstrates the importance of digital communication in law enforcement and how technology can enhance transparency and build public trust in government institutions."
+      ]
+    },
+    {
+      "slug": "metro-bekasi-danger-button",
+      "title": "Metro Bekasi Danger Button | Emergency Response Integration",
+      "excerpt": "A high-priority public safety project featuring a 'one-hit' emergency button that uses Geofencing/GPS protocols to instantly connect citizens with the nearest available police unit.",
+      "cover": "/gactivity.jpg",
+      "gallery": ["/gactivity.jpg"],
+      "tags": ["Next.js", "GPS", "Emergency", "Public Safety"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Metro Bekasi Danger Button is a high-priority public safety project developed in collaboration with Polres Metro Bekasi. The application features a 'one-hit' emergency button that uses Geofencing and GPS protocols.",
+        "Core functionality: Citizens can send a distress signal with a single click, instantly connecting with the nearest available police unit. The system uses real-time geolocation to maximize response time and accuracy.",
+        "I was responsible for frontend implementation that ensures reliability and responsiveness, maintaining button accessibility and fast response times even under poor network conditions. UX design prioritized usability in emergency situations.",
+        "This project is critical for public safety infrastructure, demonstrating how mobile technology can become a life-saving tool in emergency response systems and citizen protection."
+      ]
+    },
+    {
+      "slug": "polres-jakarta-utara-ai",
+      "title": "Polres Jakarta Utara AI | Law Enforcement Intelligence Project",
+      "excerpt": "A collaborative initiative with the North Jakarta Resort Police to integrate Artificial Intelligence into law enforcement workflows, enhancing operational efficiency and data-driven decision-making.",
+      "cover": "/space-bg.jpg",
+      "gallery": ["/space-bg.jpg"],
+      "tags": ["AI", "Law Enforcement", "Intelligence", "Data-Driven"],
+      "readTime": "6 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Polres Jakarta Utara AI is a high-level collaborative initiative with the North Jakarta Resort Police to integrate Artificial Intelligence into law enforcement workflows. The project focuses on leveraging AI to enhance operational efficiency and data-driven decision-making.",
+        "The platform integrates machine learning models for pattern recognition, predictive analytics, and automated intelligence reporting. Police officers can access AI-powered insights for strategic planning and resource allocation.",
+        "Frontend development involved building intuitive dashboards, data visualization tools, and AI-assisted reporting interfaces. UX design had to accommodate diverse law enforcement professionals and operational constraints.",
+        "This project showcases cutting-edge AI applications in the public sector, demonstrating how emerging technologies can enhance law enforcement effectiveness and contribute to community safety."
+      ]
+    },
+    {
+      "slug": "komindo-marketplace",
+      "title": "Komindo Marketplace & Management System (MMS) | UMKM E-Commerce Ecosystem",
+      "excerpt": "A scalable e-commerce ecosystem engineered to empower local SMEs (UMKM), providing comprehensive management dashboards for vendors to streamline sales and inventory.",
+      "cover": "/komindocp.jpg",
+      "gallery": ["/komindocp.jpg", "/mmsumkmsejahtera.jpg", "/marketplace.jpg"],
+      "tags": ["E-Commerce", "Marketplace", "UMKM", "Dashboard"],
+      "readTime": "7 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Komindo Marketplace is a scalable e-commerce ecosystem specifically engineered to empower local SMEs (UMKM). The platform combines a customer-facing marketplace with a comprehensive vendor management system.",
+        "For customers, the marketplace offers an intuitive shopping experience with thousands of products from verified UMKM vendors. For vendors and SMEs, a complete management dashboard simplifies catalog management, inventory tracking, order processing, and sales analytics.",
+        "The marketplace technology is built for scalability, enabling hundreds of vendors to operate simultaneously without performance degradation. Integrated payment gateways, shipping partner connections, and customer support tools are all available within one unified platform.",
+        "This project represents a commitment to empowering local economies through digital transformation, giving SMEs access to broader customer bases and enterprise-grade tools previously available only to large-scale retailers."
+      ]
+    },
+    {
+      "slug": "garage-management-system",
+      "title": "Garage Management System | Dewa Motor - Automotive Service Hub",
+      "excerpt": "A comprehensive garage management system that stores all operational data for automotive service centers including parts inventory, transactions, mechanic records, and customer information.",
+      "cover": "/bengkel.png",
+      "gallery": ["/bengkel.png"],
+      "tags": ["Java", "Garage Management", "Automotive", "Enterprise"],
+      "readTime": "5 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Garage Management System is an enterprise application developed for Dewa Motor, a professional automotive service center. The system consolidates all aspects of garage operations into a single integrated platform.",
+        "Key features include inventory management for automotive parts, transaction tracking for services and sales, employee databases for mechanics and staff, and comprehensive customer records with full service history. The system also provides reporting and analytics for business intelligence.",
+        "The application was built with Java, delivering the reliability and performance required for high-volume garage operations. The database structure is designed to handle complex automotive service workflows including warranty tracking, service scheduling, and parts ordering.",
+        "This project demonstrates how technology enhances operational efficiency in the automotive service industry, enabling technicians to work more productively and providing customers with better experiences through organized service documentation and faster turnaround times."
+      ]
+    },
+    {
+      "slug": "rentalin-vehicle-marketplace",
+      "title": "Rentalin | Fast-Track Vehicle Rental Ecosystem",
+      "excerpt": "A streamlined vehicle rental marketplace designed for high-speed booking with an intuitive UI that minimizes friction from search to transaction, ensuring rapid user experience.",
+      "cover": "/rentalin.png",
+      "gallery": ["/rentalin.png", "/rentalin1.png", "/rentalin2.png"],
+      "videoUrl": "https://youtu.be/rNWYgDq4Ddg?si=scgu7pWkh9N3N8f_",
+      "tags": ["Next.js", "Marketplace", "Payment Integration", "Conversion"],
+      "readTime": "6 min read",
+      "publishedAt": "Apr 21, 2026",
+      "company": "PT Gateway Internusa",
+      "content": [
+        "Rentalin is a vehicle rental marketplace designed for high-speed booking experiences. The platform features an intuitive UI that minimizes friction between browsing inventory and completing transactions.",
+        "Key features include rapid search and filtering, real-time availability checking, instant booking confirmation, and seamless payment integration. The user journey is optimized for conversion at each step to minimize abandonment.",
+        "The frontend architecture uses Next.js for performance optimization, lazy loading for images, and strategic caching for fast page transitions. Dynamic pricing, real-time inventory updates, and complex search logic are handled efficiently across client and server.",
+        "The project also includes integrations with multiple payment gateways, vehicle tracking systems, and customer support tools. The UX design prioritizes ease and speed without compromising security and reliability in high-value rental transactions."
       ]
     }
   ]

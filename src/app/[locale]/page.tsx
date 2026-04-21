@@ -64,9 +64,10 @@ export default function Home() {
     pointerY.set(50)
   }
 
-  const experienceItems = [1, 2, 3].map((index) => ({
+  const experienceItems = [1, 2, 3, 4].map((index) => ({
     title: t(`experience${index}Title`),
     period: t(`experience${index}Period`),
+    company: t(`experience${index}Company`),
     description: t(`experience${index}Description`),
   }))
 
@@ -342,7 +343,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section id="experience" className="px-4 py-16 sm:px-6 lg:px-8">
+      <section id="experience" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -371,14 +372,17 @@ export default function Home() {
                   <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">{item.period}</p>
                 </div>
                 <div className="surface-panel rounded-[1.75rem] p-7 md:p-8">
-                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{item.title}</h3>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{item.title}</h3>
+                    <p className="text-sm font-semibold text-sky-600">{item.company}</p>
+                  </div>
                   <p className="mt-4 text-base leading-7 text-slate-600">{item.description}</p>
                 </div>
               </motion.article>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       <section id="skills" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
