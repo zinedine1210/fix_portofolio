@@ -18,12 +18,19 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const getNavHref = (hash: string) => {
+    if (typeof window !== 'undefined' && !window.location.pathname.endsWith('/')) {
+      return `/${hash}`
+    }
+    return hash
+  }
+
   const navItems = [
-    { href: '#about', label: t('about') },
-    { href: '#experience', label: t('experience') },
-    { href: '#skills', label: t('skills') },
-    { href: '#projects', label: t('projects') },
-    { href: '#contact', label: t('contact') },
+    { hash: '#about', label: t('about') },
+    { hash: '#experience', label: t('experience') },
+    { hash: '#skills', label: t('skills') },
+    { hash: '#projects', label: t('projects') },
+    { hash: '#contact', label: t('contact') },
   ]
 
   return (
@@ -61,13 +68,13 @@ export default function Navbar() {
             <div className="hidden md:block">
               <div className={`flex items-center gap-1 rounded-full border border-white/55 bg-white/70 px-2.5 py-1.5 backdrop-blur-xl ${scrolled ? "": "shadow-lg shadow-slate-900/6"}`}>
                 {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
+                  <a
+                    key={item.hash}
+                    href={getNavHref(item.hash)}
                     className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-200 hover:bg-slate-950 hover:text-white"
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 ))}
                 <LanguageDropdown />
               </div>
@@ -104,14 +111,14 @@ export default function Navbar() {
         <div className="bg-white/94 px-4 pb-4 pt-1 backdrop-blur-2xl">
           <div className="space-y-1 rounded-[1.75rem] border border-slate-200/80 bg-white/95 p-2.5 shadow-2xl shadow-slate-900/10">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
+              <a
+                key={item.hash}
+                href={getNavHref(item.hash)}
                 className="block rounded-[1.25rem] px-4 py-3 text-base font-semibold text-slate-600 transition-colors hover:bg-sky-50 hover:text-slate-950"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
             <div className="pt-2">
               <LanguageDropdown />

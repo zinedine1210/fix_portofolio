@@ -261,6 +261,7 @@
       "company": "PT Gateway Internusa",
       "content": [
         "Rentalin is a vehicle rental marketplace designed for high-speed booking experiences. The platform features an intuitive UI that minimizes friction between browsing inventory and completing transactions.",
+        { "type": "video", "videoUrl": "https://www.youtube.com/embed/rNWYgDq4Ddg?si=scgu7pWkh9N3N8f_", "title": "Rentalin Demo" },
         "Key features include rapid search and filtering, real-time availability checking, instant booking confirmation, and seamless payment integration. The user journey is optimized for conversion at each step to minimize abandonment.",
         "The frontend architecture uses Next.js for performance optimization, lazy loading for images, and strategic caching for fast page transitions. Dynamic pricing, real-time inventory updates, and complex search logic are handled efficiently across client and server.",
         "The project also includes integrations with multiple payment gateways, vehicle tracking systems, and customer support tools. The UX design prioritizes ease and speed without compromising security and reliability in high-value rental transactions."

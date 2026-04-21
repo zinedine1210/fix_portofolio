@@ -360,7 +360,7 @@ export default function Home() {
           <div className="relative space-y-6 before:absolute before:left-5 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-sky-200 before:via-slate-200 before:to-transparent md:before:left-[11.5rem]">
             {experienceItems.map((item, index) => (
               <motion.article
-                key={item.title}
+                key={`experience-${index}`}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: index * 0.08 }}
@@ -441,6 +441,25 @@ export default function Home() {
             <p className="section-copy mt-5">{t('projectsIntro')}</p>
           </motion.div>
           <ProjectSlider />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-10 flex justify-center"
+          >
+            <motion.a
+              href="/blog"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center rounded-full border border-slate-200 bg-white px-8 py-3.5 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-colors hover:border-sky-200 hover:text-slate-950"
+            >
+              {t('viewAllProjects')}
+              <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
