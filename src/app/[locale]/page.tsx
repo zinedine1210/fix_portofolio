@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import type { MouseEvent } from 'react'
 import { useState } from 'react'
@@ -32,9 +32,6 @@ export default function Home() {
   const t = useTranslations('Home')
   const locale = useLocale()
   const content = getSiteContent(locale)
-  const { scrollYProgress } = useScroll()
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, -120])
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0.88])
 
   const experienceItems = [1, 2, 3, 4].map((index) => ({
     title: t(`experience${index}Title`),
@@ -153,14 +150,19 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="relative overflow-hidden px-4 pb-8 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+      <section className="relative px-4 pb-0 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">
-          <motion.div
-            style={{ y: heroY, opacity: heroOpacity }}
-            className="grid items-center gap-8 lg:grid-cols-[1fr_1fr] lg:gap-0"
+          <div
+            className="grid items-start gap-8 lg:grid-cols-[1fr_1fr] lg:gap-0"
           >
-            {/* ── Left: Text content ─────────────────────── */}
-            <div className="relative z-10 space-y-8">
+            {/* ── Left: Text content (sticky) ───────────── */}
+            <div className="relative z-10 lg:sticky lg:top-28 lg:self-start">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8"
+              >
               <motion.span
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -226,6 +228,7 @@ export default function Home() {
                   </div>
                 ))}
               </motion.div>
+              </motion.div>
             </div>
 
             {/* ── Right: Full-height Photo ────────────── */}
@@ -237,7 +240,7 @@ export default function Home() {
             >
               <HeroPhotoGallery />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
