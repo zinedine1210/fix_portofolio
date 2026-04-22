@@ -29,6 +29,43 @@ type PreviewImage = {
   alt: string
 }
 
+type BlogPostWithQuickSummary = {
+  slug: string
+  title: string
+  excerpt: string
+  tags: string[]
+  company?: string
+  quickSummary?: string[]
+}
+
+function getProjectQuickSummary(
+  post: BlogPostWithQuickSummary,
+  locale: string,
+  fallbackItems: string[],
+): string[] {
+  if (post.quickSummary && post.quickSummary.length > 0) {
+    return post.quickSummary
+  }
+
+  const tags = post.tags.slice(0, 3)
+  const tagLine = tags.length > 0 ? tags.join(', ') : locale === 'id' ? 'Pengembangan produk' : 'Product development'
+  const companyLine = post.company
+    ? locale === 'id'
+      ? `Dikembangkan untuk ${post.company}`
+      : `Built for ${post.company}`
+    : locale === 'id'
+      ? `Fokus proyek: ${post.title}`
+      : `Project focus: ${post.title}`
+
+  const excerptLine = post.excerpt.length > 110 ? `${post.excerpt.slice(0, 110).trimEnd()}...` : post.excerpt
+
+  return [
+    companyLine,
+    locale === 'id' ? `Teknologi/fokus utama: ${tagLine}` : `Core stack/focus: ${tagLine}`,
+    excerptLine,
+  ]
+}
+
 export default function BlogPostClient() {
   const locale = useLocale()
   const params = useParams()
@@ -42,6 +79,10 @@ export default function BlogPostClient() {
   const relatedPosts = getBlogPosts(locale)
     .filter((item) => item.slug !== slug)
     .slice(0, 2)
+
+  const quickSummaryItems = post
+    ? getProjectQuickSummary(post as BlogPostWithQuickSummary, locale, blogPage.quickSummaryItems)
+    : blogPage.quickSummaryItems
 
   const inlineImages = ((post as { inlineImages?: InlineImage[] } | undefined)?.inlineImages ?? []).reduce<
     Record<number, InlineImage[]>
@@ -169,7 +210,7 @@ export default function BlogPostClient() {
                   {blogPage.quickSummaryTitle}
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-400">
-                  {blogPage.quickSummaryItems.map((item) => (
+                  {quickSummaryItems.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>

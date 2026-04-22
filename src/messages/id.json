@@ -92,7 +92,7 @@
     "experience": "Pengalaman",
     "skills": "Keahlian",
     "projects": "Proyek",
-    "blog": "Blog",
+    "blog": "Proyek",
     "contact": "Kontak",
     "language": "Bahasa"
   },
@@ -100,7 +100,7 @@
     "home": "Beranda",
     "about": "Tentang",
     "projects": "Proyek",
-    "blog": "Blog",
+    "blog": "Proyek",
     "contact": "Kontak"
   },
   "home": {
@@ -118,7 +118,7 @@
     "viewBlog": "Baca Selengkapnya"
   },
   "blog": {
-    "title": "Blog Proyek",
+    "title": "Proyek Saya",
     "readMore": "Baca Selengkapnya"
   },
   "contact": {

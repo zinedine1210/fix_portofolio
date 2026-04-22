@@ -103,7 +103,7 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "blog": "Blog",
+    "blog": "Projects",
     "contact": "Contact"
   },
   "home": {
@@ -121,8 +121,8 @@
     "viewBlog": "Explore the Details"
   },
   "blog": {
-    "title": "Project Insights & Blog",
-    "readMore": "Read the Full Article"
+    "title": "Project Insights",
+    "readMore": "View Full Project"
   },
   "contact": {
     "title": "Let's Start a Conversation",

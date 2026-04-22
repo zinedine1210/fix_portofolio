@@ -43,10 +43,10 @@
     "title": "Project Stories & Build Notes",
     "description": "A curated stream of design and engineering notes: architecture decisions, UX trade-offs, and lessons from each shipped project.",
     "caseStudyLabel": "Case Study",
-    "readArticle": "Read Article",
-    "backToBlog": "Back to blog",
-    "backToBlogButton": "Back to Blog",
-    "notFoundTitle": "Article not found",
+    "readArticle": "View Project",
+    "backToBlog": "Back to projects",
+    "backToBlogButton": "Back to Projects",
+    "notFoundTitle": "Project not found",
     "notFoundDescription": "The page you are looking for is unavailable or has been moved.",
     "quickSummaryTitle": "Quick Summary",
     "quickSummaryItems": [
@@ -54,7 +54,7 @@
       "Reusable component architecture for scaling.",
       "Motion used selectively to stay professional."
     ],
-    "relatedArticlesTitle": "Related Articles",
+    "relatedArticlesTitle": "Related Projects",
     "viewAll": "View all"
   },
   "footer": {

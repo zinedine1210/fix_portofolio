@@ -10,10 +10,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const isId = locale === 'id'
-  const title = isId ? 'Proyek & Artikel' : 'Projects & Articles'
+  const title = isId ? 'Semua Proyek' : 'All Projects'
   const description = isId
-    ? 'Jelajahi proyek dan artikel dari Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer.'
-    : 'Explore projects and articles by Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer.'
+    ? 'Jelajahi semua proyek dari Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer.'
+    : 'Explore all projects by Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer.'
   const url = `${siteUrl}/${locale}/blog`
 
   return {
@@ -31,7 +31,7 @@ export async function generateMetadata({
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Zinedine Ziddan Fahdlevy — Projects & Articles',
+          alt: 'Zinedine Ziddan Fahdlevy — All Projects',
           type: 'image/png',
         },
       ],

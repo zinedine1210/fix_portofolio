@@ -40,13 +40,13 @@
   },
   "blogPage": {
     "eyebrow": "Jurnal Portofolio",
-    "title": "Blog Proyek dan Catatan Proses",
+    "title": "Proyek dan Catatan Proses",
     "description": "Kumpulan insight dari proses desain dan pengembangan: keputusan teknis, pendekatan UX, serta pelajaran yang didapat dari tiap proyek.",
     "caseStudyLabel": "Studi Kasus",
-    "readArticle": "Baca Artikel",
-    "backToBlog": "Kembali ke blog",
-    "backToBlogButton": "Kembali ke Blog",
-    "notFoundTitle": "Artikel tidak ditemukan",
+    "readArticle": "Lihat Proyek",
+    "backToBlog": "Kembali ke proyek",
+    "backToBlogButton": "Kembali ke Proyek",
+    "notFoundTitle": "Proyek tidak ditemukan",
     "notFoundDescription": "Halaman yang kamu cari tidak tersedia atau sudah dipindahkan.",
     "quickSummaryTitle": "Ringkasan Cepat",
     "quickSummaryItems": [
@@ -54,7 +54,7 @@
       "Komponen dirancang reusable untuk scaling.",
       "Motion digunakan seperlunya agar tetap profesional."
     ],
-    "relatedArticlesTitle": "Artikel Terkait",
+    "relatedArticlesTitle": "Proyek Terkait",
     "viewAll": "Lihat semua"
   },
   "footer": {
