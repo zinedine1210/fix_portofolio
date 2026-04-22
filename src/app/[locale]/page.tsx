@@ -2,31 +2,14 @@
 
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import type { MouseEvent } from 'react'
 import { useState } from 'react'
 import { useLocale } from 'next-intl'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
 import Footer from '@/components/Footer'
 import HeroPhotoGallery from '@/components/HeroPhotoGallery'
+import BackgroundEffects from '@/components/BackgroundEffects'
 import { getSiteContent } from '@/data/siteContent'
-
-const floatingShapes = [
-  { className: 'left-[4%] top-24 h-44 w-44 bg-sky-200/55', duration: 12 },
-  { className: 'right-[6%] top-[22%] h-56 w-56 bg-cyan-100/80', duration: 16 },
-  { className: 'left-[16%] bottom-[18%] h-64 w-64 bg-blue-100/60', duration: 18 },
-  { className: 'right-[18%] bottom-12 h-40 w-40 bg-slate-200/70', duration: 14 },
-]
-
-const orbitDots = [
-  'left-[12%] top-[18%] h-2.5 w-2.5',
-  'left-[22%] top-[38%] h-3 w-3',
-  'right-[16%] top-[14%] h-2 w-2',
-  'right-[24%] top-[42%] h-2.5 w-2.5',
-  'left-[28%] bottom-[22%] h-2 w-2',
-  'right-[28%] bottom-[16%] h-3 w-3',
-]
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -130,25 +113,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen text-slate-900 dark:text-slate-100">
       <Navbar />
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-mesh opacity-60 dark:opacity-30" />
-        {floatingShapes.map((shape) => (
-          <motion.div
-            key={shape.className}
-            className={`absolute rounded-full blur-3xl ${shape.className} dark:opacity-20`}
-            animate={{ y: [0, -20, 0], scale: [1, 1.06, 1] }}
-            transition={{ duration: shape.duration, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
-        {orbitDots.map((dot, index) => (
-          <motion.div
-            key={dot}
-            className={`absolute rounded-full bg-sky-400/50 dark:bg-sky-400/20 ${dot}`}
-            animate={{ opacity: [0.35, 1, 0.35], y: [0, -10, 0] }}
-            transition={{ duration: 4 + index, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
-      </div>
+      <BackgroundEffects />
 
       <section className="relative px-4 pb-0 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">

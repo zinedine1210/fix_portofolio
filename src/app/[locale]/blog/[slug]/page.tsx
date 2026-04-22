@@ -7,6 +7,7 @@ import { useLocale } from 'next-intl'
 import { useParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import BackgroundEffects from '@/components/BackgroundEffects'
 import { Link } from '@/i18n/navigation'
 import { getBlogPostBySlug, getBlogPosts } from '@/data/blogPosts'
 import { getSiteContent } from '@/data/siteContent'
@@ -101,11 +102,7 @@ export default function BlogPost() {
   return (
     <main className="min-h-screen text-slate-900 dark:text-slate-100">
       <Navbar />
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-mesh opacity-55 dark:opacity-20" />
-        <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-sky-100/65 blur-3xl dark:bg-sky-900/25" />
-        <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-100/55 blur-3xl dark:bg-cyan-900/20" />
-      </div>
+      <BackgroundEffects />
 
       <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-5xl">
