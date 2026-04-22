@@ -1,23 +1,40 @@
 {
-  "name": "Zinedine's Portfolio",
-  "short_name": "Portfolio",
-  "description": "Frontend Developer Portfolio showcasing projects and skills",
+  "name": "Zinedine Ziddan Fahdlevy — Frontend Developer Portfolio",
+  "short_name": "Zinedine",
+  "description": "Portfolio of Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer specializing in React, Next.js, and modern web technologies.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
   "theme_color": "#0ea5e9",
+  "categories": ["portfolio", "developer", "personal"],
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 } 

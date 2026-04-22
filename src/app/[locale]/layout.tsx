@@ -1,23 +1,33 @@
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { Metadata, Viewport } from 'next'
-import '../globals.css'
+import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: "Zinedine's Portfolio",
-  description: 'Frontend Developer Portfolio showcasing projects and skills',
-  manifest: '/manifest.json',
-  icons: {
-    icon: '/icons/icon-192x192.png',
-    apple: '/icons/icon-192x192.png',
-  },
-}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const isId = locale === 'id'
 
-export const viewport: Viewport = {
-  themeColor: '#0ea5e9',
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
+  return {
+    title: isId
+      ? 'Zinedine Ziddan Fahdlevy — Frontend Developer'
+      : 'Zinedine Ziddan Fahdlevy — Frontend Developer',
+    description: isId
+      ? 'Portofolio Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer yang mengkhususkan diri dalam React, Next.js, TypeScript, dan teknologi web modern.'
+      : 'Portfolio of Zinedine Ziddan Fahdlevy — Frontend Developer & Software Engineer specializing in React, Next.js, TypeScript, and modern web technologies.',
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        'en': '/en',
+        'id': '/id',
+      },
+    },
+    openGraph: {
+      locale: isId ? 'id_ID' : 'en_US',
+    },
+  }
 }
 
 export function generateStaticParams() {
