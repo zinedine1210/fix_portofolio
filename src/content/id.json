@@ -85,6 +85,40 @@
   },
   "blogPosts": [
     {
+      "slug": "infinity-global-trade-company-profile",
+      "title": "Infinity Global Trade | Website Vendor Pengadaan Barang Perusahaan",
+      "excerpt": "Project freelance untuk membangun website company profile Infinity Global Trade, perusahaan vendor pengadaan barang seperti laptop dan kebutuhan perangkat lainnya, lengkap dengan daftar produk yang tersedia.",
+      "cover": "/infinity.png",
+      "gallery": ["/infinity.png"],
+      "tags": ["Freelance", "Company Profile", "Vendor", "Product Listing"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "company": "Infinity Global Trade",
+      "content": [
+        "Infinity Global Trade adalah perusahaan yang bergerak di bidang pengadaan barang untuk kebutuhan perusahaan, sekaligus berperan sebagai vendor untuk berbagai produk seperti laptop dan perangkat pendukung lainnya.",
+        "Dalam project freelance ini, saya membangun website company profile yang menampilkan identitas bisnis perusahaan secara profesional, sekaligus memudahkan calon klien memahami layanan yang ditawarkan.",
+        "Fokus utama implementasi ada pada penyajian daftar produk yang tersedia agar user bisa melihat kategori barang secara cepat, jelas, dan terstruktur.",
+        "Hasil akhirnya adalah website yang membantu Infinity Global Trade memperkuat kehadiran digital, meningkatkan kredibilitas bisnis, dan mempermudah proses komunikasi awal dengan calon partner perusahaan."
+      ]
+    },
+    {
+      "slug": "vschallange-online-ticket-registration",
+      "title": "VSChallange | Online Ticket Registration Form",
+      "excerpt": "Project freelance untuk platform arcade VSChallange dengan fokus membangun form pendaftaran tiket secara online agar proses registrasi peserta menjadi lebih cepat dan terstruktur.",
+      "cover": "/vschallange.png",
+      "gallery": ["/vschallange.png"],
+      "tags": ["Freelance", "Arcade", "Ticketing", "Form Registration"],
+      "readTime": "3 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "company": "VSChallange",
+      "content": [
+        "VSChallange adalah platform arcade permainan yang menyediakan pengalaman hiburan interaktif untuk berbagai kalangan pengguna.",
+        "Saya terlibat dalam project freelance ini untuk membangun form pendaftaran tiket secara online sehingga proses pendaftaran bisa dilakukan dari mana saja tanpa alur manual.",
+        "Dari sisi user experience, form dirancang agar alur pengisian data terasa sederhana, cepat, dan minim kebingungan, sehingga peserta dapat menyelesaikan registrasi dengan lancar.",
+        "Implementasi ini membantu tim VSChallange merapikan proses pencatatan peserta, mengurangi friksi saat pendaftaran event, dan meningkatkan efisiensi operasional ticketing."
+      ]
+    },
+    {
       "slug": "beyondtech-remittance-platform",
       "title": "Beyondtech: Membangun Ekosistem Remittance & Disbursement End-to-End",
       "excerpt": "Sebagai Senior Frontend, saya mengembangkan landing page, merchant dashboard, dan admin panel Beyondtech untuk layanan remittance dan disbursement global yang aman, cepat, dan digital.",
@@ -265,6 +299,40 @@
         "Key features: rapid search dan filtering, real-time availability checking, instant booking confirmation, dan seamless payment integration. User journey dioptimalkan untuk conversion dengan setiap step carefully designed untuk minimize abandonment.",
         "Frontend architecture menggunakan Next.js untuk performance optimization, lazy loading untuk images, dan caching strategies untuk fast page transitions. Dynamic pricing, real-time inventory updates, dan complex search logic dihandle efficiently di client-side dan server-side.",
         "Proyek juga mencakup integration dengan multiple payment gateways, vehicle tracking systems, dan customer support tools. Dari aspek UX, design focus adalah kemudahan dan kecepatan tanpa mengorbankan security dan reliability dalam transaksi rental vehicles yang high-value."
+      ]
+    },
+    {
+      "slug": "keyfields-enterprise-logistics-suite",
+      "title": "KEYfields | Enterprise Logistics & Supply Chain Suite",
+      "excerpt": "Sebagai Project Manager di KEYfields, saya memimpin siklus hidup proyek secara penuh—perencanaan, eksekusi, pemantauan, hingga penutupan—untuk 6 aplikasi enterprise: warehouse, transport, freight, container, yard management, dan accounting.",
+      "cover": "/keyfields1.png",
+      "gallery": ["/keyfields1.png", "/keyfields2.png"],
+      "inlineImages": [
+        {
+          "src": "/keyfields1.png",
+          "alt": "Overview dashboard logistik enterprise KEYfields",
+          "afterParagraph": 2
+        },
+        {
+          "src": "/keyfields2.png",
+          "alt": "Interface multi-aplikasi KEYfields suite",
+          "afterParagraph": 5
+        }
+      ],
+      "tags": ["Project Management", "Logistics", "Enterprise", "R&D", "Supply Chain"],
+      "readTime": "8 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "company": "KEYfields",
+      "content": [
+        "Di KEYfields, saya berperan sebagai Project Manager yang mengelola siklus hidup proyek secara penuh—perencanaan, eksekusi, pemantauan, hingga penutupan—untuk memastikan hasil selesai tepat waktu di seluruh lini produk. Fokus saya adalah R&D pada aplikasi yang sudah matang, melakukan enhance sistem yang ada untuk memenuhi kebutuhan bisnis baru, bukan membangun dari nol.",
+        "Ekosistem KEYfields terdiri dari 6 aplikasi enterprise-grade yang dirancang untuk operasi logistik, supply chain, dan keuangan. Setiap aplikasi menangani domain spesifik namun tetap terintegrasi untuk mendukung workflow end-to-end yang seamless.",
+        "iWMS (Warehouse Management System) dirancang operational-centric dan scalable, memungkinkan fleksibilitas dalam menambah atau meningkatkan fungsionalitas sesuai kebutuhan bisnis yang berbeda. Process flow dan control procedure-nya dihaluskan dari pengalaman bertahun-tahun, melayani berbagai industri termasuk Farmasi, e-Commerce, Kimia, Cold Chain, FMCG, Elektronik, Oil & Gas, Healthcare, dan Bonded Goods.",
+        "iTMS (Transport Management System) adalah solusi berbasis web penuh yang menyediakan manajemen transportasi real-time. iTMS memberikan visibilitas penuh atas operasi transport, meningkatkan efisiensi dan memperlancar workflow dengan memusatkan informasi. iTMS juga mengelola utilisasi sumber daya dan produktivitas secara efektif, menyederhanakan proses dan tugas administratif.",
+        "iFMS (Freight Management Software) memiliki fitur multiple sales quotation & billing, detail booking import & export, serta daftar dokumen cetak yang dapat dikonfigurasi seperti Arrival Shipping Note, Delivery Note, dan Waybill. Management report dan dashboard tersedia untuk freight forwarder menganalisis dan mengambil keputusan bisnis kritis, meningkatkan proses workflow dan produktivitas.",
+        "iCMS (Container Management System) memberikan visibilitas dan manajemen aset container bagi pemilik container. Fitur-fiturnya mencakup tracking real-time inventaris container secara internal maupun eksternal dari depot dan lokasi. Service charge termasuk repair billing, demurrage charges, dan shipping charges lainnya memungkinkan pemilik container melacak dan meningkatkan kecepatan serta akurasi billing.",
+        "iCYMS (Container Yard Management System) dirancang untuk mencapai visibilitas aset container yang lebih baik, akurasi, dan efisiensi operasi. Sistem berbasis web ini mencakup real-time job dispatch ke haulier dan meningkatkan produktivitas container yard secara keseluruhan. Dengan kontrol penuh atas container, proses operasional, dan sumber daya yard, sistem ini mencapai efisiensi optimal dan meningkatkan performa proses penyimpanan dan pelepasan container, memperlancar pergerakan container dan mengurangi proses redundan.",
+        "iAccounting memungkinkan pengguna melihat dan mengelola transaksi akuntansi dalam satu sistem, menjaga semuanya tetap simpel dan rapi untuk memudahkan operasi bisnis. Terintegrasi dengan aplikasi KEYfields lainnya untuk manajemen keuangan yang terkonsolidasi.",
+        "Sepanjang peran saya, saya mengkoordinasikan tim lintas fungsi, mengelola ekspektasi stakeholder, dan memastikan setiap enhancement sejalan dengan tujuan bisnis. Pendekatan R&D memungkinkan kami melakukan iterasi pada sistem yang telah terbukti, meminimalkan risiko sambil memberikan value melalui perbaikan yang terarah untuk mengatasi pain point operasional yang nyata."
       ]
     }
   ]

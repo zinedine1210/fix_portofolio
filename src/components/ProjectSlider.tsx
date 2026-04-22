@@ -85,7 +85,7 @@ export default function ProjectSlider() {
 
                 <div className="flex flex-col justify-between gap-6 p-6 sm:p-8">
                   <div>
-                    <h4 className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">{project.title}</h4>
+                    <h4 className="text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl lg:text-3xl">{project.title}</h4>
                     <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">{project.excerpt}</p>
                   </div>
 

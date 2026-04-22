@@ -72,7 +72,7 @@ export default function Navbar() {
             className="flex items-center justify-between"
           >
             <Link href="/" className="flex items-center gap-3">
-              <span className="text-lg font-extrabold tracking-[0.18em] text-slate-950 dark:text-slate-50">ZINEDINE ZIDDAN FAHDLEVY</span>
+              <span className="text-xs font-extrabold tracking-[0.18em] text-slate-950 dark:text-slate-50 sm:text-lg">ZINEDINE ZIDDAN FAHDLEVY</span>
             </Link>
 
             <div className="hidden md:block">

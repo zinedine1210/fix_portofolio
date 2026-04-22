@@ -139,7 +139,7 @@ export default function Home() {
 
               <div className="space-y-5">
                 <motion.h1
-                  className="max-w-xl text-balance text-4xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 sm:text-5xl lg:text-6xl"
+                  className="max-w-xl text-balance text-3xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl lg:text-6xl"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
@@ -147,7 +147,7 @@ export default function Home() {
                   {t('title')} <span className="accent-text">{t('heroHighlight')}</span>
                 </motion.h1>
                 <motion.p
-                  className="max-w-lg text-balance text-lg leading-8 text-slate-600 dark:text-slate-400"
+                  className="max-w-lg text-balance text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg sm:leading-8"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
@@ -166,7 +166,7 @@ export default function Home() {
                   href="#projects"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center rounded-full bg-slate-950 px-7 py-3.5 text-sm font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800 dark:bg-sky-500 dark:shadow-sky-500/20 dark:hover:bg-sky-400"
+                  className="inline-flex items-center rounded-full bg-slate-950 px-5 py-3 text-xs font-semibold text-white shadow-xl shadow-slate-900/10 transition-colors hover:bg-slate-800 dark:bg-sky-500 dark:shadow-sky-500/20 dark:hover:bg-sky-400 sm:px-7 sm:py-3.5 sm:text-sm"
                 >
                   {t('viewProjects')}
                 </motion.a>
@@ -174,7 +174,7 @@ export default function Home() {
                   href="#contact"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-colors hover:border-sky-200 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-300 dark:shadow-black/20 dark:hover:border-sky-700 dark:hover:text-sky-300"
+                  className="inline-flex items-center rounded-full border border-slate-200 bg-white/90 px-5 py-3 text-xs font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-colors hover:border-sky-200 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-800/90 dark:text-slate-300 dark:shadow-black/20 dark:hover:border-sky-700 dark:hover:text-sky-300 sm:px-7 sm:py-3.5 sm:text-sm"
                 >
                   {t('contactMe')}
                 </motion.a>
@@ -188,7 +188,7 @@ export default function Home() {
               >
                 {statCards.map((stat) => (
                   <div key={stat.label} className="surface-panel rounded-[1.75rem] p-5">
-                    <p className="text-3xl font-bold tracking-tight text-slate-950 dark:text-slate-50">{stat.value}</p>
+                    <p className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{stat.label}</p>
                   </div>
                 ))}
@@ -227,12 +227,12 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-2">
               <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{t('location')}</p>
-                <p className="mt-4 text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">{t('locationValue')}</p>
+                <p className="mt-4 text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">{t('locationValue')}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('locationDescription')}</p>
               </motion.div>
               <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{t('email')}</p>
-                <p className="mt-4 break-all text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">{t('emailValue')}</p>
+                <p className="mt-4 break-all text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">{t('emailValue')}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('emailDescription')}</p>
               </motion.div>
               <motion.div whileHover={{ y: -4 }} className="surface-panel rounded-[2rem] p-7 md:col-span-2">
@@ -282,7 +282,7 @@ export default function Home() {
                 </div>
                 <div className="surface-panel rounded-[1.75rem] p-7 md:p-8">
                   <div className="flex flex-col gap-1">
-                    <h3 className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">{item.title}</h3>
+                    <h3 className="text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">{item.title}</h3>
                     <p className="text-sm font-semibold text-sky-600 dark:text-sky-400">{item.company}</p>
                   </div>
                   <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">{item.description}</p>

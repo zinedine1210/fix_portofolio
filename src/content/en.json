@@ -85,6 +85,40 @@
   },
   "blogPosts": [
     {
+      "slug": "infinity-global-trade-company-profile",
+      "title": "Infinity Global Trade | Corporate Vendor Procurement Website",
+      "excerpt": "A freelance project to build Infinity Global Trade's corporate website for company procurement services as a product vendor, including a structured catalog of available items such as laptops and related equipment.",
+      "cover": "/infinity.png",
+      "gallery": ["/infinity.png"],
+      "tags": ["Freelance", "Company Profile", "Vendor", "Product Listing"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "company": "Infinity Global Trade",
+      "content": [
+        "Infinity Global Trade is a company focused on corporate procurement and product supply, serving as a vendor for business needs such as laptops and other supporting equipment.",
+        "In this freelance project, I built their corporate website to present the company's profile professionally while making the service offering clear to potential clients.",
+        "The main implementation focus was a structured product listing section so visitors can review available items quickly and clearly.",
+        "The final website helps Infinity Global Trade strengthen its digital presence, improve business credibility, and make initial communication with potential partners more efficient."
+      ]
+    },
+    {
+      "slug": "vschallange-online-ticket-registration",
+      "title": "VSChallange | Online Ticket Registration Form",
+      "excerpt": "A freelance project for the VSChallange arcade platform focused on building an online ticket registration form to make participant onboarding faster and more organized.",
+      "cover": "/vschallange.png",
+      "gallery": ["/vschallange.png"],
+      "tags": ["Freelance", "Arcade", "Ticketing", "Form Registration"],
+      "readTime": "3 min read",
+      "publishedAt": "Apr 22, 2026",
+      "company": "VSChallange",
+      "content": [
+        "VSChallange is an arcade gaming platform that delivers interactive entertainment experiences for a broad range of users.",
+        "I contributed to this freelance project by building an online ticket registration form so users can register remotely without manual workflows.",
+        "From a UX perspective, the form flow was designed to be simple, fast, and low-friction, helping participants complete registration smoothly.",
+        "This implementation helped the VSChallange team streamline participant data collection, reduce event registration friction, and improve overall ticketing operations."
+      ]
+    },
+    {
       "slug": "beyondtech-remittance-platform",
       "title": "Beyondtech: Building an End-to-End Remittance & Disbursement Ecosystem",
       "excerpt": "As a Senior Frontend engineer, I built Beyondtech's landing page, merchant dashboard, and admin panel for secure, global, and fully digital remittance and disbursement services.",
@@ -265,6 +299,40 @@
         "Key features include rapid search and filtering, real-time availability checking, instant booking confirmation, and seamless payment integration. The user journey is optimized for conversion at each step to minimize abandonment.",
         "The frontend architecture uses Next.js for performance optimization, lazy loading for images, and strategic caching for fast page transitions. Dynamic pricing, real-time inventory updates, and complex search logic are handled efficiently across client and server.",
         "The project also includes integrations with multiple payment gateways, vehicle tracking systems, and customer support tools. The UX design prioritizes ease and speed without compromising security and reliability in high-value rental transactions."
+      ]
+    },
+    {
+      "slug": "keyfields-enterprise-logistics-suite",
+      "title": "KEYfields | Enterprise Logistics & Supply Chain Suite",
+      "excerpt": "As Project Manager at KEYfields, I led the full project lifecycle—planning, execution, monitoring, and closure—across 6 enterprise applications for warehouse, transport, freight, container, yard management, and accounting.",
+      "cover": "/keyfields1.png",
+      "gallery": ["/keyfields1.png", "/keyfields2.png"],
+      "inlineImages": [
+        {
+          "src": "/keyfields1.png",
+          "alt": "KEYfields enterprise logistics dashboard overview",
+          "afterParagraph": 2
+        },
+        {
+          "src": "/keyfields2.png",
+          "alt": "KEYfields multi-application suite interface",
+          "afterParagraph": 5
+        }
+      ],
+      "tags": ["Project Management", "Logistics", "Enterprise", "R&D", "Supply Chain"],
+      "readTime": "8 min read",
+      "publishedAt": "Apr 22, 2026",
+      "company": "KEYfields",
+      "content": [
+        "At KEYfields, I served as Project Manager overseeing the full project lifecycle—planning, execution, monitoring, and closure—to ensure timely delivery across all product lines. My role focused on R&D for mature applications, enhancing existing systems to meet evolving business requirements rather than building from scratch.",
+        "The KEYfields ecosystem consists of 6 enterprise-grade applications designed for logistics, supply chain, and financial operations. Each application addresses a specific domain while maintaining integration across the suite for seamless end-to-end workflows.",
+        "iWMS (Warehouse Management System) is designed to be operational-centric and scalable, allowing flexibility when adding or enhancing functionalities configured to different business needs. The process flows and control procedures are refined from years of experience, catering to usage across industries including Pharmaceuticals, e-Commerce, Chemical, Cold Chain, FMCG, Electronics, Oil & Gas, Healthcare, and Bonded Goods.",
+        "iTMS (Transport Management System) is a full web-based solution providing real-time transportation management. It offers full visibility over transport operations, improving efficiency and streamlining workflows by centralizing information. iTMS also effectively manages resource utilization and productivity, simplifying processes and administrative tasks.",
+        "iFMS (Freight Management Software) features multiple sales quotation & billing, import & export booking details, and an extensive list of configurable document printouts such as Arrival Shipping Note, Delivery Note, and Waybill. Management reports and dashboards are readily available for freight forwarders to analyze and perform critical business decisions, improving workflow processes and increasing productivity.",
+        "iCMS (Container Management System) provides container owners with visibility and management of their container assets. It features real-time tracking of container inventories internally and externally from depots and locations. Service charges including repair billing, demurrage charges, and other shipping charges allow container owners to better track and improve billing speed and accuracy.",
+        "iCYMS (Container Yard Management System) is designed to achieve better container asset visibility, accuracy, and operating efficiency. This web-based system includes real-time job dispatches to hauliers and improves overall container yard productivity. With full control over containers, operational processes, and yard resources, it achieves optimal efficiency and improves performance for container storing and release processes, streamlining container movement and reducing redundant processes.",
+        "iAccounting allows users to view and manage their accounting transactions in one system, keeping things simple and tidy to make business operations easy to run. It integrates with the other KEYfields applications for consolidated financial management.",
+        "Throughout my role, I coordinated cross-functional teams, managed stakeholder expectations, and ensured each enhancement aligned with business objectives. The R&D approach allowed us to iterate on proven systems, minimizing risk while delivering value through targeted improvements that addressed real operational pain points."
       ]
     }
   ]
