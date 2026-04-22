@@ -16,12 +16,12 @@ export default function BlogPage() {
   const blogPage = content.blogPage
 
   return (
-    <main className="min-h-screen text-slate-900">
+    <main className="min-h-screen text-slate-900 dark:text-slate-100">
       <Navbar />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-mesh opacity-55" />
-        <div className="absolute -left-20 top-12 h-64 w-64 rounded-full bg-sky-100/70 blur-3xl" />
-        <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-cyan-100/60 blur-3xl" />
+        <div className="absolute inset-0 bg-mesh opacity-55 dark:opacity-20" />
+        <div className="absolute -left-20 top-12 h-64 w-64 rounded-full bg-sky-100/70 blur-3xl dark:bg-sky-900/30" />
+        <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-cyan-100/60 blur-3xl dark:bg-cyan-900/20" />
       </div>
 
       <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-10">
@@ -63,25 +63,25 @@ export default function BlogPage() {
                   </div>
 
                   <div className="p-6">
-                    <div className="mb-3 flex items-center justify-between text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
+                    <div className="mb-3 flex items-center justify-between text-xs font-medium uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
                       <span>{post.publishedAt}</span>
                     </div>
 
-                    <h2 className="text-2xl font-semibold tracking-tight text-slate-950">{post.title}</h2>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">{post.excerpt}</p>
+                    <h2 className="text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50">{post.title}</h2>
+                    <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">{post.excerpt}</p>
 
                     <div className="mt-5 flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600"
+                          className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-transform duration-300 group-hover:translate-x-1">
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-transform duration-300 group-hover:translate-x-1 dark:text-slate-200">
                       {blogPage.readArticle}
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

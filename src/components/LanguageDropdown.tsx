@@ -43,7 +43,7 @@ export default function LanguageDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:text-slate-950 hover:shadow-xl hover:shadow-sky-100/70"
+        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:text-slate-950 hover:shadow-xl hover:shadow-sky-100/70 dark:border-slate-700 dark:bg-slate-800/85 dark:text-slate-300 dark:shadow-black/20 dark:hover:border-sky-700 dark:hover:text-sky-300 dark:hover:shadow-sky-900/30"
       >
         <span className="text-lg">{currentLanguage.flag}</span>
         <span>{currentLanguage.name}</span>
@@ -66,7 +66,7 @@ export default function LanguageDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 z-50 mt-3 w-52 overflow-hidden rounded-3xl border border-slate-200 bg-white/92 shadow-2xl shadow-slate-900/10 backdrop-blur-xl"
+            className="absolute right-0 z-50 mt-3 w-52 overflow-hidden rounded-3xl border border-slate-200 bg-white/92 shadow-2xl shadow-slate-900/10 backdrop-blur-xl dark:border-slate-700 dark:bg-slate-800/92 dark:shadow-black/30"
           >
             <div className="py-2">
               {languages.map((language, index) => (
@@ -83,8 +83,8 @@ export default function LanguageDropdown() {
                   whileTap={{ scale: 0.95 }}
                   className={`flex w-full items-center gap-3 px-4 py-3 text-left transition-all duration-200 ${
                     language.code === locale 
-                      ? 'bg-sky-50 text-sky-700' 
-                      : 'text-slate-600 hover:text-slate-950'
+                      ? 'bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-400' 
+                      : 'text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-200'
                   }`}
                 >
                   <span className="text-xl">{language.flag}</span>

@@ -60,14 +60,14 @@ export default function HeroPhotoGallery() {
       >
         <div className={`h-[70%] w-[75%] rounded-[50%] blur-[60px] transition-colors duration-700 ${
           isRevealed
-            ? 'bg-violet-200/50'
-            : 'bg-sky-200/45'
+            ? 'bg-violet-200/50 dark:bg-violet-500/20'
+            : 'bg-sky-200/45 dark:bg-sky-500/15'
         }`} />
       </motion.div>
 
       {/* ── "Tap me" badge ─────────────────────────────── */}
       <motion.div
-        className="absolute right-6 top-6 z-20 flex items-center gap-1.5 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-lg shadow-slate-900/10 backdrop-blur-sm sm:right-10 sm:top-8"
+        className="absolute right-6 top-6 z-20 flex items-center gap-1.5 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-lg shadow-slate-900/10 backdrop-blur-sm dark:bg-slate-800/90 dark:text-slate-300 dark:shadow-black/30 sm:right-10 sm:top-8"
         initial={{ opacity: 0, scale: 0.8, y: -8 }}
         animate={{
           opacity: isHovered ? 0 : 1,
@@ -108,7 +108,7 @@ export default function HeroPhotoGallery() {
             width={600}
             height={800}
             quality={100}
-            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(15,23,42,0.18)] sm:max-w-[540px]"
+            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_12px_40px_rgba(56,189,248,0.12)] sm:max-w-[540px]"
             style={{ maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)' }}
             priority
             draggable={false}
@@ -130,7 +130,7 @@ export default function HeroPhotoGallery() {
             width={600}
             height={800}
             quality={100}
-            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(124,58,237,0.18)] sm:max-w-[540px]"
+            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(124,58,237,0.18)] dark:drop-shadow-[0_12px_40px_rgba(124,58,237,0.15)] sm:max-w-[540px]"
             style={{ maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)' }}
             draggable={false}
           />
