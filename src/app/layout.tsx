@@ -1,12 +1,14 @@
 import { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
+import { getLocale } from 'next-intl/server'
 import ThemeProvider from '@/components/ThemeProvider'
+import ScrollProgressBar from '@/components/ScrollProgressBar'
 import './globals.css'
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fbff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+    { media: '(prefers-color-scheme: light)', color: '#fafaf9' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0f1a' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -108,11 +110,12 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -121,7 +124,12 @@ export default function RootLayout({
     jobTitle: 'Frontend Developer',
     description:
       'Frontend Developer & Software Engineer specializing in React, Next.js, TypeScript, and modern web technologies.',
-    sameAs: [],
+    sameAs: [
+      'https://github.com/zinedine1210',
+      'https://www.linkedin.com/in/zinedine-fahdlevy-5137471b4/',
+      'https://twitter.com/cimolbojotenak',
+      'https://instagram.com/zine.zf',
+    ],
     knowsAbout: [
       'React',
       'Next.js',
@@ -135,7 +143,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -143,7 +151,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${manrope.className} ${manrope.variable} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ScrollProgressBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

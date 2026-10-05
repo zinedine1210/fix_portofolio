@@ -54,6 +54,53 @@ export async function generateMetadata({
   }
 }
 
-export default function BlogPostPage() {
-  return <BlogPostClient />
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>
+}) {
+  const { locale, slug } = await params
+  const post = getBlogPostBySlug(locale, slug)
+
+  if (!post) {
+    return <BlogPostClient />
+  }
+
+  const url = `${siteUrl}/${locale}/blog/${slug}`
+  const publishedIso = new Date(post.publishedAt).toISOString()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: `${siteUrl}${post.cover}`,
+    url,
+    datePublished: publishedIso,
+    dateModified: publishedIso,
+    author: {
+      '@type': 'Person',
+      name: 'Zinedine Ziddan Fahdlevy',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Zinedine Ziddan Fahdlevy',
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogPostClient />
+    </>
+  )
 }

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getBlogPosts } from '@/data/blogPosts'
 
-const siteUrl = 'https://zinedineziddanfahdlevy.vercel.app'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zinedine.dev'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['en', 'id']
