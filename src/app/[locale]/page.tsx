@@ -1,14 +1,17 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useState, type MouseEvent } from 'react'
+import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { useRef, useState, type MouseEvent } from 'react'
 import { useLocale } from 'next-intl'
 import Navbar from '@/components/Navbar'
 import ProjectSlider from '@/components/ProjectSlider'
 import Footer from '@/components/Footer'
 import HeroPhotoGallery from '@/components/HeroPhotoGallery'
 import BackgroundEffects from '@/components/BackgroundEffects'
+import RevealText from '@/components/RevealText'
+import RotatingWord from '@/components/RotatingWord'
+import PinSection from '@/components/PinSection'
 import { getSiteContent } from '@/data/siteContent'
 
 export default function Home() {
@@ -27,28 +30,24 @@ export default function Home() {
     {
       title: 'Frontend',
       tone: 'neutral' as const,
-      span: 'md:col-span-7',
       description: t('skillsCardFrontendDescription'),
       items: [t('frontendSkill1'), t('frontendSkill2'), t('frontendSkill3'), t('frontendSkill4')],
     },
     {
       title: 'Backend',
       tone: 'ink' as const,
-      span: 'md:col-span-5',
       description: t('skillsCardBackendDescription'),
       items: [t('backendSkill1'), t('backendSkill2'), t('backendSkill3'), t('backendSkill4')],
     },
     {
       title: 'Tools',
       tone: 'warm' as const,
-      span: 'md:col-span-5',
       description: t('skillsCardToolsDescription'),
       items: [t('toolsSkill1'), t('toolsSkill2'), t('toolsSkill3'), t('toolsSkill4')],
     },
     {
       title: 'Soft Skills',
       tone: 'neutral' as const,
-      span: 'md:col-span-7',
       description: t('skillsCardSoftDescription'),
       items: [t('softskillsSkill1'), t('softskillsSkill2'), t('softskillsSkill3'), t('softskillsSkill4')],
     },
@@ -56,25 +55,16 @@ export default function Home() {
 
   const skillToneClasses = {
     neutral: {
-      card: 'surface-panel-strong',
-      badge: 'text-amber-700 dark:text-amber-400',
-      description: 'text-slate-500 dark:text-slate-400',
-      item: 'text-slate-700 dark:text-slate-300',
-      dot: 'bg-amber-500',
+      border: 'border-slate-300 dark:border-slate-700',
+      label: 'text-slate-900 dark:text-slate-100',
     },
     ink: {
-      card: 'bg-slate-900 text-slate-50 shadow-2xl shadow-slate-900/30 dark:bg-slate-950 dark:border dark:border-amber-500/20',
-      badge: 'text-amber-400',
-      description: 'text-slate-300',
-      item: 'text-slate-100',
-      dot: 'bg-amber-400',
+      border: 'border-slate-900 dark:border-slate-100',
+      label: 'text-slate-950 dark:text-slate-50',
     },
     warm: {
-      card: 'bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/70 dark:from-amber-950/40 dark:to-orange-950/20 dark:border-amber-800/40',
-      badge: 'text-amber-800 dark:text-amber-300',
-      description: 'text-slate-600 dark:text-slate-300',
-      item: 'text-slate-800 dark:text-slate-200',
-      dot: 'bg-amber-600 dark:bg-amber-400',
+      border: 'border-amber-600 dark:border-amber-500',
+      label: 'text-amber-700 dark:text-amber-400',
     },
   }
 
@@ -83,6 +73,17 @@ export default function Home() {
     { value: t('heroProjectsValue'), label: t('heroProjectsLabel') },
     { value: t('heroFocusValue'), label: t('heroFocusLabel') },
   ]
+
+  const titleRest = t('title').split(' ').slice(1).join(' ')
+
+  const prefersReducedMotion = useReducedMotion()
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: heroScrollProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const heroPhotoY = useTransform(heroScrollProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, -60])
+  const heroPhotoScale = useTransform(heroScrollProgress, [0, 1], prefersReducedMotion ? [1, 1] : [1, 0.92])
+
+  const experienceRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: experienceProgress } = useScroll({ target: experienceRef, offset: ['start 75%', 'end 55%'] })
 
   const magnetX = useMotionValue(0)
   const magnetY = useMotionValue(0)
@@ -159,7 +160,7 @@ export default function Home() {
       <Navbar />
       <BackgroundEffects />
 
-      <section className="relative px-4 pb-0 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+      <section ref={heroRef} className="relative px-4 pb-0 pt-6 sm:px-6 lg:px-8 lg:pt-10">
         <div className="mx-auto max-w-7xl">
           <div
             className="grid items-start gap-8 lg:grid-cols-[1fr_1fr] lg:gap-0"
@@ -182,14 +183,11 @@ export default function Home() {
               </motion.span>
 
               <div className="space-y-5">
-                <motion.h1
-                  className="max-w-xl text-balance text-3xl font-extrabold tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl lg:text-6xl"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                >
-                  {t('title')} <span className="accent-text">{t('heroHighlight')}</span>
-                </motion.h1>
+                <h1 className="max-w-xl text-balance text-3xl font-extrabold leading-[1.2] tracking-tight text-slate-950 dark:text-slate-50 sm:text-4xl lg:text-6xl">
+                  <RotatingWord words={['Fullstack', 'Frontend', 'Backend']} className="text-amber-600 dark:text-amber-400" />{' '}
+                  <RevealText text={titleRest} as="span" />{' '}
+                  <RevealText text={t('heroHighlight')} as="span" className="accent-text" delay={0.25} />
+                </h1>
                 <motion.p
                   className="max-w-lg text-balance text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg sm:leading-8"
                   initial={{ opacity: 0, y: 24 }}
@@ -230,10 +228,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="grid gap-4 sm:grid-cols-3"
+                className="grid grid-cols-3 gap-3 sm:gap-6"
               >
-                {statCards.map((stat) => (
-                  <div key={stat.label} className="surface-panel rounded-[1.75rem] p-5">
+                {statCards.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className={index > 0 ? 'border-l border-slate-200 pl-3 dark:border-slate-800 sm:pl-6' : ''}
+                  >
                     <p className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">{stat.label}</p>
                   </div>
@@ -244,9 +245,10 @@ export default function Home() {
 
             {/* ── Right: Full-height Photo ────────────── */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              style={{ y: heroPhotoY, scale: heroPhotoScale }}
               className="relative order-first lg:order-last"
             >
               <HeroPhotoGallery />
@@ -262,15 +264,15 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
+            className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16"
           >
-            <div className="surface-panel-strong rounded-[2rem] p-8 md:p-10">
-              <h2 className="section-title">{t('aboutTitle')}</h2>
+            <div>
+              <RevealText as="h2" className="section-title" text={t('aboutTitle')} />
               <p className="section-copy mt-6">{t('aboutDescription')}</p>
             </div>
 
-            <div className="surface-panel divide-y divide-slate-200/80 rounded-[2rem] dark:divide-slate-700/60">
-              <div className="grid gap-6 p-7 sm:grid-cols-2 md:p-8">
+            <div className="divide-y divide-slate-200 dark:divide-slate-800">
+              <div className="grid gap-6 py-6 first:pt-0 sm:grid-cols-2">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{t('location')}</p>
                   <p className="mt-4 text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">{t('locationValue')}</p>
@@ -282,7 +284,7 @@ export default function Home() {
                   <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{t('emailDescription')}</p>
                 </div>
               </div>
-              <div className="grid gap-6 p-7 sm:grid-cols-2 md:p-8">
+              <div className="grid gap-6 py-6 sm:grid-cols-2">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">{t('aboutCardTitle')}</p>
                   <p className="mt-3 text-base leading-7 text-slate-700 dark:text-slate-300">{t('aboutCardDescription')}</p>
@@ -306,11 +308,16 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12 max-w-3xl"
           >
-            <h2 className="section-title">{t('experienceTitle')}</h2>
+            <RevealText as="h2" className="section-title" text={t('experienceTitle')} />
             <p className="section-copy mt-5">{t('experienceIntro')}</p>
           </motion.div>
 
-          <div className="divide-y divide-slate-200 dark:divide-slate-800">
+          <div ref={experienceRef} className="relative divide-y divide-slate-200 dark:divide-slate-800">
+            <motion.div
+              aria-hidden
+              className="absolute top-1 hidden h-[calc(100%-0.5rem)] w-px origin-top bg-gradient-to-b from-amber-400 via-amber-300 to-transparent dark:from-amber-500 dark:via-amber-700 md:left-28 md:block"
+              style={{ scaleY: prefersReducedMotion ? 1 : experienceProgress }}
+            />
             {experienceItems.map((item, index) => (
               <motion.article
                 key={`experience-${index}`}
@@ -318,8 +325,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: index * 0.08 }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="grid gap-3 py-10 first:pt-0 last:pb-0 md:grid-cols-[8rem_1fr] md:gap-10"
+                className="relative grid gap-3 py-10 first:pt-0 last:pb-0 md:grid-cols-[8rem_1fr] md:gap-10"
               >
+                <span className="absolute top-1.5 hidden h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-white bg-amber-500 shadow-sm shadow-amber-500/40 dark:border-slate-950 dark:bg-amber-400 md:left-28 md:block" />
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.period}</p>
                 <div>
                   <h3 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl">{item.title}</h3>
@@ -341,11 +349,11 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12 max-w-3xl"
           >
-            <h2 className="section-title">{t('skillsTitle')}</h2>
+            <RevealText as="h2" className="section-title" text={t('skillsTitle')} />
             <p className="section-copy mt-5">{t('skillsIntro')}</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+          <div className="grid gap-10 sm:grid-cols-2 lg:gap-x-16">
             {skillGroups.map((group, index) => {
               const tone = skillToneClasses[group.tone]
               return (
@@ -355,18 +363,16 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: index * 0.08 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  whileHover={{ y: -6 }}
-                  className={`rounded-[2rem] p-7 md:p-8 ${group.span} ${tone.card}`}
+                  className={`border-l-2 pl-6 ${tone.border}`}
                 >
-                  <div className={`text-xs font-semibold uppercase tracking-[0.22em] ${tone.badge}`}>
+                  <div className={`text-xs font-semibold uppercase tracking-[0.22em] ${tone.label}`}>
                     {group.title}
                   </div>
-                  <p className={`mt-4 text-sm leading-6 ${tone.description}`}>{group.description}</p>
-                  <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">{group.description}</p>
+                  <ul className="mt-5 space-y-3">
                     {group.items.map((item) => (
-                      <motion.li key={item} whileHover={{ x: 4 }} className={`flex items-start gap-3 text-sm font-medium leading-6 ${tone.item}`}>
-                        <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${tone.dot}`} />
-                        <span>{item}</span>
+                      <motion.li key={item} whileHover={{ x: 4 }} className="text-sm font-medium leading-6 text-slate-700 dark:text-slate-300">
+                        {item}
                       </motion.li>
                     ))}
                   </ul>
@@ -386,10 +392,12 @@ export default function Home() {
             viewport={{ once: true, amount: 0.2 }}
             className="mb-12 max-w-3xl"
           >
-            <h2 className="section-title">{t('projectsTitle')}</h2>
+            <RevealText as="h2" className="section-title" text={t('projectsTitle')} />
             <p className="section-copy mt-5">{t('projectsIntro')}</p>
           </motion.div>
-          <ProjectSlider />
+          <PinSection heightVh={150}>
+            <ProjectSlider />
+          </PinSection>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -414,15 +422,14 @@ export default function Home() {
 
       <section id="contact" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="surface-panel-strong rounded-[2rem] p-8 md:p-10"
             >
-              <h2 className="section-title">{t('contactTitle')}</h2>
+              <RevealText as="h2" className="section-title" text={t('contactTitle')} />
               <p className="section-copy mt-5">{t('contactIntro')}</p>
 
               <div className="mt-8 divide-y divide-slate-200 dark:divide-slate-700">
@@ -445,7 +452,6 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="surface-panel-strong rounded-[2rem] p-8 md:p-10"
             >
               <form className="space-y-6" onSubmit={handleSendEmail}>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

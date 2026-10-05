@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
@@ -25,13 +25,6 @@ export default function Navbar() {
   })
 
   const isDark = mounted && resolvedTheme === 'dark'
-
-  const getNavHref = (hash: string) => {
-    if (typeof window !== 'undefined' && !window.location.pathname.endsWith('/')) {
-      return `/${hash}`
-    }
-    return hash
-  }
 
   const navItems = [
     { hash: '#about', label: t('about') },
@@ -72,13 +65,13 @@ export default function Navbar() {
             <div className="hidden md:block">
               <div className={`flex items-center gap-1 rounded-full border border-white/55 bg-white/70 px-2.5 py-1.5 backdrop-blur-xl dark:border-slate-700/55 dark:bg-slate-800/70 ${scrolled ? "": "shadow-lg shadow-slate-900/6 dark:shadow-black/20"}`}>
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.hash}
-                    href={getNavHref(item.hash)}
+                    href={`/${item.hash}`}
                     className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-200 hover:bg-slate-950 hover:text-white dark:text-slate-400 dark:hover:bg-slate-200 dark:hover:text-slate-950"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 <LanguageDropdown />
                 <ThemeToggle />
@@ -117,14 +110,14 @@ export default function Navbar() {
         <div className="bg-white/94 px-4 pb-4 pt-1 backdrop-blur-2xl dark:bg-slate-900/94">
           <div className="space-y-1 rounded-[1.75rem] border border-slate-200/80 bg-white/95 p-2.5 shadow-2xl shadow-slate-900/10 dark:border-slate-700/80 dark:bg-slate-800/95 dark:shadow-black/30">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.hash}
-                href={getNavHref(item.hash)}
+                href={`/${item.hash}`}
                 className="block rounded-[1.25rem] px-4 py-3 text-base font-semibold text-slate-600 transition-colors hover:bg-amber-50 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-amber-950/30 dark:hover:text-amber-300"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-2">
               <LanguageDropdown />

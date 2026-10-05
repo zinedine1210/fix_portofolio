@@ -26,19 +26,17 @@ export default function ProjectSlider() {
   }
 
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-4 shadow-3xl dark:border-slate-700 dark:bg-slate-900 sm:p-6">
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/70 via-white to-orange-50/45 dark:from-amber-950/30 dark:via-slate-900 dark:to-orange-950/20" />
-
-      <div className="relative mb-5 flex items-center justify-between gap-3">
+    <section className="relative">
+      <div className="relative mb-6 flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{sliderContent.eyebrow}</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-2xl">{t('projectsTitle')}</h3>
         </div>
-        <div className="hidden items-center gap-2 sm:flex">
+        <div className="hidden items-center gap-3 sm:flex">
           <button
             type="button"
             onClick={prevSlide}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200"
+            className="inline-flex h-9 w-9 items-center justify-center text-slate-500 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-50"
             aria-label={sliderContent.previousProject}
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,7 +46,7 @@ export default function ProjectSlider() {
           <button
             type="button"
             onClick={nextSlide}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:border-slate-300 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:text-slate-200"
+            className="inline-flex h-9 w-9 items-center justify-center text-slate-500 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-50"
             aria-label={sliderContent.nextProject}
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +56,7 @@ export default function ProjectSlider() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white dark:border-slate-700/80 dark:bg-slate-800">
+      <div className="relative overflow-hidden rounded-[1.5rem]">
         <div className="flex transition-transform duration-600 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
           {projects.map((project, index) => (
             <motion.article
@@ -133,11 +131,11 @@ export default function ProjectSlider() {
           ))}
         </div>
 
-        <div className="flex items-center gap-2 sm:hidden">
+        <div className="flex items-center gap-3 sm:hidden">
           <button
             type="button"
             onClick={prevSlide}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
+            className="inline-flex h-9 w-9 items-center justify-center text-slate-500 dark:text-slate-400"
             aria-label={sliderContent.previousProject}
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +145,7 @@ export default function ProjectSlider() {
           <button
             type="button"
             onClick={nextSlide}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400"
+            className="inline-flex h-9 w-9 items-center justify-center text-slate-500 dark:text-slate-400"
             aria-label={sliderContent.nextProject}
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
