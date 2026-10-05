@@ -271,14 +271,14 @@
       "excerpt": "A comprehensive garage management system that stores all operational data for automotive service centers including parts inventory, transactions, mechanic records, and customer information.",
       "cover": "/bengkel.png",
       "gallery": ["/bengkel.png"],
-      "tags": ["Java", "Garage Management", "Automotive", "Enterprise"],
+      "tags": ["NestJS", "Garage Management", "Automotive", "Enterprise"],
       "readTime": "5 min read",
       "publishedAt": "Apr 21, 2026",
       "company": "PT Gateway Internusa",
       "content": [
         "Garage Management System is an enterprise application developed for Dewa Motor, a professional automotive service center. The system consolidates all aspects of garage operations into a single integrated platform.",
         "Key features include inventory management for automotive parts, transaction tracking for services and sales, employee databases for mechanics and staff, and comprehensive customer records with full service history. The system also provides reporting and analytics for business intelligence.",
-        "The application was built with Java, delivering the reliability and performance required for high-volume garage operations. The database structure is designed to handle complex automotive service workflows including warranty tracking, service scheduling, and parts ordering.",
+        "The backend was built with NestJS, delivering the reliability and performance required for high-volume garage operations, alongside UI/UX design work on the frontend. The database structure is designed to handle complex automotive service workflows including warranty tracking, service scheduling, and parts ordering.",
         "This project demonstrates how technology enhances operational efficiency in the automotive service industry, enabling technicians to work more productively and providing customers with better experiences through organized service documentation and faster turnaround times."
       ]
     },
@@ -333,6 +333,118 @@
         "iCYMS (Container Yard Management System) is designed to achieve better container asset visibility, accuracy, and operating efficiency. This web-based system includes real-time job dispatches to hauliers and improves overall container yard productivity. With full control over containers, operational processes, and yard resources, it achieves optimal efficiency and improves performance for container storing and release processes, streamlining container movement and reducing redundant processes.",
         "iAccounting allows users to view and manage their accounting transactions in one system, keeping things simple and tidy to make business operations easy to run. It integrates with the other KEYfields applications for consolidated financial management.",
         "Throughout my role, I coordinated cross-functional teams, managed stakeholder expectations, and ensured each enhancement aligned with business objectives. The R&D approach allowed us to iterate on proven systems, minimizing risk while delivering value through targeted improvements that addressed real operational pain points."
+      ]
+    },
+    {
+      "slug": "darahku-blood-donor-platform",
+      "title": "Darahku.id | Blood Donor Platform Linked to PMI",
+      "excerpt": "A blood donor platform connecting donors with Indonesia's Red Cross (PMI) network, built to make it easier to find donation drives and respond to urgent blood requests.",
+      "cover": "/darahku.png",
+      "gallery": ["/darahku.png"],
+      "tags": ["Next.js", "Social Impact", "Healthcare", "Freelance"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "Darahku.id is a blood donor platform built to connect voluntary donors with Indonesia's Red Cross (PMI) network, making it easier for people to find nearby donation drives and respond to urgent blood requests.",
+        "As frontend developer on this freelance project, I focused on a clear, low-friction donor journey: browsing active requests, checking eligibility information, and registering interest without unnecessary steps.",
+        "The interface needed to work well for a broad range of users with varying levels of digital literacy, so legibility, simple navigation, and fast load times were priorities throughout the build.",
+        "Darahku.id is live in production, continuing to support PMI's donor outreach and helping connect willing donors with the people who need them."
+      ]
+    },
+    {
+      "slug": "pcrf-network-management-dashboard",
+      "title": "PCRF | Network Management Dashboard",
+      "excerpt": "A network management dashboard for monitoring and managing telecom infrastructure, built as a freelance project and sold outright to the client.",
+      "cover": "/pcrf.png",
+      "gallery": ["/pcrf.png"],
+      "tags": ["Dashboard", "Network Management", "Freelance", "Data Visualization"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "PCRF is a network management dashboard built to give operators visibility into telecom infrastructure status, usage, and policy data in one place.",
+        "As frontend developer on this freelance project, I built the dashboard's data tables, filters, and status visualizations to help operators monitor network conditions and spot issues quickly.",
+        "The main challenge was presenting dense, technical network data in a way that stayed scannable rather than overwhelming, using clear hierarchy and grouping instead of raw data dumps.",
+        "The project was completed and sold outright to the client, who now uses it as part of their internal network operations tooling."
+      ]
+    },
+    {
+      "slug": "komindo-kmus-nawacita-template",
+      "title": "Komindo / KMUS / Nawacita | Reusable UMKM Marketplace Template",
+      "excerpt": "A freelance project building a reusable marketplace, management system, and company profile template, deployed across three UMKM cooperatives: Komindo, Koperasi Mitra Usaha Sejahtera, and Nawacita.",
+      "cover": "/komindo-kmus-nawacita.png",
+      "gallery": ["/komindo-kmus-nawacita.png"],
+      "tags": ["Freelance", "UMKM", "Marketplace", "Template"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "This freelance project involved building a reusable marketplace, management system (MMS), and company profile template that could be deployed across multiple UMKM (small and medium enterprise) cooperatives rather than building from scratch for each one.",
+        "The same core template was adapted and sold outright to three cooperatives: Komindo, Koperasi Mitra Usaha Sejahtera (KMUS), and Nawacita, each getting their own branded instance of the marketplace and company profile.",
+        "As frontend developer, my focus was building a flexible enough component and content structure that rebranding and reconfiguring for a new cooperative didn't mean rebuilding the product each time.",
+        "This approach let me deliver three client engagements efficiently while keeping each cooperative's public-facing site distinct and on-brand."
+      ]
+    },
+    {
+      "slug": "synapse-ai-student-assistant",
+      "title": "Synapse | AI Assistant for Working Students",
+      "excerpt": "A personal AI assistant project built for working students, helping manage finances, study schedules, and daily planning in one place. In development toward commercialization.",
+      "cover": "/synapse.png",
+      "gallery": ["/synapse.png"],
+      "tags": ["AI", "Next.js", "Go", "Personal Project"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "Synapse is a personal project I'm building to help working students juggle finances, study schedules, and daily planning without switching between a dozen apps.",
+        "The assistant uses AI to help users log expenses, plan study time around work hours, and get reminders that actually account for a busy, non-traditional schedule.",
+        "I'm building the frontend in Next.js and the backend in Go, using the project as a space to go deeper into AI-assisted product development end-to-end, from architecture to prompt design.",
+        "Synapse is still in active development, with the long-term goal of turning it into a real product rather than a side project."
+      ]
+    },
+    {
+      "slug": "ai-chatbot-unified-messaging",
+      "title": "AI Chatbot | Unified Messaging with a Custom Personality",
+      "excerpt": "A personal project unifying multiple messaging channels into one AI-powered chat experience with a custom-built personality. In development toward commercialization.",
+      "cover": "/chatbot.png",
+      "gallery": ["/chatbot.png"],
+      "tags": ["AI", "Next.js", "Go", "Personal Project"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "This project unifies multiple messaging channels into a single AI-powered chat experience, so conversations don't get scattered across different apps.",
+        "Beyond unifying channels, I built the assistant with a custom personality rather than a generic chatbot voice, so interactions feel more like talking to someone consistent rather than a templated bot.",
+        "The stack mirrors Synapse: Next.js on the frontend, Go on the backend, which let me reuse infrastructure patterns between the two personal projects while building each one deeper.",
+        "Like Synapse, this is still in development, with commercialization as the long-term direction."
+      ]
+    },
+    {
+      "slug": "belajo-kids-education-app",
+      "title": "Belajo | AI-Powered Kids Education App",
+      "excerpt": "A personal project building a Flutter and Go-based education app for kids, featuring AI-generated quizzes, a mascot character, and scan-to-lesson textbook support.",
+      "cover": "/belajo.png",
+      "gallery": ["/belajo.png"],
+      "tags": ["Flutter", "Go", "AI", "Personal Project", "Education"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "Belajo is a personal project building an education app for kids, combining a friendly mascot character with AI-generated quizzes to make learning feel more like play than homework.",
+        "One of the more interesting features is textbook scanning: kids (or parents) can scan a page from a physical textbook, and the app turns it into an interactive lesson and quiz.",
+        "I'm building the mobile app in Flutter with a Go backend, using the project to explore mobile development and AI-assisted content generation together in one product.",
+        "Belajo is still in development, built as a self-initiated project rather than client work."
+      ]
+    },
+    {
+      "slug": "talvio-hris-mobile-app",
+      "title": "Talvio | Multi-Tenant HRIS Mobile App",
+      "excerpt": "A personal project building a multi-tenant HR information system for mobile, covering attendance, leave, overtime, and payroll for multiple companies in one app.",
+      "cover": "/talvio.png",
+      "gallery": ["/talvio.png"],
+      "tags": ["Flutter", "Go", "HRIS", "Personal Project"],
+      "readTime": "4 min read",
+      "publishedAt": "Apr 22, 2026",
+      "content": [
+        "Talvio (previously called Presensia) is a personal project building a multi-tenant HR information system, letting multiple companies each manage their own attendance, leave, overtime, and payroll from one mobile app.",
+        "Multi-tenancy was the core design challenge: each company needed its own isolated data and configuration while sharing the same underlying app and backend infrastructure.",
+        "The mobile app is built in Flutter, with a Go backend using Gin and GORM against PostgreSQL, giving me a chance to go deeper into backend architecture for a genuinely multi-tenant product.",
+        "Talvio is under active development, built as a self-initiated project outside of client work."
       ]
     }
   ]

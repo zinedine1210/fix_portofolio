@@ -271,14 +271,14 @@
       "excerpt": "Sistem manajemen bengkel komprehensif yang menyimpan seluruh data operasional bengkel termasuk stok suku cadang, transaksi, data mekanik, dan customer information.",
       "cover": "/bengkel.png",
       "gallery": ["/bengkel.png"],
-      "tags": ["Java", "Garage Management", "Automotive", "Enterprise"],
+      "tags": ["NestJS", "Garage Management", "Automotive", "Enterprise"],
       "readTime": "5 menit baca",
       "publishedAt": "21 Apr 2026",
       "company": "PT Gateway Internusa",
       "content": [
         "Garage Management System adalah aplikasi enterprise yang dikembangkan untuk Dewa Motor, sebuah bengkel otomotif profesional. Sistem ini mengkonsolidasikan seluruh aspek operasional bengkel dalam satu platform terintegrasi.",
         "Fitur utama mencakup inventory management untuk suku cadang, transaction tracking untuk service dan penjualan, employee database untuk mekanik dan staff, dan customer records dengan service history lengkap. Sistem juga menyediakan reporting dan analytics untuk business intelligence.",
-        "Aplikasi dibangun dengan Java, memberikan reliability dan performance yang dibutuhkan untuk operasi bengkel yang high-volume. Database structure dirancang untuk menangani kompleksitas automotive service workflows termasuk warranty tracking, service scheduling, dan parts ordering.",
+        "Backend dibangun dengan NestJS, memberikan reliability dan performance yang dibutuhkan untuk operasi bengkel yang high-volume, dilengkapi dengan UI/UX design di sisi frontend. Database structure dirancang untuk menangani kompleksitas automotive service workflows termasuk warranty tracking, service scheduling, dan parts ordering.",
         "Project ini menunjukkan bagaimana technology dapat meningkatkan operational efficiency di automotive service industry, memudahkan technician bekerja lebih produktif dan memberikan better customer experience melalui organized service documentation dan faster turnaround time."
       ]
     },
@@ -333,6 +333,118 @@
         "iCYMS (Container Yard Management System) dirancang untuk mencapai visibilitas aset container yang lebih baik, akurasi, dan efisiensi operasi. Sistem berbasis web ini mencakup real-time job dispatch ke haulier dan meningkatkan produktivitas container yard secara keseluruhan. Dengan kontrol penuh atas container, proses operasional, dan sumber daya yard, sistem ini mencapai efisiensi optimal dan meningkatkan performa proses penyimpanan dan pelepasan container, memperlancar pergerakan container dan mengurangi proses redundan.",
         "iAccounting memungkinkan pengguna melihat dan mengelola transaksi akuntansi dalam satu sistem, menjaga semuanya tetap simpel dan rapi untuk memudahkan operasi bisnis. Terintegrasi dengan aplikasi KEYfields lainnya untuk manajemen keuangan yang terkonsolidasi.",
         "Sepanjang peran saya, saya mengkoordinasikan tim lintas fungsi, mengelola ekspektasi stakeholder, dan memastikan setiap enhancement sejalan dengan tujuan bisnis. Pendekatan R&D memungkinkan kami melakukan iterasi pada sistem yang telah terbukti, meminimalkan risiko sambil memberikan value melalui perbaikan yang terarah untuk mengatasi pain point operasional yang nyata."
+      ]
+    },
+    {
+      "slug": "darahku-blood-donor-platform",
+      "title": "Darahku.id | Platform Donor Darah Terhubung PMI",
+      "excerpt": "Platform donor darah yang terhubung dengan jaringan PMI, dibangun untuk memudahkan pencarian kegiatan donor dan merespons permintaan darah mendesak.",
+      "cover": "/darahku.png",
+      "gallery": ["/darahku.png"],
+      "tags": ["Next.js", "Social Impact", "Healthcare", "Freelance"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Darahku.id adalah platform donor darah yang dibangun untuk menghubungkan pendonor sukarela dengan jaringan PMI (Palang Merah Indonesia), memudahkan orang menemukan kegiatan donor terdekat dan merespons permintaan darah yang mendesak.",
+        "Sebagai frontend developer di project freelance ini, saya fokus membangun donor journey yang simpel dan low-friction: browsing permintaan aktif, cek informasi eligibility, dan daftar minat tanpa langkah yang tidak perlu.",
+        "Interface-nya harus bisa dipakai oleh berbagai kalangan dengan tingkat literasi digital yang beragam, jadi legibility, navigasi sederhana, dan loading cepat jadi prioritas sepanjang development.",
+        "Darahku.id sudah live di production, terus mendukung outreach donor PMI dan menghubungkan pendonor dengan orang yang membutuhkan."
+      ]
+    },
+    {
+      "slug": "pcrf-network-management-dashboard",
+      "title": "PCRF | Network Management Dashboard",
+      "excerpt": "Dashboard network management untuk monitoring dan mengelola infrastruktur telekomunikasi, dikerjakan sebagai project freelance dan dijual outright ke klien.",
+      "cover": "/pcrf.png",
+      "gallery": ["/pcrf.png"],
+      "tags": ["Dashboard", "Network Management", "Freelance", "Data Visualization"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "PCRF adalah dashboard network management yang dibangun untuk memberikan operator visibilitas atas status, usage, dan data policy infrastruktur telekomunikasi dalam satu tempat.",
+        "Sebagai frontend developer di project freelance ini, saya membangun data table, filter, dan visualisasi status untuk membantu operator memonitor kondisi network dan mendeteksi masalah dengan cepat.",
+        "Tantangan utamanya adalah menyajikan data network yang padat dan teknis supaya tetap scannable, bukan jadi data dump yang overwhelming, pakai hierarchy dan grouping yang jelas.",
+        "Project ini selesai dan dijual outright ke klien, yang sekarang memakainya sebagai bagian dari internal network operations tooling mereka."
+      ]
+    },
+    {
+      "slug": "komindo-kmus-nawacita-template",
+      "title": "Komindo / KMUS / Nawacita | Template Marketplace UMKM yang Reusable",
+      "excerpt": "Project freelance membangun template marketplace, management system, dan company profile yang reusable, dipakai oleh tiga koperasi UMKM: Komindo, Koperasi Mitra Usaha Sejahtera, dan Nawacita.",
+      "cover": "/komindo-kmus-nawacita.png",
+      "gallery": ["/komindo-kmus-nawacita.png"],
+      "tags": ["Freelance", "UMKM", "Marketplace", "Template"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Project freelance ini melibatkan pembuatan template marketplace, management system (MMS), dan company profile yang reusable, bisa dipakai di beberapa koperasi UMKM tanpa harus build dari nol tiap kali.",
+        "Template inti yang sama diadaptasi dan dijual outright ke tiga koperasi: Komindo, Koperasi Mitra Usaha Sejahtera (KMUS), dan Nawacita, masing-masing dapat instance marketplace dan company profile dengan brand sendiri.",
+        "Sebagai frontend developer, fokus saya adalah membangun struktur komponen dan konten yang cukup fleksibel supaya rebranding dan rekonfigurasi untuk koperasi baru tidak berarti rebuild produk dari awal.",
+        "Pendekatan ini memungkinkan saya mengerjakan tiga klien secara efisien sambil tetap menjaga setiap situs koperasi terlihat distinct dan sesuai brand masing-masing."
+      ]
+    },
+    {
+      "slug": "synapse-ai-student-assistant",
+      "title": "Synapse | AI Assistant untuk Working Student",
+      "excerpt": "AI assistant personal untuk working student, membantu kelola keuangan, jadwal belajar, dan planning harian dalam satu tempat. Masih dalam development menuju komersialisasi.",
+      "cover": "/synapse.png",
+      "gallery": ["/synapse.png"],
+      "tags": ["AI", "Next.js", "Go", "Personal Project"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Synapse adalah personal project yang saya bangun untuk membantu working student mengelola keuangan, jadwal belajar, dan planning harian tanpa harus pindah-pindah aplikasi.",
+        "Assistant ini pakai AI untuk bantu user catat pengeluaran, atur jadwal belajar di sekitar jam kerja, dan kasih reminder yang benar-benar mempertimbangkan jadwal yang padat dan tidak biasa.",
+        "Frontend-nya saya bangun dengan Next.js dan backend dengan Go, memakai project ini sebagai ruang untuk dalami AI-assisted product development end-to-end, dari architecture sampai prompt design.",
+        "Synapse masih dalam active development, dengan tujuan jangka panjang jadi produk beneran, bukan sekadar side project."
+      ]
+    },
+    {
+      "slug": "ai-chatbot-unified-messaging",
+      "title": "AI Chatbot | Unified Messaging dengan Personality Custom",
+      "excerpt": "Personal project yang menyatukan berbagai channel messaging ke dalam satu AI chat experience dengan personality custom. Masih dalam development menuju komersialisasi.",
+      "cover": "/chatbot.png",
+      "gallery": ["/chatbot.png"],
+      "tags": ["AI", "Next.js", "Go", "Personal Project"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Project ini menyatukan berbagai channel messaging ke dalam satu AI chat experience, supaya percakapan tidak tercecer di berbagai aplikasi.",
+        "Selain menyatukan channel, saya bangun assistant ini dengan personality custom, bukan suara chatbot generic, supaya interaksinya terasa seperti ngobrol dengan seseorang yang konsisten, bukan bot template.",
+        "Stack-nya mirip dengan Synapse: Next.js di frontend, Go di backend, yang memungkinkan saya reuse infrastructure pattern antara dua personal project ini sambil dalami masing-masing lebih jauh.",
+        "Sama seperti Synapse, project ini masih dalam development, dengan komersialisasi sebagai arah jangka panjang."
+      ]
+    },
+    {
+      "slug": "belajo-kids-education-app",
+      "title": "Belajo | Aplikasi Edukasi Anak Berbasis AI",
+      "excerpt": "Personal project membangun aplikasi edukasi anak berbasis Flutter dan Go, dengan quiz AI-generated, karakter maskot, dan fitur scan buku jadi pelajaran.",
+      "cover": "/belajo.png",
+      "gallery": ["/belajo.png"],
+      "tags": ["Flutter", "Go", "AI", "Personal Project", "Education"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Belajo adalah personal project membangun aplikasi edukasi untuk anak-anak, menggabungkan karakter maskot yang ramah dengan quiz AI-generated supaya belajar terasa lebih seperti main daripada PR.",
+        "Salah satu fitur paling menarik adalah scan buku: anak (atau orang tua) bisa scan halaman dari buku pelajaran fisik, dan aplikasi mengubahnya jadi pelajaran dan quiz interaktif.",
+        "Mobile app-nya saya bangun dengan Flutter dengan backend Go, memakai project ini untuk explore mobile development dan AI-assisted content generation sekaligus dalam satu produk.",
+        "Belajo masih dalam development, dibangun sebagai self-initiated project, bukan client work."
+      ]
+    },
+    {
+      "slug": "talvio-hris-mobile-app",
+      "title": "Talvio | Aplikasi HRIS Mobile Multi-Tenant",
+      "excerpt": "Personal project membangun HR information system multi-tenant untuk mobile, mencakup attendance, leave, overtime, dan payroll untuk banyak perusahaan dalam satu aplikasi.",
+      "cover": "/talvio.png",
+      "gallery": ["/talvio.png"],
+      "tags": ["Flutter", "Go", "HRIS", "Personal Project"],
+      "readTime": "4 menit baca",
+      "publishedAt": "22 Apr 2026",
+      "content": [
+        "Talvio (sebelumnya bernama Presensia) adalah personal project membangun HR information system multi-tenant, memungkinkan banyak perusahaan masing-masing kelola attendance, leave, overtime, dan payroll sendiri dari satu mobile app.",
+        "Multi-tenancy jadi tantangan utama desainnya: tiap perusahaan butuh data dan konfigurasi yang terisolasi sambil tetap berbagi app dan backend infrastructure yang sama.",
+        "Mobile app-nya dibangun dengan Flutter, dengan backend Go memakai Gin dan GORM ke PostgreSQL, kasih saya kesempatan dalami backend architecture untuk produk yang benar-benar multi-tenant.",
+        "Talvio sedang dalam active development, dibangun sebagai self-initiated project di luar client work."
       ]
     }
   ]
