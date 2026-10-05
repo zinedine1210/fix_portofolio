@@ -27,7 +27,7 @@ export default function ProjectSlider() {
 
   return (
     <section className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-4 shadow-3xl dark:border-slate-700 dark:bg-slate-900 sm:p-6">
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-50/70 via-white to-cyan-50/45 dark:from-sky-950/30 dark:via-slate-900 dark:to-cyan-950/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/70 via-white to-orange-50/45 dark:from-amber-950/30 dark:via-slate-900 dark:to-orange-950/20" />
 
       <div className="relative mb-5 flex items-center justify-between gap-3">
         <div>
@@ -126,7 +126,7 @@ export default function ProjectSlider() {
               type="button"
               onClick={() => setCurrentIndex(index)}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === currentIndex ? 'w-9 bg-slate-900 dark:bg-sky-400' : 'w-2.5 bg-slate-300 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500'
+                index === currentIndex ? 'w-9 bg-slate-900 dark:bg-amber-400' : 'w-2.5 bg-slate-300 hover:bg-slate-400 dark:bg-slate-600 dark:hover:bg-slate-500'
               }`}
               aria-label={`${sliderContent.goToProject} ${project.title}`}
             />

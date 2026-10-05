@@ -102,7 +102,7 @@ export const metadata: Metadata = {
       { url: '/icons/icon-180x180.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
-      { rel: 'mask-icon', url: '/favicon.svg', color: '#0ea5e9' },
+      { rel: 'mask-icon', url: '/favicon.svg', color: '#d97706' },
     ],
   },
   category: 'technology',

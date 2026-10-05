@@ -60,8 +60,8 @@ export default function HeroPhotoGallery() {
       >
         <div className={`h-[70%] w-[75%] rounded-[50%] blur-[60px] transition-colors duration-700 ${
           isRevealed
-            ? 'bg-violet-200/50 dark:bg-violet-500/20'
-            : 'bg-sky-200/45 dark:bg-sky-500/15'
+            ? 'bg-amber-200/50 dark:bg-amber-500/20'
+            : 'bg-amber-200/45 dark:bg-amber-500/15'
         }`} />
       </motion.div>
 
@@ -77,7 +77,7 @@ export default function HeroPhotoGallery() {
         transition={{ duration: 0.3 }}
       >
         <motion.span
-          className="inline-block h-2 w-2 rounded-full bg-sky-400"
+          className="inline-block h-2 w-2 rounded-full bg-amber-400"
           animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -108,7 +108,7 @@ export default function HeroPhotoGallery() {
             width={600}
             height={800}
             quality={100}
-            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_12px_40px_rgba(56,189,248,0.12)] sm:max-w-[540px]"
+            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(15,23,42,0.18)] dark:drop-shadow-[0_12px_40px_rgba(245,158,11,0.12)] sm:max-w-[540px]"
             style={{ maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)' }}
             priority
             draggable={false}
@@ -130,7 +130,7 @@ export default function HeroPhotoGallery() {
             width={600}
             height={800}
             quality={100}
-            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(124,58,237,0.18)] dark:drop-shadow-[0_12px_40px_rgba(124,58,237,0.15)] sm:max-w-[540px]"
+            className="pointer-events-none mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_12px_40px_rgba(180,83,9,0.2)] dark:drop-shadow-[0_12px_40px_rgba(251,191,36,0.15)] sm:max-w-[540px]"
             style={{ maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)' }}
             draggable={false}
           />

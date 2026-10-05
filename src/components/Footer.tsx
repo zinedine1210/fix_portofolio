@@ -52,9 +52,9 @@ export default function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-slate-200/80 bg-white/85 backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/85">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-300 to-transparent dark:via-sky-700" />
-        <div className="absolute -left-20 top-10 h-52 w-52 rounded-full bg-sky-100/70 blur-3xl dark:bg-sky-900/30" />
-        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-cyan-100/60 blur-3xl dark:bg-cyan-900/20" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent dark:via-amber-700" />
+        <div className="absolute -left-20 top-10 h-52 w-52 rounded-full bg-amber-100/70 blur-3xl dark:bg-amber-900/30" />
+        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-orange-100/60 blur-3xl dark:bg-orange-900/20" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ export default function Footer() {
             className="space-y-4"
           >
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-sm font-extrabold tracking-[0.24em] text-white dark:bg-sky-500">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-sm font-extrabold tracking-[0.24em] text-white dark:bg-amber-500">
                 {site.brandShort}
               </span>
               <span className="text-2xl font-extrabold tracking-[0.16em] text-slate-950 dark:text-slate-50">
@@ -87,12 +87,12 @@ export default function Footer() {
                   whileHover={{
                     scale: 1.08,
                     y: -5,
-                    boxShadow: '0 18px 34px -20px rgba(14, 165, 233, 0.28)',
+                    boxShadow: '0 18px 34px -20px rgba(217, 119, 6, 0.28)',
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 text-slate-600 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:border-sky-200 hover:text-sky-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:shadow-black/20 dark:hover:border-sky-700 dark:hover:text-sky-400"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 text-slate-600 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:border-amber-200 hover:text-amber-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:shadow-black/20 dark:hover:border-amber-700 dark:hover:text-amber-400"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-transparent to-cyan-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-sky-950/50 dark:to-cyan-950/50" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-transparent to-orange-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-amber-950/50 dark:to-orange-950/50" />
                   <div className="relative z-10 transition-colors duration-300">{social.icon}</div>
                 </motion.a>
               ))}
@@ -116,9 +116,8 @@ export default function Footer() {
                 >
                   <Link
                     href={link.href}
-                    className="group flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-200"
+                    className="group inline-flex items-center text-slate-600 transition-all duration-200 hover:translate-x-1 hover:text-amber-700 dark:text-slate-400 dark:hover:text-amber-400"
                   >
-                    <span className="mr-3 h-2 w-2 rounded-full bg-sky-500 transition-transform duration-200 group-hover:scale-150" />
                     {link.label}
                   </Link>
                 </motion.div>
@@ -140,7 +139,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-200"
               >
-                <svg className="mr-3 h-5 w-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="mr-3 h-5 w-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <span>{home('emailValue')}</span>
@@ -151,7 +150,7 @@ export default function Footer() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-200"
               >
-                <svg className="mr-3 h-5 w-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="mr-3 h-5 w-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -176,7 +175,7 @@ export default function Footer() {
           className="mt-12 border-t border-slate-200 pt-8 text-center dark:border-slate-800"
         >
           <p className="text-sm text-slate-500 dark:text-slate-500">
-            © 2024 {site.brandName}. {footer.rights}
+            © {new Date().getFullYear()} {site.brandName}. {footer.rights}
           </p>
         </motion.div>
       </div>

@@ -43,7 +43,7 @@ export default function LanguageDropdown() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-200 hover:text-slate-950 hover:shadow-xl hover:shadow-sky-100/70 dark:border-slate-700 dark:bg-slate-800/85 dark:text-slate-300 dark:shadow-black/20 dark:hover:border-sky-700 dark:hover:text-sky-300 dark:hover:shadow-sky-900/30"
+        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-4 py-2 text-sm font-semibold text-slate-700 shadow-lg shadow-slate-900/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200 hover:text-slate-950 hover:shadow-xl hover:shadow-amber-100/70 dark:border-slate-700 dark:bg-slate-800/85 dark:text-slate-300 dark:shadow-black/20 dark:hover:border-amber-700 dark:hover:text-amber-300 dark:hover:shadow-amber-900/30"
       >
         <span className="text-lg">{currentLanguage.flag}</span>
         <span>{currentLanguage.name}</span>
@@ -77,13 +77,13 @@ export default function LanguageDropdown() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: index * 0.05 }}
                   whileHover={{ 
-                    backgroundColor: 'rgba(14, 165, 233, 0.08)',
+                    backgroundColor: 'rgba(217, 119, 6, 0.08)',
                     x: 5
                   }}
                   whileTap={{ scale: 0.95 }}
                   className={`flex w-full items-center gap-3 px-4 py-3 text-left transition-all duration-200 ${
                     language.code === locale 
-                      ? 'bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-400' 
+                      ? 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400' 
                       : 'text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-200'
                   }`}
                 >
@@ -93,7 +93,7 @@ export default function LanguageDropdown() {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="ml-auto h-2 w-2 rounded-full bg-sky-500"
+                      className="ml-auto h-2 w-2 rounded-full bg-amber-500"
                     />
                   )}
                 </motion.button>

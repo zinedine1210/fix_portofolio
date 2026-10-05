@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import LanguageDropdown from './LanguageDropdown'
@@ -14,23 +14,17 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const { scrollY } = useScroll()
 
   useEffect(() => {
     setMounted(true)
-    const onScroll = () => setScrolled(window.scrollY > 72)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolled(latest > 72)
+  })
 
   const isDark = mounted && resolvedTheme === 'dark'
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 72)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   const getNavHref = (hash: string) => {
     if (typeof window !== 'undefined' && !window.location.pathname.endsWith('/')) {
@@ -126,7 +120,7 @@ export default function Navbar() {
               <a
                 key={item.hash}
                 href={getNavHref(item.hash)}
-                className="block rounded-[1.25rem] px-4 py-3 text-base font-semibold text-slate-600 transition-colors hover:bg-sky-50 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-sky-950/30 dark:hover:text-sky-300"
+                className="block rounded-[1.25rem] px-4 py-3 text-base font-semibold text-slate-600 transition-colors hover:bg-amber-50 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-amber-950/30 dark:hover:text-amber-300"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
