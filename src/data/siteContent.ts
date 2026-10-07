@@ -16,8 +16,13 @@ export function getSiteContent(locale: string): SiteContent {
   return locale === 'id' ? contentByLocale.id : contentByLocale.en
 }
 
+// Temporarily hidden projects — uncomment the slug to bring one back.
+const DISABLED_SLUGS: string[] = [
+  'vschallange-online-ticket-registration',
+]
+
 export function getBlogPosts(locale: string): BlogPost[] {
-  return getSiteContent(locale).blogPosts
+  return getSiteContent(locale).blogPosts.filter((post) => !DISABLED_SLUGS.includes(post.slug))
 }
 
 export function getBlogPostBySlug(locale: string, slug: string): BlogPost | undefined {
