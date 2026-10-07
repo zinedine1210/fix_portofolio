@@ -218,8 +218,8 @@
       "slug": "metro-bekasi-danger-button",
       "title": "Metro Bekasi Danger Button | Emergency Response Integration",
       "excerpt": "A high-priority public safety project featuring a 'one-hit' emergency button that uses Geofencing/GPS protocols to instantly connect citizens with the nearest available police unit.",
-      "cover": "/gactivity.jpg",
-      "gallery": ["/gactivity.jpg"],
+      "cover": "/metro-danger-button.png",
+      "gallery": ["/metro-danger-button.png"],
       "tags": ["Next.js", "GPS", "Emergency", "Public Safety"],
       "readTime": "4 min read",
       "publishedAt": "Apr 21, 2026",
@@ -235,8 +235,8 @@
       "slug": "polres-jakarta-utara-ai",
       "title": "Polres Jakarta Utara AI | Law Enforcement Intelligence Project",
       "excerpt": "A collaborative initiative with the North Jakarta Resort Police to integrate Artificial Intelligence into law enforcement workflows, enhancing operational efficiency and data-driven decision-making.",
-      "cover": "/space-bg.jpg",
-      "gallery": ["/space-bg.jpg"],
+      "cover": "/polres-jakarta-utara-ai.jpeg",
+      "gallery": ["/polres-jakarta-utara-ai.jpeg"],
       "tags": ["AI", "Law Enforcement", "Intelligence", "Data-Driven"],
       "readTime": "6 min read",
       "publishedAt": "Apr 21, 2026",
@@ -252,8 +252,8 @@
       "slug": "komindo-marketplace",
       "title": "Komindo Marketplace & Management System (MMS) | UMKM E-Commerce Ecosystem",
       "excerpt": "A scalable e-commerce ecosystem engineered to empower local SMEs (UMKM), providing comprehensive management dashboards for vendors to streamline sales and inventory.",
-      "cover": "/komindocp.jpg",
-      "gallery": ["/komindocp.jpg", "/mmsumkmsejahtera.jpg", "/marketplace.jpg"],
+      "cover": "/komindo-company-profile.jpeg",
+      "gallery": ["/komindo-company-profile.jpeg", "/mms.jpeg", "/kmus-company-profile.jpeg"],
       "tags": ["E-Commerce", "Marketplace", "UMKM", "Dashboard"],
       "readTime": "7 min read",
       "publishedAt": "Apr 21, 2026",
@@ -365,22 +365,6 @@
         "As frontend developer on this freelance project, I built the dashboard's data tables, filters, and status visualizations to help operators monitor network conditions and spot issues quickly.",
         "The main challenge was presenting dense, technical network data in a way that stayed scannable rather than overwhelming, using clear hierarchy and grouping instead of raw data dumps.",
         "The project was completed and sold outright to the client, who now uses it as part of their internal network operations tooling."
-      ]
-    },
-    {
-      "slug": "komindo-kmus-nawacita-template",
-      "title": "Komindo / KMUS / Nawacita | Reusable UMKM Marketplace Template",
-      "excerpt": "A freelance project building a reusable marketplace, management system, and company profile template, deployed across three UMKM cooperatives: Komindo, Koperasi Mitra Usaha Sejahtera, and Nawacita.",
-      "cover": "/komindo-kmus-nawacita.png",
-      "gallery": ["/komindo-kmus-nawacita.png"],
-      "tags": ["Freelance", "UMKM", "Marketplace", "Template"],
-      "readTime": "4 min read",
-      "publishedAt": "Apr 22, 2026",
-      "content": [
-        "This freelance project involved building a reusable marketplace, management system (MMS), and company profile template that could be deployed across multiple UMKM (small and medium enterprise) cooperatives rather than building from scratch for each one.",
-        "The same core template was adapted and sold outright to three cooperatives: Komindo, Koperasi Mitra Usaha Sejahtera (KMUS), and Nawacita, each getting their own branded instance of the marketplace and company profile.",
-        "As frontend developer, my focus was building a flexible enough component and content structure that rebranding and reconfiguring for a new cooperative didn't mean rebuilding the product each time.",
-        "This approach let me deliver three client engagements efficiently while keeping each cooperative's public-facing site distinct and on-brand."
       ]
     },
     {
